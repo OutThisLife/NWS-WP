@@ -1,0 +1,173 @@
+/**
+ * Core SASS
+ */
+
+@import C:/www/ABases/classes.sass
+
+// -----------------------------------------------
+
+/**
+ * Variables
+ */
+$maxWidth: 960px
+$pageWidth: 600px
+$sidebarWidth: 200px
+
+// Fonts
+$font: Arial, sans-serif
+
+// Colours
+$default: #222
+
+// -----------------------------------------------
+
+/**
+ * Keyframes
+ */
+
+// -----------------------------------------------
+
+/**
+ * General
+ */
+body
+	color: $default
+	font: 13px/24px $font
+	margin: 0
+	padding: 0
+
+.wrapper
+	@include clearfix
+	@include wrap
+
+// -----------------------------------------------
+
+/**
+ * Header
+ */
+#header
+	@extend .wrapper
+	padding: 35px 0 
+
+	// Logo
+	#logo
+
+	// Main nav
+	#nav
+		@include wpMenu
+			//
+
+			@include wpActives
+				//
+
+// -----------------------------------------------
+
+/**
+ * Slideshow
+ */
+#slideshow
+	@include userSelect(none)
+	-webkit-backface-visibility: hidden
+
+	#theSlides .slide
+		z-index: 0
+		@include cover
+		@include opacity(0)
+		@include clearfix
+		@include transition(opacity 2s ease)
+
+		&.active
+			z-index: 1
+			@include opacity(1)
+
+	#slidePager
+		position: absolute
+		left: 10px
+		bottom: 10px
+
+		a
+			display: inline-block
+			@include sq(5px)
+			@include borderRadius(99em)
+			margin-right: 3px
+			background: rgba(#FFF, .3)
+
+			&:hover,
+			&.active
+				background: #FFF
+
+// -----------------------------------------------
+
+/**
+ * Masthead
+ */
+#masthead
+
+// -----------------------------------------------
+
+/**
+ * Containers
+ */
+#content
+
+// -----------------------------------------------
+
+/**
+ * Footer
+ */
+#footer
+
+// -----------------------------------------------
+
+/**
+ * Sidebar
+ */
+#sidebar
+	float: right
+	width: $sidebarWidth
+
+// -----------------------------------------------
+
+/**
+ * General page styles
+ */
+#page
+	float: left
+	width: $pageWidth
+
+	&.full
+		float: none
+		width: auto
+
+	// Headers
+	h1,h2,h3,h4,h5,h6
+		margin: 0 0 10px
+		padding: 0
+
+	// Images
+	img
+		max-width: 100%
+		height: auto
+		
+		&.alignleft
+			float: left
+			margin: 0 15px 5px 0
+
+		&.alignright
+			float: right
+			margin: 0 0 5px 15px
+
+	// Gform
+	.gform_wrapper
+		*
+			clear: none
+			float: none
+			display: inline
+			margin: 0
+			padding: 0
+
+		input[type=text],
+		select,
+		textarea
+			display: inline-block
+			padding: 3px
