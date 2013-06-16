@@ -10,7 +10,9 @@ class DevTests {
 	 * Check if client is a 'developer'. Add your IP to this list if you want to use this fn.
 	 */
 	public static function isDeveloper() {
-		return in_array($_SERVER['REMOTE_ADDR'], DEV_LIST);
+		return in_array($_SERVER['REMOTE_ADDR'], array(
+			'208.64.74.173', # Talasan
+		));
 	}
 
 	/**

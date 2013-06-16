@@ -8,7 +8,7 @@
 require_once 'classes/sys/autoloader.php';
 
 $tmpl = new BaseTheme();
-$tmpl->debug(0)->adminBar(0)
+$tmpl->debug(1)->adminBar(0)
 
 // -----------------------------------------------
 
@@ -39,13 +39,7 @@ $tmpl->debug(0)->adminBar(0)
 		'phone' => array(
 			'name' => 'Phone #',
 			'type' => 'text',
-			'desc' => 'This will be used on the ...',
-		),
-
-		'test2' => array(
-			'name' => 'test #',
-			'type' => 'text',
-			'desc' => 'This will be used on the ...',
+			'desc' => 'Use [phone] to retrieve this value.',
 		),
 	),
 
@@ -70,5 +64,3 @@ $tmpl->debug(0)->adminBar(0)
 
 # Render the theme.
 ->render();
-
-if (DevTests::isDeveloper()) exit;

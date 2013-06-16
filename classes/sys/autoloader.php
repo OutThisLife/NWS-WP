@@ -5,6 +5,8 @@
  * Autoload classes for this theme
  */
 
+require_once TEMPLATEPATH . '/classes/config.php';
+
 function autoload($className) {
 	$file = TEMPLATEPATH .'/classes/'. $className .'.class.php';
 

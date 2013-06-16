@@ -15,15 +15,8 @@ class BaseTheme {
 	 * Initial theme setup
 	 */
 	public function __construct() {
-		$this->loadFiles();
-
 		$this->front = new FrontEnd();
 		$this->back = new BackEnd();
-	}
-
-	# Load required files
-	private function loadFiles() {
-		require_once 'config.php';
 	}
 
 	# Set up debugging
