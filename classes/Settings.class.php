@@ -120,9 +120,9 @@ S;
 	 */
 	public function settingsHtml() {
 		# Options saved alert
-		$alert = null;
-		if (isset($_REQUEST['settings-updated']))
-			$alert = '<div class="updated fade"><p><strong>Options Saved</strong></p></div>';
+		$alert = isset($_REQUEST['settings-updated'])
+			? '<div class="updated fade"><p><strong>Options Saved</strong></p></div>'
+			: null;
 
 		# The screen icon is 'necessary' for visual effects
 		$icon = get_screen_icon();
@@ -165,13 +165,16 @@ S;
 <div class="wrap">
 	{$icon} <h2>Theme Options</h2>
 
-	<h2 class="nav-tab-wrapper">
-		{$this->buildTabs()}
-	</h2>
-
-	{$alert}
-
 	<form method="post" action="options.php">
+		<p class="submit">
+			<input type="submit" class="button-primary" value="Save Options" />
+		</p>
+
+		<h2 class="nav-tab-wrapper">
+			{$this->buildTabs()}
+		</h2>
+
+		{$alert}
 S;
 		# Break for the settings fields.
 		settings_fields('nws_settings');

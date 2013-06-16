@@ -42,8 +42,6 @@ class BaseTheme {
 	}
 
 	/**
-	 * __call 
-	 *
 	 * All addXYZ will use __call
 	 */
 	public function __call($name, array $args) {
@@ -54,8 +52,6 @@ class BaseTheme {
 	}
 
 	/**
-	 * render
-	 *
 	 * Render the 'known' variables
 	 */
 	public function render() {
@@ -63,12 +59,10 @@ class BaseTheme {
 	}
 
 	/**
-	 * sort
-	 *
 	 * Sort through the variable names and call the related method
 	 */
 	private function sort($values, $key) {
-		$method = $className = NULL;
+		$method = NULL;
 		$values = $values[0];
 
 		# Construct the method name out of the key

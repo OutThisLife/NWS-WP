@@ -7,8 +7,6 @@
 
 class Template {
 	/**
-	 * get
-	 *
 	 * Retrieves a snippet file
 	 */
 	public static function get($snippet) {
@@ -23,8 +21,6 @@ class Template {
 	}
 
 	/**
-	 * loop
-	 *
 	 * Creates a loop and utilizes get_template_part to throw it into the mix.
 	 */
 	public static function loop($callback, $query) {

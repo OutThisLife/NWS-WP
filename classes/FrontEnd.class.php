@@ -14,6 +14,8 @@ class FrontEnd extends BaseTheme {
 	 * Adds a sidebar
 	 */
 	protected function _sidebar($name) {
+		if (is_admin()) return;
+
 		register_sidebar(array(
 			'name' => $name,
 			'id' => sanitize_key($name),
@@ -24,6 +26,8 @@ class FrontEnd extends BaseTheme {
 	 * Adds a script
 	 */
 	protected function _script($src) {
+		if (is_admin()) return;
+
 		wp_enqueue_script(
 			sanitize_key($src),
 			$src,
@@ -37,6 +41,8 @@ class FrontEnd extends BaseTheme {
 	 * Adds a style
 	 */
 	protected function _style($src) {
+		if (is_admin()) return;
+		
 		wp_enqueue_style(
 			sanitize_key($src),
 			$src,

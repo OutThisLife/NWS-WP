@@ -7,7 +7,6 @@
 
 class BackEnd extends BaseTheme {
 	protected static $options, $post;
-	private $tabs = array();
 
 	public function __construct() {
 		global $post;
@@ -17,14 +16,14 @@ class BackEnd extends BaseTheme {
 	}
 
 	/**
-	 * _setting
+	 * Creates a setting page with tabs
 	 */
 	protected function _setting(array $tabs) {
 		new Settings($this, $tabs);
 	}
 
 	/**
-	 * _shortcode
+	 * Creates an individual shortcode using callbacks
 	 */
 	protected function _shortcode($callback) {
 		add_shortcode(key($callback), current($callback));

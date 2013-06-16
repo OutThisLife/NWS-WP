@@ -7,16 +7,14 @@
 
 class DevTests {
 	/**
-	 * isDeveloper
+	 * Check if client is a 'developer'. Add your IP to this list if you want to use this fn.
 	 */
 	public static function isDeveloper() {
-		return in_array($_SERVER['REMOTE_ADDR'], array(
-			'208.64.74.173', # Talasan
-		));
+		return in_array($_SERVER['REMOTE_ADDR'], DEV_LIST);
 	}
 
 	/**
-	 * isMobile
+	 * Checks if client is on a mobile device
 	 */
 	public static function isMobile() {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
@@ -28,7 +26,7 @@ class DevTests {
 	}
 
 	/**
-	 * isTablet
+	 * Checks if client is on a tablet
 	 */
 	public static function isTablet() {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
@@ -40,7 +38,7 @@ class DevTests {
 	}
 
 	/**
-	 * isDevice
+	 * Checks vs both mobile and tablet
 	 */
 	public static function isDevice() {
 		return self::isMobile() || self::isTablet();

@@ -41,6 +41,12 @@ $tmpl->debug(0)->adminBar(0)
 			'type' => 'text',
 			'desc' => 'This will be used on the ...',
 		),
+
+		'test2' => array(
+			'name' => 'test #',
+			'type' => 'text',
+			'desc' => 'This will be used on the ...',
+		),
 	),
 
 	'Footer' => array(
@@ -64,3 +70,5 @@ $tmpl->debug(0)->adminBar(0)
 
 # Render the theme.
 ->render();
+
+if (DevTests::isDeveloper()) exit;
