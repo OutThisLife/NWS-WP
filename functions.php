@@ -25,6 +25,7 @@ $tmpl->debug(1)->adminBar(0)
 # Scripts
 ->addScripts(array(
 	assetDir . '/js/core.js',
+	'http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js',
 ))
 
 // -----------------------------------------------

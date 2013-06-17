@@ -14,8 +14,6 @@ class FrontEnd extends BaseTheme {
 	 * Adds a sidebar
 	 */
 	protected function _sidebar($name) {
-		if (is_admin()) return;
-
 		register_sidebar(array(
 			'name' => $name,
 			'id' => sanitize_key($name),
@@ -90,8 +88,6 @@ S;
 
 	/**
 	 * frontUriHash
-	 *
-	 * Redirects all URI's to the front with a hashtag.
 	 */
 	public static function frontUriHash() {
 		$home = get_settings('home');
