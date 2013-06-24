@@ -29,6 +29,13 @@ class BackEnd extends BaseTheme {
 		add_shortcode(key($callback), current($callback));
 	}
 
+	/**
+	 * Adds a nav menu
+	 */
+	protected function _menu(array $menu) {
+		register_nav_menus($menu);
+	}
+
 	// -----------------------------------------------
 
 	/**
@@ -37,7 +44,7 @@ class BackEnd extends BaseTheme {
 	public static function getChildren() {
 		$children = wp_list_pages(array(
 			'title_li' => null,
-			'child_of' => $this->getRootParent(),
+			'child_of' => self::getRootParent(),
 			'depth' => 1,
 			'echo' => false
 		));

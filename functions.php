@@ -34,6 +34,12 @@ $tmpl->debug(1)->adminBar(0)
  * Set up our back-end systems
  */
 
+# Menus
+->addMenus(array(array(
+	'header' => 'Header Menu',
+	'footer' => 'Footer Menu',
+)))
+
 # Settings
 ->addSettings(array(array(
 	'General' => array(
