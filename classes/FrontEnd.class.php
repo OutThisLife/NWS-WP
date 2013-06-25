@@ -104,4 +104,11 @@ S;
 
 		return $goTo;
 	}
+
+	/**
+	 * getImg
+	 */
+	public static function getImg($id, $size) {
+		return wp_get_attachment_image($id, $size);
+	}
 }

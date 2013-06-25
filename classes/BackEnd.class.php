@@ -9,9 +9,6 @@ class BackEnd extends BaseTheme {
 	protected static $options, $post;
 
 	public function __construct() {
-		global $post;
-
-		self::$post = $post;
 		self::$options = get_option('r');
 	}
 
@@ -25,8 +22,9 @@ class BackEnd extends BaseTheme {
 	/**
 	 * Creates an individual shortcode using callbacks
 	 */
-	protected function _shortcode($callback) {
-		add_shortcode(key($callback), current($callback));
+	protected function _shortcode(array $callback) {
+		foreach ($callback AS $key => $cb)
+			add_shortcode($key, $cb);
 	}
 
 	/**
@@ -34,6 +32,14 @@ class BackEnd extends BaseTheme {
 	 */
 	protected function _menu(array $menu) {
 		register_nav_menus($menu);
+	}
+
+	/**
+	 * Adds an image size
+	 */
+	protected function _imagesize(array $args) {
+		foreach ($args AS $key => $value)
+			add_image_size($key, $value[0], $value[1], $value[2]);
 	}
 
 	// -----------------------------------------------
@@ -69,10 +75,11 @@ class BackEnd extends BaseTheme {
 	 * getRootParent
 	 */
 	public static function getRootParent() {
-		$parent = self::$post->ID;
+		global $post;
+		$parent = $post->ID;
 
-		if (self::$post->post_parent)	{
-			$ancestors = get_post_ancestors(self::$post->ID);
+		if ($post->post_parent)	{
+			$ancestors = get_post_ancestors($post->ID);
 			$root = count($ancestors)-1;
 			$parent = $ancestors[$root];
 		}
