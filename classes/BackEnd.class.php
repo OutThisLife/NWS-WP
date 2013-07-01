@@ -100,4 +100,18 @@ class BackEnd extends BaseTheme {
 	public static function getOption($option) {
 		return do_shortcode(self::$options[$option]);
 	}
+
+	/**
+	 * getPostType
+	 */
+	public static function getPostType($type, $settings = array()) {
+		$default = array(
+			'post_type' => $type,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		return new WP_Query(array_merge($default, $settings));
+	}
 }

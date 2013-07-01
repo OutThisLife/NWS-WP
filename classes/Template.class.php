@@ -24,7 +24,7 @@ class Template {
 	 * Creates a loop and utilizes get_template_part to throw it into the mix.
 	 */
 	public static function loop($callback, $query) {
-		$result = new WP_Query($query);
+		$result = BackEnd::getPostType('', $query);
 
 		if ($result->have_posts())
 		while ($result->have_posts()):
