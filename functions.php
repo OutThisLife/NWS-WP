@@ -35,7 +35,7 @@ $tmpl->debug(1)->adminBar(0)
 
 # Sidebars
 ->addSidebars(array(
-	'Footer Panels',
+	//
 ))
 
 // -----------------------------------------------

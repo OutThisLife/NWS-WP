@@ -48,14 +48,12 @@ class BackEnd extends BaseTheme {
 	 * getChildren
 	 */
 	public static function getChildren() {
-		$children = wp_list_pages(array(
+		return wp_list_pages(array(
 			'title_li' => null,
 			'child_of' => self::getRootParent(),
 			'depth' => 1,
 			'echo' => false
 		));
-
-		return !empty($children) ? $children : false;
 	}
 
 	/**
@@ -69,6 +67,27 @@ class BackEnd extends BaseTheme {
 		);
 
 		wp_nav_menu(array_merge($settings, $defaults));
+	}
+
+	/**
+	 * getOption
+	 */
+	public static function getOption($option) {
+		return do_shortcode(self::$options[$option]);
+	}
+
+	/**
+	 * getPostType
+	 */
+	public static function getPostType($type, $settings = array()) {
+		$default = array(
+			'post_type' => $type,
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC',
+		);
+
+		return new WP_Query(array_merge($default, $settings));
 	}
 
 	/**
@@ -92,26 +111,5 @@ class BackEnd extends BaseTheme {
 	 */
 	public static function getRootTitle() {
 		return get_the_title(self::getRootParent());
-	}
-
-	/**
-	 * getOption
-	 */
-	public static function getOption($option) {
-		return do_shortcode(self::$options[$option]);
-	}
-
-	/**
-	 * getPostType
-	 */
-	public static function getPostType($type, $settings = array()) {
-		$default = array(
-			'post_type' => $type,
-			'posts_per_page' => -1,
-			'orderby' => 'menu_order',
-			'order' => 'ASC',
-		);
-
-		return new WP_Query(array_merge($default, $settings));
 	}
 }
