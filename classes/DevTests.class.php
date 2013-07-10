@@ -45,4 +45,11 @@ class DevTests {
 	public static function isDevice() {
 		return self::isMobile() || self::isTablet();
 	}
+
+	/**
+	 * Check if the request is pjax
+	 */
+	public static function isAjax() {
+		return $_SERVER['HTTP_X_PJAX'] === 'true';
+	}
 }

@@ -12,12 +12,7 @@
 	<meta name="copyright" content="Copyright <?php echo date('Y'); bloginfo('name') ?>. All Rights Reserved.">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
 
-	<title>
-	<?php
-		wp_title('|', true, 'right');
-		bloginfo('name');
-	?>
-	</title>
+	<?php FrontEnd::getTitle() ?>
 
 	<link rel="profile" href="//gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />

@@ -84,7 +84,14 @@ class FrontEnd extends BaseTheme {
 <script src="//use.typekit.net/{$id}.js"></script>
 <script>try{Typekit.load();}catch(e){}</script>
 S;
-	} 
+	}
+
+	/**
+	 * getTitle
+	 */
+	public static function getTitle() {
+		echo '<title>', wp_title('|', true, 'right'), bloginfo('name'), '</title>';
+	}
 
 	/**
 	 * frontUriHash
