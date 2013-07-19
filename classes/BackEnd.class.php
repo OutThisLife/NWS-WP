@@ -48,12 +48,36 @@ class BackEnd extends BaseTheme {
 	 * getChildren
 	 */
 	public static function getChildren() {
-		return wp_list_pages(array(
+		if (
+			is_home()
+			|| is_archive()
+			|| is_singular('post')
+		) return self::getCategories();
+
+		else return wp_list_pages(array(
 			'title_li' => null,
 			'child_of' => self::getRootParent(),
 			'depth' => 1,
-			'echo' => false
+			'echo' => false,
 		));
+	}
+
+	/**
+	 * getCategories
+	 */
+	public static function getCategories() {
+		$categories = null;
+
+		$classes = (is_home() || is_page(BLOG)) ? 'current-cat' : null;
+
+		$categories .= '<li class="'. $classes .'"><a href="'. get_permalink(BLOG) .'">View All</a></li>';
+		$categories .= wp_list_categories(array(
+			'title_li' => null,
+			'depth' => 1,
+			'echo' => false,
+		));
+
+		return $categories;
 	}
 
 	/**

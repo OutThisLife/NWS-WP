@@ -29,8 +29,7 @@ class BaseTheme {
 
 	# Control admin bar
 	public function adminBar($bool = false) {
-		show_admin_bar($bool);
-
+		if (is_admin()) show_admin_bar($bool);
 		return $this;
 	}
 
