@@ -46,7 +46,6 @@ body
  * Header
  */
 #header
-	@extend .wrapper
 	padding: 35px 0 
 
 	// Logo
@@ -66,6 +65,9 @@ body
  * Slideshow
  */
 #slideshow
+	$slideHeight: 300px
+
+	height: $slideHeight
 	@include userSelect(none)
 	-webkit-backface-visibility: hidden
 
@@ -73,7 +75,7 @@ body
 		z-index: 0
 		@include cover
 		@include opacity(0)
-		@include clearfix
+		height: $slideHeight
 		@include transition(opacity 2s ease)
 
 		&.active
@@ -149,13 +151,13 @@ body
 		max-width: 100%
 		height: auto
 		
-		&.alignleft
-			float: left
-			margin: 0 15px 5px 0
+	.alignleft
+		float: left
+		margin: 0 15px 5px 0
 
-		&.alignright
-			float: right
-			margin: 0 0 5px 15px
+	.alignright
+		float: right
+		margin: 0 0 5px 15px
 
 	// Gform
 	.gform_wrapper

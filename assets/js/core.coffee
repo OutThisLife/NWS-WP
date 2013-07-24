@@ -33,6 +33,19 @@ jQuery ($) ->
 		winObj.bind 'orientationchange', -> cb()
 
 	###
+		Section jumping via window.app
+	###
+	window.App.goTo = (el) ->
+		el = $(el)
+
+		o = $header.outerHeight()
+		o = 0 if isMobile
+
+		$body.stop(1, 1).animate
+			scrollTop: el.offset().top - o
+		, 800, easingType
+
+	###
 		Homepage Slideshow
 	###
 	if ($slideshow = $('#slideshow')).length is 1
@@ -41,7 +54,7 @@ jQuery ($) ->
 				@$slideshow = $slideshow
 				@$slides = @$slideshow.find('.slide')
 
-				@max = @$slides.length - 1
+				@max = @$slides.length
 				@current = 0
 
 			# Automates our slideshow
@@ -57,8 +70,7 @@ jQuery ($) ->
 			# Quickly takes us to a slide
 			goToSlide: (i) ->
 				@clear() if @interval?
-				i = 0 if i > @max
-				i = @max if i < 0
+				i = i % @max
 
 				@$slides.removeClass('active')
 				@$slides.eq(i).addClass('active')
@@ -77,7 +89,7 @@ jQuery ($) ->
 			# Build and bind the pager systems
 			buildPager: ->
 				@$nav = $('#slidePager')
-				@$nav.append('<a href="javascript:;" />') for i in [0..@max]
+				@$nav.append('<a href="javascript:;" />') for i in [0..@max-1]
 				@$navA = @$nav.find('a')
 
 				@$navA.on 'click tap', (e) => @goToSlide $(e.target).index()
