@@ -136,4 +136,23 @@ class BackEnd extends BaseTheme {
 	public static function getRootTitle() {
 		return get_the_title(self::getRootParent());
 	}
+
+	/**
+	 * getPageDepth
+	 */
+	public static function getPageDepth() {
+		global $wp_query;
+
+		$depth = 0;
+		$obj = $wp_query->get_queried_object();
+		$pID = $obj->post_parent;
+
+		while ($pID > 0):
+			$page = get_page($pID);
+			$pID = $page->post_parent;
+			$depth++;
+		endwhile;
+
+		return $depth;
+	}
 }
