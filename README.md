@@ -1,4 +1,4 @@
 NWS-WP
 ======
 
-OOP project to make theme creationg very fast.
+OOP project to make theme creation very fast.
