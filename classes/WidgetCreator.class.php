@@ -1,11 +1,8 @@
 <?php
 /**
- * Plugin Name: Easy Widgets
- * Description: Easily allows you to create dynamic WordPress Widgets
- * Version: 1.1.1
- * Author: Talasan Nicholson
- * Author URI: http://www.nicholsonws.com/
- * Plugin URI: http://wordpress.org/extend/plugins/easy-widgets/
+ * replaceMe
+ *
+ * Widget Creator
  */
 
 // -----------------------------------------------
