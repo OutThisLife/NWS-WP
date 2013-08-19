@@ -32,6 +32,17 @@ jQuery ($) ->
 		winObj.resize -> cb()
 		winObj.bind 'orientationchange', -> cb()
 
+	# Transition event names
+	_transitonEndNames = {
+		WebkitTransition: 'webkitTransitionEnd'
+		MozTransition: 'transitionend'
+		OTransition: 'oTransitionEnd'
+		msTransition: 'MSTransitionEnd'
+		transition: 'transitionend'
+	}
+
+	_transitionEnd = _transitonEndNames[Modernizr.prefixed('transition')]
+
 	###
 		Section jumping via window.app
 	###
@@ -44,6 +55,21 @@ jQuery ($) ->
 		$body.stop(1, 1).animate
 			scrollTop: el.offset().top - o
 		, 800, easingType
+
+	###
+		Get an elements propertie
+	###
+	getItemProp = (el) ->
+		scrollT = winObj.scrollTop()
+		scrollL = winObj.scrollLeft()
+		o = el.offset()
+
+		return {
+			left: o.left - scrollL
+			top: o.top - scrollT
+			width: el.outerWidth()
+			height: el.outerHeight()
+		}
 
 	###
 		Homepage Slideshow

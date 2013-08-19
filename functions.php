@@ -77,6 +77,25 @@ $tmpl->debug(1)->adminBar(0)
 	},
 )))
 
+# Widgets
+->addWidgets(array(
+	# Just a test box
+	array(
+		'id' => 'testbox',
+		'title' => 'testbox',
+		'desc' => 'Keep a secret!',
+		'fields' => array(
+			array(
+				'name' => 'title',
+				'id' => 'title',
+				'type' => 'text',
+			),
+		),
+
+		'output' => '<article class="widget testbox"><?=$title?></article>',
+	),
+))
+
 // -----------------------------------------------
 
 # Render the theme.

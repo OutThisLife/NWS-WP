@@ -42,6 +42,14 @@ class BackEnd extends BaseTheme {
 			add_image_size($key, $value[0], $value[1], $value[2]);
 	}
 
+	/*
+	 * Adds a widget
+	 */
+	protected function _widget(array $args) {
+		$WC = new WidgetCreator($args);
+		eval($WC->render());
+	}
+
 	// -----------------------------------------------
 
 	/**
