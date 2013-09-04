@@ -17,7 +17,7 @@
 	<link rel="profile" href="//gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
 	<link rel="image_src" href="<?=assetDir?>/images/logo.png" />
-	<link rel="shortcut icon" href="<?=assetDir?>/images/favicon.jpg" />
+	<link rel="shortcut icon" href="/favicon.ico" />
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
