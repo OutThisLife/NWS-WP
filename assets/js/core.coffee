@@ -41,6 +41,17 @@ jQuery ($) ->
 
 	_transitionEnd = _transitonEndNames[Modernizr.prefixed('transition')]
 
+	# Animation event names
+	_animationEndNames = {
+		WebkitAnimation: 'webkitAnimationEnd'
+		MozAnimation: 'animationend'
+		OAnimation: 'oAnimationEnd'
+		msAnimation: 'MSAnimationEnd'
+		animation: 'animationend'
+	}
+
+	_animationEnd = _animationEndNames[Modernizr.prefixed('animation')]
+
 	###
 		Section jumping via window.app
 	###
