@@ -20,17 +20,15 @@ jQuery ($) ->
 
 	# Device testing
 	ua = navigator.userAgent
-	isMobile = ua.match(/(Android|iPhone|BlackBerry|Opera Mini)/i)
-	isTablet = ua.match(/(iPad|Kindle)/i)
+	isMobile = ua.match /(Android|iPhone|BlackBerry|Opera Mini)/i
+	isTablet = ua.match /(iPad|Kindle)/i
 
 	# Get the 'proper' window height
 	winHeight = -> window.innerHeight || winObj.height()
 	winWidth = -> window.innerWidth || winObj.width()
 
 	# Smart resize + orientation change wrapper
-	winChange = (cb) ->
-		winObj.resize -> cb()
-		winObj.bind 'orientationchange', -> cb()
+	winChange = (cb) -> winObj.bind 'resize load orientationchange', -> cb()
 
 	# Transition event names
 	_transitonEndNames = {
@@ -70,6 +68,8 @@ jQuery ($) ->
 			width: el.outerWidth()
 			height: el.outerHeight()
 		}
+
+	### ----------------------------------------------- ###
 
 	###
 		Homepage Slideshow

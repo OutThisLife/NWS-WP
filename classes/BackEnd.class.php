@@ -56,12 +56,18 @@ class BackEnd extends BaseTheme {
 	 * getChildren
 	 */
 	public static function getChildren() {
+		# WooCommerce
+		if (is_woocommerce()) return self::getTerms('product_cat');
+		
+		# Blog
 		if (
 			is_home()
 			|| is_archive()
 			|| is_singular('post')
+			|| is_search()
 		) return self::getCategories();
 
+		# General pages
 		else return wp_list_pages(array(
 			'title_li' => null,
 			'child_of' => self::getRootParent(),
@@ -84,6 +90,35 @@ class BackEnd extends BaseTheme {
 			'depth' => 1,
 			'echo' => false,
 		));
+
+		return $categories;
+	}
+
+	/**
+	 * getTerms
+	 */
+	public static function getTerms($tax) {
+		$categories = null;
+
+		$curTerm = is_tax() ? get_queried_object()->term_id : 0;
+		$parent = is_tax() ? get_queried_object()->parent : 0;
+
+		$terms = get_terms($tax, array(
+			'parent' => $parent,
+			'hide_empty' => false,
+		));
+
+		foreach ($terms AS &$t):
+			$class = $curTerm === $t->term_id ? 'current-cat' : '';
+
+			$categories .= '
+			<li class="'. $class .'">
+				<a href="'. get_term_link($t) .'">'
+					. $t->name .
+				'</a>
+			</li>
+			';
+		endforeach;
 
 		return $categories;
 	}
