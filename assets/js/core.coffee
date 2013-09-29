@@ -27,7 +27,8 @@ jQuery ($) ->
 	winHeight = -> window.innerHeight || winObj.height()
 	winWidth = -> window.innerWidth || winObj.width()
 
-	# Smart resize + orientation change wrapper
+	# Smart resize + orientation change wrapper]
+	winChanges = []
 	winChange = (cb) -> winObj.bind 'resize load orientationchange', -> cb()
 
 	# Transition event names
@@ -85,52 +86,56 @@ jQuery ($) ->
 	###
 		Homepage Slideshow
 	###
-	if ($slideshow = $('#slideshow')).length is 1
-		class Slideshow
-			constructor: ->
-				@$slideshow = $slideshow
-				@$slides = @$slideshow.find('.slide')
+	class Slideshow
+		constructor: (@$slideshow) ->
+			@$slides = @$slideshow.find '.slide'
 
-				@max = @$slides.length
-				@current = 0
+			@max = @$slides.length
+			@current = 0
 
-			# Automates our slideshow
-			autoplay: ->
-				return if @max is 0
-				@interval = setInterval =>
-					@next()
-				, 6000
-				@
+		# Automates our slideshow
+		autoplay: ->
+			return if @max is 0
+			@interval = setInterval =>
+				@next()
+			, @$slideshow.data().speed
+			@
 
-			clear: -> clearInterval @interval
+		clear: -> clearInterval @interval
 
-			# Quickly takes us to a slide
-			goToSlide: (i) ->
-				@clear() if @interval?
-				i = i % @max
+		# Quickly takes us to a slide
+		goToSlide: (i) ->
+			@clear() if @interval?
+			i = i % @max
 
-				@$slides.removeClass('active')
-				@$slides.eq(i).addClass('active')
+			@$slides.removeClass 'active'
+			@$slides.eq(i).addClass 'active'
 
-				if @$navA?
-					@$navA.removeClass('active')
-					@$navA.eq(i).addClass('active')
+			if @$navA?
+				@$navA.removeClass 'active'
+				@$navA.eq(i).addClass 'active'
 
-				@current = i
-				@autoplay()
-				@
+			@current = i
+			@autoplay()
+			@
 
-			next: -> @goToSlide @current + 1
-			prev: -> @goToSlide @current - 1
+		next: -> @goToSlide @current + 1
+		prev: -> @goToSlide @current - 1
 
-			# Build and bind the pager systems
-			buildPager: ->
-				@$nav = $('#slidePager')
-				@$nav.append('<a href="javascript:;" />') for i in [0..@max-1]
-				@$navA = @$nav.find('a')
+		# Build and bind the pager systems
+		buildPager: ->
+			return unless (@$nav = @$slideshow.find('[data-pager]')).length is 1
+			@$nav.append '<a href="javascript:;" />' for i in [0..@max-1]
 
-				@$navA.on 'click tap', (e) => @goToSlide $(e.target).index()
-				@
+			@$navA = @$nav.find 'a'
+			@$navA.on 'click tap', (e) => @goToSlide $(e.target).index()
+			@
 
-		SS = new Slideshow
-		SS.goToSlide 0
+	$('[data-slideshow]').each -> new Slideshow $(@)
+
+	### ----------------------------------------------- ###
+
+	###
+		Do all winChanges in one go
+	###
+	winChange -> cb() for cb in winChanges

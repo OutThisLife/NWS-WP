@@ -9,7 +9,7 @@
 <head>
 	<meta charset="<?php bloginfo('charset') ?>" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="copyright" content="Copyright <?php echo date('Y'); bloginfo('name') ?>. All Rights Reserved.">
+	<meta name="copyright" content="Copyright <?=date('Y'), ' ', bloginfo('name')?>. All Rights Reserved.">
 	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
 
 	<?php FrontEnd::getTitle() ?>
@@ -32,4 +32,5 @@
 <body <?php body_class() ?>>
 
 <!-- HEADER -->
-<?=Template::get('header')?>
+<header id="header">
+</header>

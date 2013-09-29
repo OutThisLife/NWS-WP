@@ -28,6 +28,12 @@ $default: #222
 // -----------------------------------------------
 
 /**
+ * Site-specific mixins
+ */
+
+// -----------------------------------------------
+
+/**
  * General
  */
 body
@@ -39,6 +45,12 @@ body
 .wrapper
 	@include clearfix
 	@include wrap
+
+// -----------------------------------------------
+
+/**
+ * Global styles
+ */
 
 // -----------------------------------------------
 
@@ -68,7 +80,6 @@ body
 	$slideHeight: 300px
 
 	height: $slideHeight
-	@include userSelect(none)
 	-webkit-backface-visibility: hidden
 
 	#theSlides .slide
@@ -81,8 +92,9 @@ body
 		&.active
 			z-index: 1
 			@include opacity(1)
-
-	#slidePager
+	
+	// Pager icons
+	[data-pager]
 		position: absolute
 		left: 10px
 		bottom: 10px
@@ -108,16 +120,16 @@ body
 // -----------------------------------------------
 
 /**
- * Containers
+ * Footer
  */
-#content
+#footer
 
 // -----------------------------------------------
 
 /**
- * Footer
+ * Containers
  */
-#footer
+#content
 
 // -----------------------------------------------
 

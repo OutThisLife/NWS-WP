@@ -6,11 +6,11 @@
  */
 ?>
 
-<section id="slideshow">
+<section id="slideshow" data-slideshow data-speed="6000">
 	<!-- The slides -->
 	<div id="theSlides">
 	</div>
 
 	<!-- Slide pager -->
-	<nav id="slidePager"></nav>
+	<nav data-pager></nav>
 </section>
