@@ -56,9 +56,6 @@ class BackEnd extends BaseTheme {
 	 * getChildren
 	 */
 	public static function getChildren() {
-		# WooCommerce
-		if (is_woocommerce()) return self::getTerms('product_cat');
-		
 		# Blog
 		if (
 			is_home()

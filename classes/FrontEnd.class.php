@@ -90,7 +90,7 @@ S;
 	 * getTitle
 	 */
 	public static function getTitle() {
-		echo '<title>', wp_title('|', true, 'right'), bloginfo('name'), '</title>';
+		echo '<title>', wp_title('|', true, 'right'), '</title>';
 	}
 
 	/**

@@ -13,11 +13,10 @@ get_header();
 
 <!-- CONTENT -->
 <section id="content">
-	<div class="wrapper">
-		<!-- Front page -->
-		<div id="frontPage">
-		</div>
-	</div>
+
+<div class="wrapper">
+</div>
+
 </section>
 
 <?php get_footer() ?>

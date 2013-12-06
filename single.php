@@ -14,14 +14,16 @@ the_post();
 
 <!-- CONTENT -->
 <section id="content">
-	<div class="wrapper">
-		<!-- Page -->
-		<div id="page">
-		</div>
 
-		<!-- Sidebar -->
-		<?php get_sidebar() ?>
+<div class="wrapper">
+	<!-- Page -->
+	<div id="page" class="small-12 large-8 columns">
 	</div>
+
+	<!-- Sidebar -->
+	<?php get_sidebar() ?>
+</div>
+
 </section>
 
 <?php get_footer() ?>

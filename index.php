@@ -14,9 +14,12 @@ get_header();
 
 <!-- CONTENT -->
 <section id="content">
+
+<div class="wrapper">
 	<!-- Page -->
-	<div id="page">
-	</div>
+	<div id="page"></div>
+</div>
+
 </section>
 
 <?php get_footer() ?>

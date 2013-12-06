@@ -1,141 +1,120 @@
-# Core Coffee
-jQuery ($) ->
-	# Base variables
-	winObj = $(window)
-	docObj = $(document)
-	window.App = {}
+app = angular.module 'app', ['ngSanitize']
 
-	$body = $('body, html')
-	$header = $('#header')
-	$footer = $('#footer')
-	
-	easingType = 'easeInOutExpo'
+# Base variables
+winObj = $(window)
+docObj = $(document)
+window.App = {}
 
-	# Keycodes
-	RIGHT = 39
-	LEFT = 37
-	UP = 38
-	DOWN = 40
-	EXIT = 27
+$body = $('body, html')
+$header = $('#header')
+$footer = $('#footer')
 
-	# Device testing
-	ua = navigator.userAgent
-	isMobile = ua.match /(Android|iPhone|BlackBerry|Opera Mini)/i
-	isTablet = ua.match /(iPad|Kindle)/i
+# Helpful keycodes
+RIGHT = 39
+LEFT = 37
+UP = 38
+DOWN = 40
+EXIT = 27
 
-	# Get the 'proper' window height
-	winHeight = -> window.innerHeight || winObj.height()
-	winWidth = -> window.innerWidth || winObj.width()
+# Device testing
+ua = navigator.userAgent
+isMobile = ua.match /(Android|iPhone|BlackBerry|Opera Mini)/i
+isTablet = ua.match /(iPad|Kindle)/i
 
-	# Smart resize + orientation change wrapper]
-	winChanges = []
-	winChange = (cb) -> winObj.bind 'resize load orientationchange', -> cb()
+# Get the 'proper' window height/width
+winHeight = -> window.innerHeight || winObj.height()
+winWidth = -> window.innerWidth || winObj.width()
 
-	# Transition event names
-	_transitonEndNames = {
-		WebkitTransition: 'webkitTransitionEnd'
-		MozTransition: 'transitionend'
-		OTransition: 'oTransitionEnd'
-		msTransition: 'MSTransitionEnd'
-		transition: 'transitionend'
-	}
+# Resize + orientation change wrapper
+winChange = (cb) -> winObj.bind 'resize load orientationchange', -> cb()
 
-	_transitionEnd = _transitonEndNames[Modernizr.prefixed('transition')]
+# Transition event names
+_transitonEndNames = {
+	WebkitTransition: 'webkitTransitionEnd'
+	MozTransition: 'transitionend'
+	OTransition: 'oTransitionEnd'
+	msTransition: 'MSTransitionEnd'
+	transition: 'transitionend'
+}
 
-	# Animation event names
-	_animationEndNames = {
-		WebkitAnimation: 'webkitAnimationEnd'
-		MozAnimation: 'animationend'
-		OAnimation: 'oAnimationEnd'
-		msAnimation: 'MSAnimationEnd'
-		animation: 'animationend'
-	}
+_transitionEnd = _transitonEndNames[Modernizr.prefixed('transition')]
 
-	_animationEnd = _animationEndNames[Modernizr.prefixed('animation')]
+# Animation event names
+_animationEndNames = {
+	WebkitAnimation: 'webkitAnimationEnd'
+	MozAnimation: 'animationend'
+	OAnimation: 'oAnimationEnd'
+	msAnimation: 'MSAnimationEnd'
+	animation: 'animationend'
+}
 
-	###
-		Section jumping via window.app
-	###
-	window.App.goTo = (el) ->
-		el = $(el)
+_animationEnd = _animationEndNames[Modernizr.prefixed('animation')]
 
-		o = $header.outerHeight()
-		o = 0 if isMobile
+### ----------------------------------------------- ###
+# Controllers
 
-		$body.stop(1, 1).animate
-			scrollTop: el.offset().top - o
-		, 800, easingType
+# Main site controller
+app.controller 'MainCtrl', ['$scope', ($scope) ->
+	#
+]
 
-	###
-		Get an elements propertie
-	###
-	getItemProp = (el) ->
-		scrollT = winObj.scrollTop()
-		scrollL = winObj.scrollLeft()
-		o = el.offset()
+### ----------------------------------------------- ###
+# Services/factories
 
-		return {
-			left: o.left - scrollL
-			top: o.top - scrollT
-			width: el.outerWidth()
-			height: el.outerHeight()
-		}
+### ----------------------------------------------- ###
+# Directives
 
-	### ----------------------------------------------- ###
+# Reusable slideshow
+app.directive 'ngSlideshow', ->
+	restrict: 'EA'
+	scope: true
+	controller: ['$scope', ($scope) ->
+		# Go to a specific slide
+		$scope.goToSlide = (i) ->
+			i = i % $scope.max
+			return if i is $scope.current
 
-	###
-		Homepage Slideshow
-	###
-	class Slideshow
-		constructor: (@$slideshow) ->
-			@$slides = @$slideshow.find '.slide'
+			$slide = $scope.$slides.eq i
+			$curSlide = $scope.$slides.eq $scope.current
 
-			@max = @$slides.length
-			@current = 0
+			# Make previous slides accessible
+			if i < $scope.current and $scope.current isnt $scope.max - 1 or $scope.current < i and i is 0
+				$curSlide.attr 'class', 'slide active next'
+				$slide.attr 'class', 'noanim slide previous'
 
-		# Automates our slideshow
-		autoplay: ->
-			return if @max is 0
-			@interval = setInterval =>
-				@next()
-			, @$slideshow.data().speed
-			@
+			# Make the next slide accessible.
+			else
+				$curSlide.attr 'class', 'slide active previous'
+				$slide.attr 'class', 'noanim slide next'
 
-		clear: -> clearInterval @interval
+			clearTimeout $scope.intWait
+			$scope.intWait = setTimeout =>
+				$slide.removeClass 'noanim'
 
-		# Quickly takes us to a slide
-		goToSlide: (i) ->
-			@clear() if @interval?
-			i = i % @max
+				$curSlide.removeClass 'active'
+				$slide.addClass 'active'
+			, 100
 
-			@$slides.removeClass 'active'
-			@$slides.eq(i).addClass 'active'
+			$scope.current = i
 
-			if @$navA?
-				@$navA.removeClass 'active'
-				@$navA.eq(i).addClass 'active'
+		$scope.next = -> $scope.goToSlide $scope.current + 1
+		$scope.prev = -> $scope.goToSlide $scope.current - 1
 
-			@current = i
-			@autoplay()
-			@
+	]
 
-		next: -> @goToSlide @current + 1
-		prev: -> @goToSlide @current - 1
+	# Set up the data for the controller to utilize.
+	link: (scope, el, attr) ->
+		scope.el = el
+		scope.$slides = el.find '.slide'
 
-		# Build and bind the pager systems
-		buildPager: ->
-			return unless (@$nav = @$slideshow.find('[data-pager]')).length is 1
-			@$nav.append '<a href="javascript:;" />' for i in [0..@max-1]
+		scope.max = scope.$slides.length
+		scope.current = -1
 
-			@$navA = @$nav.find 'a'
-			@$navA.on 'click tap', (e) => @goToSlide $(e.target).index()
-			@
+		hammer = scope.el.hammer()
+		hammer.on 'swipeleft', -> scope.next()
+		hammer.on 'swiperight', -> scope.prev()
 
-	$('[data-slideshow]').each -> new Slideshow $(@)
+		scope.goToSlide 0
 
-	### ----------------------------------------------- ###
-
-	###
-		Do all winChanges in one go
-	###
-	winChange -> cb() for cb in winChanges
+### ----------------------------------------------- ###
+# Filters

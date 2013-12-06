@@ -9,9 +9,8 @@
 /**
  * Variables
  */
-$maxWidth: 960px
-$pageWidth: 600px
-$sidebarWidth: 200px
+$pad: 50px
+$maxWidth: 960px + ($pad * 2)
 
 // Fonts
 $font: Arial, sans-serif
@@ -38,13 +37,18 @@ $default: #222
  */
 body
 	color: $default
-	font: 13px/24px $font
+	font: rem(13)/rem(24) $font
 	margin: 0
 	padding: 0
 
+	p, ul, ol, dl
+		font: rem(13)/rem(24) $font
+
 .wrapper
 	@include clearfix
-	@include wrap
+	max-width: $maxWidth
+	margin: 0 auto
+	padding: 0 $pad
 
 // -----------------------------------------------
 
@@ -58,35 +62,27 @@ body
  * Header
  */
 #header
-	padding: 35px 0 
+	// Main nav styles
+	@include wpMenu
+		//
 
-	// Logo
-	#logo
-
-	// Main nav
-	#nav
-		@include wpMenu
+		@include wpActives
 			//
-
-			@include wpActives
-				//
 
 // -----------------------------------------------
 
 /**
  * Slideshow
  */
-#slideshow
+[ng-slideshow]
 	$slideHeight: 300px
-
 	height: $slideHeight
 	-webkit-backface-visibility: hidden
 
-	#theSlides .slide
+	.slide
 		z-index: 0
 		@include cover
 		@include opacity(0)
-		height: $slideHeight
 		@include transition(opacity 2s ease)
 
 		&.active
@@ -94,7 +90,7 @@ body
 			@include opacity(1)
 	
 	// Pager icons
-	[data-pager]
+	nav
 		position: absolute
 		left: 10px
 		bottom: 10px
@@ -103,7 +99,7 @@ body
 			display: inline-block
 			@include sq(5px)
 			@include borderRadius(99em)
-			margin-right: 3px
+			margin: 0 3px 0 0
 			background: rgba(#FFF, .3)
 
 			&:hover,
@@ -130,38 +126,10 @@ body
  * Containers
  */
 #content
-
-// -----------------------------------------------
-
-/**
- * Sidebar
- */
-#sidebar
-	float: right
-	width: $sidebarWidth
-
-// -----------------------------------------------
-
-/**
- * General page styles
- */
-#page
-	float: left
-	width: $pageWidth
-
-	&.full
-		float: none
-		width: auto
-
 	// Headers
 	h1,h2,h3,h4,h5,h6
 		margin: 0 0 10px
 		padding: 0
-
-	// Images
-	img
-		max-width: 100%
-		height: auto
 		
 	.alignleft
 		float: left
@@ -171,17 +139,4 @@ body
 		float: right
 		margin: 0 0 5px 15px
 
-	// Gform
-	.gform_wrapper
-		*
-			clear: none
-			float: none
-			display: inline
-			margin: 0
-			padding: 0
-
-		input[type=text],
-		select,
-		textarea
-			display: inline-block
-			padding: 3px
+// -----------------------------------------------

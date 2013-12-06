@@ -8,7 +8,7 @@
 require_once 'classes/sys/autoloader.php';
 
 $tmpl = new BaseTheme();
-$tmpl->debug(1)->adminBar(0)
+$tmpl->debug(0)
 
 // -----------------------------------------------
 
@@ -18,14 +18,16 @@ $tmpl->debug(1)->adminBar(0)
 
 # Stylesheets
 ->addStyles(array(
-	get_bloginfo('stylesheet_url'),
+	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/css/normalize.min.css',
+	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/css/foundation.min.css',
 	assetDir . '/css/core.css',
 ))
 
 # Scripts
 ->addScripts(array(
+	'//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js',
+	'//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min.js',
 	assetDir . '/js/core.js',
-	'http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js',
 ))
 
 # Image sizes
@@ -92,7 +94,7 @@ $tmpl->debug(1)->adminBar(0)
 			),
 		),
 
-		'output' => '<article class="widget testbox"><?=$title?></article>',
+		'output' => '',
 	),
 ))
 
