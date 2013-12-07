@@ -33,6 +33,47 @@
 </head>
 <body <?php body_class() ?>>
 
+<!-- MOBILE DROPDOWN -->
+<nav id="mobile-dd" ng-init="mobile.status = 'closed'" class="{{ mobile.status }}" style="
+{{ modernizr.transform }}: translate(0, {{ mobile.status == 'open' ? 0 : -mobile.y }}px);
+">
+	<ul>
+		<li><a href="#">Menu Item</a></li>
+		<li><a href="#">Menu Item</a></li>
+		<li><a href="#">Menu Item</a></li>
+		<li><a href="#">Menu Item</a></li>
+	</ul>
+</nav>
+
+<div id="container" class="{{ mobile.status }}" style="
+{{ modernizr.transform }}: translate(0, {{ mobile.status == 'open' ? mobile.y : 0 }}px);
+">
+
 <!-- HEADER -->
 <header id="header">
+<div class="wrapper">
+	<div class="large-7 medium-5 small-6 columns">
+		<!-- Logo -->
+		<a href="<?=home_url()?>" title="<?php bloginfo('name') ?>" id="logo">
+			<img src="<?=assetDir?>/images/logo.png" alt="<?php bloginfo('name') ?>" />
+		</a>
+
+		<!-- Main menu -->
+		<nav id="nav" class="show-for-large-up" ng-hoverintent timeout="200">
+			<ul>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<!-- Mobile menu link -->
+	<div class="right large-5 medium-6 small-6 columns show-for-medium-down">
+		<a href="javascript:;" id="mobile-dd-link" class="{{ mobile.status }}" ng-click="mobile.toggle()">
+			Menu <span></span>
+		</a>
+	</div>
+</div>
 </header>

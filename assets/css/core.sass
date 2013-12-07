@@ -12,6 +12,9 @@
 $pad: 50px
 $maxWidth: 960px + ($pad * 2)
 
+$medium: 64em
+$small: 40.063em
+
 // Fonts
 $font: Arial, sans-serif
 
@@ -68,6 +71,82 @@ body
 
 		@include wpActives
 			//
+	
+	// Mobile dropdown link
+	#mobile-dd-link
+		top: 1px
+		color: #FFF
+		font: 700 rem(13) $font
+		letter-spacing: -0.025em
+		background: $default
+
+		span
+			display: inline-block
+			position: relative
+			top: -4px
+			width: 20px
+			height: 1px
+			overflow: visible
+			margin: 0 0 0 10px
+			@include transform(all .4s ease)
+			background: #FFF
+
+			&:before, &:after
+				content: ''
+				display: block
+				position: absolute
+				left: 0
+				right: 0
+				height: 1px
+				@include transform(all .4s ease)
+				background: #FFF
+
+			&:before
+				top: -6px
+
+			&:after
+				bottom: -6px
+
+// Mobile dropdown itself
+#mobile-dd
+	display: block
+	z-index: 501
+	@include cover(fixed)
+	bottom: auto
+	padding: 10px
+	text-align: center
+	@include transform(translate(0, -100%))
+	background: $default
+
+	&.open
+		@include boxShadow(0 12px 50px -30px #000)
+
+	@include wpMenu
+		a
+			display: block
+			color: #FFF
+			color: rgba(#FFF, .85)
+			font: rem(15)/rem(21) $font
+			@include textShadow(0 1px rgba(#000, .2))
+			padding: 7px 50px
+
+#mobile-dd, 
+#container
+	@include transition(all .5s $easeOutSine)
+
+.csstransitions #container
+	&:after
+		@include opacity(0)
+		pointer-events: none
+		z-index: 501
+		content: ''
+		display: block
+		@include cover
+		@include transition(opacity .7s ease)
+		background: rgba(#FFF, .8)
+
+	&.open:after
+		@include opacity(1)
 
 // -----------------------------------------------
 

@@ -27,6 +27,7 @@ $tmpl->debug(0)
 ->addScripts(array(
 	'//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js',
 	'//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min.js',
+	assetDir . '/js/library/hoverintent.js',
 	assetDir . '/js/core.js',
 ))
 
