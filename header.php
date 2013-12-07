@@ -19,9 +19,6 @@
 	<link rel="image_src" href="<?=assetDir?>/images/logo.png" />
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
-	<script src="//code.angularjs.org/1.2.2/angular-sanitize.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
 
@@ -31,7 +28,7 @@
 
 	<?php wp_head() ?>
 </head>
-<body <?php body_class() ?>>
+<body <?php body_class() ?> ng-app="app" ng-controller="MainCtrl">
 
 <!-- MOBILE DROPDOWN -->
 <nav id="mobile-dd" ng-init="mobile.status = 'closed'" class="{{ mobile.status }}" style="
@@ -52,25 +49,23 @@
 <!-- HEADER -->
 <header id="header">
 <div class="wrapper">
-	<div class="large-7 medium-5 small-6 columns">
-		<!-- Logo -->
-		<a href="<?=home_url()?>" title="<?php bloginfo('name') ?>" id="logo">
-			<img src="<?=assetDir?>/images/logo.png" alt="<?php bloginfo('name') ?>" />
-		</a>
+	<!-- Logo -->
+	<a href="<?=home_url()?>" title="<?php bloginfo('name') ?>" id="logo" class="small-6 medium-4 columns">
+		<img src="<?=assetDir?>/images/logo.png" alt="<?php bloginfo('name') ?>" />
+	</a>
 
-		<!-- Main menu -->
-		<nav id="nav" class="show-for-large-up" ng-hoverintent timeout="200">
-			<ul>
-				<li><a href="#">Menu Item</a></li>
-				<li><a href="#">Menu Item</a></li>
-				<li><a href="#">Menu Item</a></li>
-				<li><a href="#">Menu Item</a></li>
-			</ul>
-		</nav>
-	</div>
+	<!-- Main menu -->
+	<nav id="nav" class="right medium-8 columns hide-for-small" ng-hoverintent timeout="200">
+		<ul>
+			<li><a href="#">Menu Item</a></li>
+			<li><a href="#">Menu Item</a></li>
+			<li><a href="#">Menu Item</a></li>
+			<li><a href="#">Menu Item</a></li>
+		</ul>
+	</nav>
 
 	<!-- Mobile menu link -->
-	<div class="right large-5 medium-6 small-6 columns show-for-medium-down">
+	<div class="right small-6 medium-6 large-8 columns show-for-small">
 		<a href="javascript:;" id="mobile-dd-link" class="{{ mobile.status }}" ng-click="mobile.toggle()">
 			Menu <span></span>
 		</a>

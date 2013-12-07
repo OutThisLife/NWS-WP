@@ -65,6 +65,9 @@ body
  * Header
  */
 #header
+	.right
+		text-align: right
+
 	// Main nav styles
 	@include wpMenu
 		//
@@ -162,7 +165,7 @@ body
 		z-index: 0
 		@include cover
 		@include opacity(0)
-		@include transition(opacity 2s ease)
+		@include transition(opacity .75s ease)
 
 		&.active
 			z-index: 1
