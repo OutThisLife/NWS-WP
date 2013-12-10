@@ -51,6 +51,14 @@ _animationEndNames = {
 _animationEnd = _animationEndNames[Modernizr.prefixed('animation')]
 
 ### ----------------------------------------------- ###
+# Require JS config.
+requirejs.config
+	appDir: '.'
+	baseUrl: '//wp-content/themes/replaceMe/assets/js/library'
+	paths:
+		hammer: ['//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min']
+
+### ----------------------------------------------- ###
 # Controllers
 
 # Main site controller
@@ -146,9 +154,10 @@ app.directive 'ngSlideshow', ->
 		scope.max = scope.$slides.length
 		scope.current = -1
 
-		hammer = scope.el.hammer()
-		hammer.on 'swipeleft', -> scope.next()
-		hammer.on 'swiperight', -> scope.prev()
+		require ['hammer'], ->
+			hammer = scope.el.hammer()
+			hammer.on 'swipeleft', -> scope.next()
+			hammer.on 'swiperight', -> scope.prev()
 
 		scope.goToSlide 0
 

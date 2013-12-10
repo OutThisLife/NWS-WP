@@ -25,10 +25,9 @@ $tmpl->debug(0)
 
 # Scripts
 ->addScripts(array(
-	'//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',
+	'//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.9/require.min.js',
 	'//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js',
 	'//code.angularjs.org/1.2.2/angular-sanitize.min.js',
-	'//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min.js',
 	assetDir . '/js/library/hoverintent.js',
 	assetDir . '/js/core.js',
 ))
