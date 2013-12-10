@@ -23,15 +23,6 @@ $tmpl->debug(0)
 	assetDir . '/css/core.css',
 ))
 
-# Scripts
-->addScripts(array(
-	'//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.9/require.min.js',
-	'//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js',
-	'//code.angularjs.org/1.2.2/angular-sanitize.min.js',
-	assetDir . '/js/library/hoverintent.js',
-	assetDir . '/js/core.js',
-))
-
 # Image sizes
 ->addImageSizes(array(array(
 	//

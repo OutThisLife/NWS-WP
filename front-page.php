@@ -9,7 +9,7 @@ get_header();
 ?>
 
 <!-- SLIDESHOW -->
-<?php get_template_part('slideshow', 'main') ?>
+<?php get_template_part('slideshow') ?>
 
 <!-- CONTENT -->
 <section id="content">
