@@ -8,7 +8,7 @@
 require_once 'classes/sys/autoloader.php';
 
 $tmpl = new BaseTheme();
-$tmpl->debug(0)
+$tmpl->debug(0)->adminBar(0)
 
 // -----------------------------------------------
 
