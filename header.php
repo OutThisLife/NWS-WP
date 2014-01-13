@@ -28,7 +28,7 @@
 
 	<?php wp_head() ?>
 </head>
-<body <?php body_class() ?> ng-app="app" ng-controller="MainCtrl">
+<body <?php body_class() ?> ng-controller="MainCtrl">
 
 <!-- MOBILE DROPDOWN -->
 <nav id="mobile-dd" ng-init="mobile.status = 'closed'" class="{{ mobile.status }}">
@@ -55,7 +55,15 @@
 		<ul>
 			<li><a href="#">Menu Item</a></li>
 			<li><a href="#">Menu Item</a></li>
-			<li><a href="#">Menu Item</a></li>
+			<li>
+				<a href="#">Menu Item</a>
+
+				<ul>
+					<li><a href="#">Menu 1</a></li>
+					<li><a href="#">Menu 2</a></li>
+					<li><a href="#">Menu 3</a></li>
+				</ul>
+			</li>
 			<li><a href="#">Menu Item</a></li>
 		</ul>
 	</nav>

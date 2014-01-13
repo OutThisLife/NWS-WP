@@ -110,46 +110,52 @@ body
 			&:after
 				bottom: -6px
 
-// Mobile dropdown itself
-#mobile-dd
-	display: block
-	z-index: 501
-	@include cover(fixed)
-	bottom: auto
-	padding: 10px
-	text-align: center
-	@include transform(translate(0, -100%))
-	background: $default
-
-	&.open
-		@include boxShadow(0 12px 50px -30px #000)
-
-	@include wpMenu
-		a
-			display: block
-			color: #FFF
-			color: rgba(#FFF, .85)
-			font: rem(15)/rem(21) $font
-			@include textShadow(0 1px rgba(#000, .2))
-			padding: 7px 50px
-
-#mobile-dd, 
-#container
-	@include transition(all .5s $easeOutSine)
-
-.csstransitions #container
-	&:after
-		@include opacity(0)
-		pointer-events: none
-		z-index: 501
-		content: ''
+.csstransitions 
+	// Mobile dropdown itself
+	#mobile-dd
 		display: block
-		@include cover
-		@include transition(opacity .7s ease)
-		background: rgba(#FFF, .8)
+		z-index: 501
+		@include cover(fixed)
+		left: auto
+		width: 200px
+		padding: 10px
+		text-align: center
+		@include transform(translateX(200px))
+		background: $default
 
-	&.open:after
-		@include opacity(1)
+		&.open
+			@include boxShadow(0 12px 50px -30px #000)
+			@include transform(translateX(0))
+
+		@include wpMenu
+			a
+				display: block
+				color: #FFF
+				color: rgba(#FFF, .85)
+				font: rem(15)/rem(21) $font
+				@include textShadow(0 1px rgba(#000, .2))
+				padding: 7px 50px
+
+	#mobile-dd, #container
+		@include transition(all .5s $easeOutSine)
+
+	// Site container
+	#container
+		&:after
+			@include opacity(0)
+			pointer-events: none
+			z-index: 501
+			content: ''
+			display: block
+			@include cover
+			@include transition(opacity .7s ease)
+			background: rgba(#FFF, .8)
+
+		&.open
+			@include transform(translateX(-200px))
+
+			&:after
+				@include opacity(1)
 
 // -----------------------------------------------
 
