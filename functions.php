@@ -18,8 +18,8 @@ $tmpl->debug(0)->adminBar(0)
 
 # Stylesheets
 ->addStyles(array(
-	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/css/normalize.min.css',
-	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.2/css/foundation.min.css',
+	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.3/css/normalize.min.css',
+	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.3/css/foundation.min.css',
 	assetDir . '/css/core.css',
 ))
 

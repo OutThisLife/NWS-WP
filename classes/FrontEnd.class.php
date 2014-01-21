@@ -120,6 +120,13 @@ S;
 	}
 
 	/**
+	 * getSrc
+	 */
+	public static function getSrc($id, $size) {
+		return wp_get_attachment_image_src($id, $size);
+	}
+
+	/**
 	 * formatPhone
 	 */
 	public static function formatPhone($phone) {

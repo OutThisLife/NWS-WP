@@ -19,7 +19,7 @@
 	<link rel="image_src" href="<?=assetDir?>/images/logo.png" />
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
+	<script src="<?=assetDir?>/js/library/modernizr.js"></script>
 
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>

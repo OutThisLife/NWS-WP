@@ -2,7 +2,7 @@
  * Core SASS
  */
 
-@import classes.sass
+@import C:/WWW/Abases/classes.sass
 
 // -----------------------------------------------
 
@@ -65,9 +65,6 @@ body
  * Header
  */
 #header
-	.right
-		text-align: right
-
 	// Main nav styles
 	@include wpMenu
 		//
@@ -75,42 +72,42 @@ body
 		@include wpActives
 			//
 	
-	// Mobile dropdown link
-	#mobile-dd-link
-		top: 1px
-		color: #FFF
-		font: 700 rem(13) $font
-		letter-spacing: -0.025em
-		background: $default
+// Mobile dropdown link
+#mobile-dd-link
+	top: 1px
+	color: #FFF
+	font: 700 rem(13) $font
+	letter-spacing: -0.025em
+	background: $default
 
-		span
-			display: inline-block
-			position: relative
-			top: -4px
-			width: 20px
+	span
+		display: inline-block
+		position: relative
+		top: -4px
+		width: 20px
+		height: 1px
+		overflow: visible
+		margin: 0 0 0 10px
+		@include transform(all .4s ease)
+		background: #FFF
+
+		&:before, &:after
+			content: ''
+			display: block
+			position: absolute
+			left: 0
+			right: 0
 			height: 1px
-			overflow: visible
-			margin: 0 0 0 10px
 			@include transform(all .4s ease)
 			background: #FFF
 
-			&:before, &:after
-				content: ''
-				display: block
-				position: absolute
-				left: 0
-				right: 0
-				height: 1px
-				@include transform(all .4s ease)
-				background: #FFF
+		&:before
+			top: -6px
 
-			&:before
-				top: -6px
+		&:after
+			bottom: -6px
 
-			&:after
-				bottom: -6px
-
-.csstransitions 
+.pointerevents 
 	// Mobile dropdown itself
 	#mobile-dd
 		display: block
@@ -157,6 +154,24 @@ body
 			&:after
 				@include opacity(1)
 
+.no-pointerevents
+	#mobile-dd
+		display: none !important
+
+// -----------------------------------------------
+
+/**
+ * Masthead
+ */
+#masthead
+
+// -----------------------------------------------
+
+/**
+ * Footer
+ */
+#footer
+
 // -----------------------------------------------
 
 /**
@@ -182,20 +197,6 @@ body
 		position: absolute
 		left: 10px
 		bottom: 10px
-
-// -----------------------------------------------
-
-/**
- * Masthead
- */
-#masthead
-
-// -----------------------------------------------
-
-/**
- * Footer
- */
-#footer
 
 // -----------------------------------------------
 

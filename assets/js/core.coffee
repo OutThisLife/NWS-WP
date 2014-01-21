@@ -4,11 +4,13 @@ requirejs.config
 	baseUrl: '/wp/wp-content/themes/NWS-WP/assets/js/' # Talasan [dev]
 	# baseUrl: '/wp-content/themes/replaceMe/assets/js/' # Production and staging
 	
+	urlArgs: "bust=#{(new Date()).getTime()}"
+	
 	paths:
 		# CDN powered
-		angular: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular']
+		angular: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular']
 		jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min']
-		hammer: ['//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.5/jquery.hammer.min']
+		hammer: ['//cdnjs.cloudflare.com/ajax/libs/hammer.js/1.0.6/jquery.hammer.min']
 		mousewheel: ['//cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.6/jquery.mousewheel.min']
 
 		# Local

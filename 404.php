@@ -16,7 +16,7 @@ get_header();
 
 <div class="wrapper">
 	<!-- Page -->
-	<div id="page">
+	<div id="page" class="small-12 columns">
 		<h2>Sorry, that page could not be found.</h2>
 		<p>
 			The page you were looking for couldn't be found. Please try again by using the navigation above.
