@@ -24,7 +24,7 @@ class FrontEnd extends BaseTheme {
 	 * Adds a script
 	 */
 	protected function _script($src) {
-		if (is_admin()) return;
+		if (DevTests::isAdmin()) return;
 
 		wp_enqueue_script(
 			sanitize_key($src),
@@ -39,7 +39,7 @@ class FrontEnd extends BaseTheme {
 	 * Adds a style
 	 */
 	protected function _style($src) {
-		if (is_admin()) return;
+		if (DevTests::isAdmin()) return;
 		
 		wp_enqueue_style(
 			sanitize_key($src),

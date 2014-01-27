@@ -52,4 +52,19 @@ class DevTests {
 	public static function isAjax() {
 		return $_SERVER['HTTP_X_PJAX'] === 'true';
 	}
+
+	/**
+	 * Check if we're on the admin page or login page
+	 */
+	public static function isAdmin() {
+		return (
+			is_admin()
+			|| (
+				in_array($GLOBALS['pagenow'], array(
+					'wp-login.php',
+					'wp-register.php',
+				))
+			)
+		);
+	}
 }
