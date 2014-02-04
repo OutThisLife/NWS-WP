@@ -22,6 +22,7 @@
 	<script src="<?=assetDir?>/js/library/modernizr.js"></script>
 
 	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="<?=assetDir?>/css/f5ie8.css" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
