@@ -67,4 +67,51 @@ class DevTests {
 			)
 		);
 	}
+
+	/**
+	 * Custom function to check if we should show the header and footer
+	 */
+	public static function showWrapper() {
+		return (
+			self::isCrawler()
+			|| self::isDevice()
+			// || self::isDeveloper()
+		);
+	}
+
+	/**
+	 * Checks if the UA is a web-crawler
+	 */
+	public static function isCrawler() {
+		return (isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']));
+	}
+
+	/**
+	 * Custom check to see if we should show the page
+	 */
+	public static function showPage() {
+		if (
+			self::isAjax()
+			|| self::isCrawler()
+			|| self::isDevice()
+			// || self::isDeveloper()
+		) {
+			Header('Title: '.  wp_title('|', false, 'right'));
+			return true;
+		}
+
+		else return false;
+	}
+
+
+	/**
+	 * Custom function to check if we should show the header and footer
+	 */
+	public static function showWrapper() {
+		return (
+			self::isCrawler()
+			|| self::isDevice()
+			// || self::isDeveloper()
+		);
+	}
 }

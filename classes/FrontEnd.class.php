@@ -123,7 +123,8 @@ S;
 	 * getSrc
 	 */
 	public static function getSrc($id, $size) {
-		return wp_get_attachment_image_src($id, $size);
+		$src = wp_get_attachment_image_src($id, $size);
+		return $src[0];
 	}
 
 	/**
