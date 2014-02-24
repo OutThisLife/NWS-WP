@@ -195,4 +195,25 @@ class BackEnd extends BaseTheme {
 
 		return $depth;
 	}
+
+	/**
+	 * getArchiveData
+	 */
+	public static function getArchiveData() {
+		if (!($type = get_post_type())):
+			$tax = get_queried_object()->taxonomy;
+			$taxData = get_taxonomy($tax);
+			$type = $taxData->object_type[0];
+
+		else:
+			$tax = get_object_taxonomies($type);
+			$tax = $tax[0];
+		
+		endif;
+
+		return (object) array(
+			'type' => $type,
+			'taxonomy' => $tax,
+		);
+	}
 }
