@@ -69,17 +69,6 @@ class DevTests {
 	}
 
 	/**
-	 * Custom function to check if we should show the header and footer
-	 */
-	public static function showWrapper() {
-		return (
-			self::isCrawler()
-			|| self::isDevice()
-			// || self::isDeveloper()
-		);
-	}
-
-	/**
 	 * Checks if the UA is a web-crawler
 	 */
 	public static function isCrawler() {
