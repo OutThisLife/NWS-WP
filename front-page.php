@@ -12,7 +12,7 @@ get_header();
 <?php get_template_part('slideshow') ?>
 
 <!-- CONTENT -->
-<section id="content">
+<section id="content" role="main">
 
 <div class="wrapper">
 </div>

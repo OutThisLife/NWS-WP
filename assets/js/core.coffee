@@ -1,9 +1,8 @@
 # Require JS config.
 requirejs.config
 	# Change this per your environment
-	baseUrl: '/wp/wp-content/themes/NWS-WP/assets/js/' # Talasan [dev]
+	baseUrl: '/wp/wp-content/themes/replaceMe/assets/js/' # Talasan [dev]
 	# baseUrl: '/wp-content/themes/replaceMe/assets/js/' # Production and staging
-	
 	urlArgs: "bust=#{(new Date()).getTime()}"
 	
 	paths:
@@ -35,11 +34,13 @@ require [
 	'angular', 
 	'controllers', 
 	'directives',
+	'services',
 ], ($, angular) ->
 	angular.element(document).ready ->
 		angular.module 'app', [
 			'app.controllers',
 			'app.directives',
+			'app.services',
 		]
 
 		angular.bootstrap document, ['app']

@@ -12,12 +12,13 @@ get_header();
 <?php get_template_part('masthead') ?>
 
 <!-- CONTENT -->
-<section id="content">
+<section id="content" role="main">
 
 <div class="wrapper">
 	<!-- Page -->
 	<div id="page" class="small-12 columns">
 		<h2>Sorry, that page could not be found.</h2>
+		
 		<p>
 			The page you were looking for couldn't be found. Please try again by using the navigation above.
 		</p>

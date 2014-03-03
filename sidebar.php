@@ -6,5 +6,5 @@
  */
 ?>
 
-<aside id="sidebar" class="small-12 large-4 columns">
+<aside id="sidebar" class="right small-12 medium-4 columns" role="complementary">
 </aside>

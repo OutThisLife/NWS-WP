@@ -9,11 +9,8 @@
 /**
  * Variables
  */
-$pad: 50px
+$pad: 15px
 $maxWidth: 960px + ($pad * 2)
-
-$medium: 64em
-$small: 40.063em
 
 // Fonts
 $font: Arial, sans-serif
@@ -47,17 +44,34 @@ body
 	p, ul, ol, dl
 		font: rem(13)/rem(24) $font
 
+a
+	color: $default
+	text-decoration: none
+
+	&:hover
+		color: lighten($default, 10)
+
 .wrapper
 	@include clearfix
 	max-width: $maxWidth
 	margin: 0 auto
 	padding: 0 $pad
 
+@include colorSelection
+	color: #FFF
+	background: complement($default)
+
 // -----------------------------------------------
 
 /**
  * Global styles
  */
+
+// Buttons
+[class*="button-"]
+
+// Social
+li[class*="social-"]
 
 // -----------------------------------------------
 
@@ -71,14 +85,39 @@ body
 
 		@include wpActives
 			//
+
+		// Dropdown
+		&.menu-item-has-children 
+			> a
+
+			&.over 
+				> a
+
+				> ul
+					display: block
+
+		> ul
+			display: none
+			position: absolute
+			top: 100%
+			left: 0
+			padding: 7px
+			background: #FFF
+
+			li
+				display: block
+
+				a
+					display: block
 	
 // Mobile dropdown link
 #mobile-dd-link
 	top: 1px
-	color: #FFF
-	font: 700 rem(13) $font
-	letter-spacing: -0.025em
-	background: $default
+	border: 1px solid $default
+	padding: 5px 8px
+
+	@include media(mobile)
+		top: 0
 
 	span
 		display: inline-block
@@ -87,8 +126,6 @@ body
 		width: 20px
 		height: 1px
 		overflow: visible
-		margin: 0 0 0 10px
-		@include transform(all .4s ease)
 		background: #FFF
 
 		&:before, &:after
@@ -98,7 +135,6 @@ body
 			left: 0
 			right: 0
 			height: 1px
-			@include transform(all .4s ease)
 			background: #FFF
 
 		&:before
@@ -118,10 +154,9 @@ body
 		padding: 10px
 		text-align: center
 		@include transform(translateX(200px))
-		background: $default
+		background: #111
 
 		&.open
-			@include boxShadow(0 12px 50px -30px #000)
 			@include transform(translateX(0))
 
 		@include wpMenu
@@ -131,7 +166,7 @@ body
 				color: rgba(#FFF, .85)
 				font: rem(15)/rem(21) $font
 				@include textShadow(0 1px rgba(#000, .2))
-				padding: 7px 50px
+				padding: 7px 10px
 
 	#mobile-dd, #container
 		@include transition(all .5s $easeOutSine)
@@ -146,7 +181,7 @@ body
 			display: block
 			@include cover
 			@include transition(opacity .7s ease)
-			background: rgba(#FFF, .8)
+			background: rgba(#000, .8)
 
 		&.open
 			@include transform(translateX(-200px))
@@ -154,9 +189,8 @@ body
 			&:after
 				@include opacity(1)
 
-.no-pointerevents
-	#mobile-dd
-		display: none !important
+.no-pointerevents #mobile-dd
+	display: none !important
 
 // -----------------------------------------------
 
@@ -180,7 +214,6 @@ body
 [ng-slideshow]
 	$slideHeight: 300px
 	height: $slideHeight
-	-webkit-backface-visibility: hidden
 
 	.slide
 		z-index: 0
@@ -193,7 +226,7 @@ body
 			@include opacity(1)
 	
 	// Pager icons
-	.pager
+	nav
 		position: absolute
 		left: 10px
 		bottom: 10px
@@ -204,10 +237,12 @@ body
  * Containers
  */
 #content
-	// Headers
 	h1,h2,h3,h4,h5,h6
-		margin: 0 0 10px
+		margin: 25px 0 10px
 		padding: 0
+
+		&:first-child
+			margin-top: 0
 		
 	.alignleft
 		float: left

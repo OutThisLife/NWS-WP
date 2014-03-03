@@ -44,36 +44,38 @@
 <div id="container" class="{{ mobile.status }}">
 
 <!-- HEADER -->
-<header id="header">
+<header id="header" role="banner">
 <div class="wrapper">
 	<!-- Logo -->
 	<a href="<?=home_url()?>" title="<?php bloginfo('name') ?>" id="logo" class="small-6 medium-4 columns">
 		<img src="<?=assetDir?>/images/logo.png" alt="<?php bloginfo('name') ?>" />
 	</a>
 
-	<!-- Main menu -->
-	<nav id="nav" class="right medium-8 columns hide-for-small" ng-hoverintent timeout="200">
-		<ul>
-			<li><a href="#">Menu Item</a></li>
-			<li><a href="#">Menu Item</a></li>
-			<li>
-				<a href="#">Menu Item</a>
+	<div class="right text-right small-6 medium-8 columns">
+		<!-- Main menu -->
+		<nav id="nav" class="hide-for-small" ng-hoverintent role="navigation">
+			<ul>
+				<li><a href="#">Menu Item</a></li>
+				<li><a href="#">Menu Item</a></li>
+				<li>
+					<a href="#">Menu Item</a>
 
-				<ul>
-					<li><a href="#">Menu 1</a></li>
-					<li><a href="#">Menu 2</a></li>
-					<li><a href="#">Menu 3</a></li>
-				</ul>
-			</li>
-			<li><a href="#">Menu Item</a></li>
-		</ul>
-	</nav>
+					<ul>
+						<li><a href="#">Menu 1</a></li>
+						<li><a href="#">Menu 2</a></li>
+						<li><a href="#">Menu 3</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Menu Item</a></li>
+			</ul>
+		</nav>
 
-	<!-- Mobile menu link -->
-	<div class="right small-6 medium-6 large-8 columns show-for-small">
-		<a href="javascript:;" id="mobile-dd-link" class="{{ mobile.status }}" ng-click="mobile.toggle()">
-			Menu <span></span>
-		</a>
+		<!-- Mobile menu link -->
+		<div class="show-for-small">
+			<a href="javascript:;" id="mobile-dd-link" class="{{ mobile.status }}" ng-click="mobile.toggle()">
+				<span></span>
+			</a>
+		</div>
 	</div>
 </div>
 </header>

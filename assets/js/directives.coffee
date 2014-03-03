@@ -9,7 +9,8 @@ app.directive 'ngHoverintent', ->
 			set = (el, fn) -> el.add($ul)[fn]('over') if ($ul = el.find('> ul')).length is 1
 
 			el.find('li').hoverIntent
-				timeout: 200
+				interval: 5
+				timeout: 25
 				over: -> set $(@), 'addClass'
 				out: -> set $(@), 'removeClass'
 

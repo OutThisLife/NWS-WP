@@ -13,15 +13,26 @@ get_header();
 <?php get_template_part('masthead') ?>
 
 <!-- CONTENT -->
-<section id="content">
+<section id="content" role="main">
 
 <div class="wrapper">
-	<!-- Page -->
-	<div id="page" class="small-12 large-8 columns">
-	</div>
-
 	<!-- Sidebar -->
 	<?php get_sidebar() ?>
+
+	<!-- Page -->
+	<div id="page" class="left small-12 medium-8 columns">
+	<?php
+	if (have_posts()):
+	while (have_posts()):
+		the_post();
+		get_template_part('build', get_post_type());
+	endwhile;
+
+	else:
+		echo '<p>Sorry, there are no posts at the moment. Please check back again later!</p>';
+	endif;
+	?>
+	</div>
 </div>
 
 </section>
