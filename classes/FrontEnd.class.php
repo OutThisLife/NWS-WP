@@ -10,9 +10,6 @@
 class FrontEnd extends BaseTheme {
 	public function __construct() {}
 
-	/**
-	 * Adds a sidebar
-	 */
 	protected function _sidebar($name) {
 		register_sidebar(array(
 			'name' => $name,
@@ -20,9 +17,6 @@ class FrontEnd extends BaseTheme {
 		));
 	}
 
-	/**
-	 * Adds a script
-	 */
 	protected function _script($src) {
 		if (DevTests::isAdmin()) return;
 
@@ -35,9 +29,6 @@ class FrontEnd extends BaseTheme {
 		);
 	}
 
-	/**
-	 * Adds a style
-	 */
 	protected function _style($src) {
 		if (DevTests::isAdmin()) return;
 		
@@ -51,9 +42,6 @@ class FrontEnd extends BaseTheme {
 
 	// -----------------------------------------------
 
-	/**
-	 * truncate
-	 */
 	public static function truncate(
 		$string, $limit, 
 		$break = ' ', $pad = '&hellip;'
@@ -68,17 +56,11 @@ class FrontEnd extends BaseTheme {
 		return $string . $pad;
 	}
 
-	/**
-	 * parseGallery
-	 */
 	public static function parseGallery($content) {
 		preg_match('/\[gallery.*ids=.(.*).\]/', $content, $ids);
 		return explode(',', $ids[1]);
 	}
 
-	/**
-	 * typekit
-	 */
 	public static function typekit($id) {
 		return <<<S
 <script src="//use.typekit.net/{$id}.js"></script>
@@ -86,16 +68,10 @@ class FrontEnd extends BaseTheme {
 S;
 	}
 
-	/**
-	 * getTitle
-	 */
 	public static function getTitle() {
 		echo '<title>', wp_title('|', true, 'right'), '</title>';
 	}
 
-	/**
-	 * frontUriHash
-	 */
 	public static function frontUriHash() {
 		$home = get_settings('home');
 		$path = parse_url($home);
@@ -112,24 +88,15 @@ S;
 		return $goTo;
 	}
 
-	/**
-	 * getImg
-	 */
 	public static function getImg($id, $size) {
 		return wp_get_attachment_image($id, $size);
 	}
 
-	/**
-	 * getSrc
-	 */
 	public static function getSrc($id, $size) {
 		$src = wp_get_attachment_image_src($id, $size);
 		return $src[0];
 	}
 
-	/**
-	 * formatPhone
-	 */
 	public static function formatPhone($phone) {
 		$phone = preg_replace('/[^0-9]/', '', $phone);
 

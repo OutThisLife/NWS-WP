@@ -1,8 +1,4 @@
 <?php
-/**
- * Social links snippet
- */
-
 array_map(function($obj) {
 	$classes = implode(' ', $obj->classes);
 

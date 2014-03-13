@@ -6,7 +6,7 @@
  */
 ?>
 
-<section ng-slidesho>
+<section ng-slideshow>
 	<!-- The slides -->
 	<div>
 		<figure class="slide">

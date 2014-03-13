@@ -12,39 +12,24 @@ class BackEnd extends BaseTheme {
 		self::$options = get_option('r');
 	}
 
-	/**
-	 * Creates a setting page with tabs
-	 */
 	protected function _setting(array $tabs) {
 		new Settings($this, $tabs);
 	}
 
-	/**
-	 * Creates an individual shortcode using callbacks
-	 */
 	protected function _shortcode(array $callback) {
 		foreach ($callback AS $key => $cb)
 			add_shortcode($key, $cb);
 	}
 
-	/**
-	 * Adds a nav menu
-	 */
 	protected function _menu(array $menu) {
 		register_nav_menus($menu);
 	}
 
-	/**
-	 * Adds an image size
-	 */
 	protected function _imagesize(array $args) {
 		foreach ($args AS $key => $value)
 			add_image_size($key, $value[0], $value[1], $value[2]);
 	}
 
-	/*
-	 * Adds a widget
-	 */
 	protected function _widget(array $args) {
 		$WC = new WidgetCreator($args);
 		eval($WC->render());
@@ -52,9 +37,7 @@ class BackEnd extends BaseTheme {
 
 	// -----------------------------------------------
 
-	/**
-	 * getChildren
-	 */
+
 	public static function getChildren() {
 		# Blog
 		if (
@@ -73,9 +56,6 @@ class BackEnd extends BaseTheme {
 		));
 	}
 
-	/**
-	 * getCategories
-	 */
 	public static function getCategories() {
 		$categories = null;
 
@@ -91,9 +71,6 @@ class BackEnd extends BaseTheme {
 		return $categories;
 	}
 
-	/**
-	 * getTerms
-	 */
 	public static function getTerms($tax) {
 		$categories = null;
 
@@ -120,9 +97,6 @@ class BackEnd extends BaseTheme {
 		return $categories;
 	}
 
-	/**
-	 * getMenu
-	 */
 	public static function getMenu($name, $settings = array()) {
 		$defaults = array(
 			'theme_location' => $name,
@@ -133,16 +107,10 @@ class BackEnd extends BaseTheme {
 		wp_nav_menu(array_merge($settings, $defaults));
 	}
 
-	/**
-	 * getOption
-	 */
 	public static function getOption($option) {
 		return do_shortcode(self::$options[$option]);
 	}
 
-	/**
-	 * getPostType
-	 */
 	public static function getPostType($type, $settings = array()) {
 		$default = array(
 			'post_type' => $type,
@@ -154,9 +122,6 @@ class BackEnd extends BaseTheme {
 		return new WP_Query(array_merge($default, $settings));
 	}
 
-	/**
-	 * getRootParent
-	 */
 	public static function getRootParent() {
 		global $post;
 		$parent = $post->ID;
@@ -170,16 +135,10 @@ class BackEnd extends BaseTheme {
 		return $parent;
 	}
 
-	/** 
-	 * getRootTitle
-	 */
 	public static function getRootTitle() {
 		return get_the_title(self::getRootParent());
 	}
 
-	/**
-	 * getPageDepth
-	 */
 	public static function getPageDepth() {
 		global $wp_query;
 
@@ -196,9 +155,6 @@ class BackEnd extends BaseTheme {
 		return $depth;
 	}
 
-	/**
-	 * getArchiveData
-	 */
 	public static function getArchiveData() {
 		if (!($type = get_post_type())):
 			$tax = get_queried_object()->taxonomy;
@@ -215,5 +171,36 @@ class BackEnd extends BaseTheme {
 			'type' => $type,
 			'taxonomy' => $tax,
 		);
+	}
+	
+	public static function getAdjacentPost($dir = 'prev', $type = 'post', $sameCategory = false) {
+		global $post, $wpdb;
+
+		if (empty($post) || !$type) return false;
+
+		$curDate = $post->post_date;
+
+		$join = '';
+		$adjacent = $dir == 'prev' ? 'previous' : 'next';
+		$op = $dir == 'prev' ? '<' : '>';
+		$order = $dir == 'prev' ? 'DESC' : 'ASC';
+
+		$join = apply_filters("get_{$adjacent}_post_join", $join, $sameCategory);
+		$where = apply_filters("get_{$adjacent}_post_where", $wpdb->prepare("WHERE p.post_date $op %s AND p.post_type IN('{$type}') AND p.post_status = 'publish'", $curDate), $sameCategory);
+		$sort = apply_filters("get_{$adjacent}_post_sort", "ORDER BY p.post_date $order LIMIT 1");
+
+		$query = "SELECT p.* FROM $wpdb->posts AS p $join $where $sort";
+		$query_key = 'adjacent_post_' . md5($query);
+
+		$result = wp_cache_get($query_key, 'counts');
+
+		if ($result) return $result;
+
+		$result = $wpdb->get_row("SELECT p.* FROM $wpdb->posts AS p $join $where $sort");
+		if (!$result) $result = '';
+
+		wp_cache_set($query_key, $result, 'counts');
+
+		return $result;
 	}
 }

@@ -15,20 +15,16 @@ $tmpl->debug(0)->adminBar(0)
 /**
  * Set up our front-end systems
  */
-
-# Stylesheets
 ->addStyles(array(
 	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.3/css/normalize.min.css',
 	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.3/css/foundation.min.css',
 	assetDir . '/css/core.css',
 ))
 
-# Image sizes
 ->addImageSizes(array(array(
 	//
 )))
 
-# Sidebars
 ->addSidebars(array(
 	//
 ))
@@ -38,15 +34,13 @@ $tmpl->debug(0)->adminBar(0)
 /**
  * Set up our back-end systems
  */
-
-# Menus
 ->addMenus(array(array(
 	'header' => 'Header Menu',
 	'footer' => 'Footer Menu',
 )))
 
-# Settings
 ->addSettings(array(array(
+	# General settings tab
 	'General' => array(
 		'phone' => array(
 			'name' => 'Phone #',
@@ -55,6 +49,7 @@ $tmpl->debug(0)->adminBar(0)
 		),
 	),
 
+	# Footer settings tab
 	'Footer' => array(
 		'scripts' => array(
 			'name' => 'Extra Scripts',
@@ -64,7 +59,6 @@ $tmpl->debug(0)->adminBar(0)
 	),
 )))
 
-# Shortcodes
 ->addShortcodes(array(array(
 	# [phone]
 	'phone' => function() {
@@ -72,7 +66,6 @@ $tmpl->debug(0)->adminBar(0)
 	},
 )))
 
-# Widgets
 ->addWidgets(array(
 	# Just a test box
 	array(
@@ -93,7 +86,6 @@ $tmpl->debug(0)->adminBar(0)
 
 // -----------------------------------------------
 
-# Render the theme.
 ->render();
 
 // -----------------------------------------------

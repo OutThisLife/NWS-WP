@@ -15,16 +15,10 @@ class Settings {
 		add_action('admin_menu', array($this, 'settingsMenu'));
 	}
 
-	/**
-	 * initSettings
-	 */
 	public function initSettings() {
 		register_setting('nws_settings', 'r');
 	}
 
-	/**
-	 * settingsMenu
-	 */
 	public function settingsMenu() {
 		add_theme_page(
 			'Theme Options',
@@ -35,9 +29,6 @@ class Settings {
 		);
 	}
 
-	/**
-	 * buildTabs
-	 */
 	private function buildTabs() {
 		$html = null;
 
@@ -49,14 +40,10 @@ class Settings {
 		return $html;
 	}
 
-	/**
-	 * buildSettings
-	 */
 	private function buildSettings() {
 		$html = null;
 
 		foreach ($this->tabs AS $name => $options):
-			# Build the tbody that wraps these specific options
 			$slug = sanitize_title($name);
 			$html .= '<tbody data-tab="#'. $slug .'">';
 
@@ -115,16 +102,11 @@ S;
 		return $html;
 	}
 
-	/**
-	 * settingsHtml
-	 */
 	public function settingsHtml() {
-		# Options saved alert
 		$alert = isset($_REQUEST['settings-updated'])
 			? '<div class="updated fade"><p><strong>Options Saved</strong></p></div>'
 			: null;
 
-		# The screen icon is 'necessary' for visual effects
 		$icon = get_screen_icon();
 
 		# Print out all the settings with the functions above.

@@ -2,7 +2,7 @@
 /**
  * replaceMe
  *
- * Builds the skeleton of the theme and extends out factory-style
+ * Builds the skeleton of the theme
  */
 
 // -----------------------------------------------
@@ -11,15 +11,11 @@ class BaseTheme {
 	public $front, $back;
 	private $vars = array();
 
-	/**
-	 * Initial theme setup
-	 */
 	public function __construct() {
 		$this->front = new FrontEnd();
 		$this->back = new BackEnd();
 	}
 
-	# Set up debugging
 	public function debug($bool = false) {
 		error_reporting(E_ALL);
 		ini_set('display_errors', $bool);
@@ -27,15 +23,11 @@ class BaseTheme {
 		return $this;
 	}
 
-	# Control admin bar
 	public function adminBar($bool = false) {
 		if (!is_admin()) show_admin_bar($bool);
 		return $this;
 	}
 
-	/**
-	 * All addXYZ will use __call
-	 */
 	public function __call($name, array $args) {
 		if (!strstr($name, 'add')) return;
 		$this->vars[$name] = $args;
@@ -43,17 +35,11 @@ class BaseTheme {
 		return $this;
 	}
 
-	/**
-	 * Render the 'known' variables
-	 */
 	public function render() {
-		return array_walk($this->vars, array($this, 'sort'));
+		return array_walk($this->vars, array($this, 'sortDynamicMethod'));
 	}
 
-	/**
-	 * Sort through the variable names and call the related method
-	 */
-	private function sort($values, $key) {
+	private function sortDynamicMethod($values, $key) {
 		$method = NULL;
 		$values = $values[0];
 
@@ -71,7 +57,6 @@ class BaseTheme {
 
 		else throw new Exception(__METHOD__ .' - '. $method .' does not exist.');
 
-		# Map the method to the array and bam.
 		array_map(array($class, $method), $values);
 	}
 }
