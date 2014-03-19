@@ -5,8 +5,6 @@
  * Builds the skeleton of the theme
  */
 
-// -----------------------------------------------
-
 class BaseTheme {
 	public $front, $back;
 	private $vars = array();

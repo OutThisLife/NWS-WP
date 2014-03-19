@@ -6,5 +6,5 @@
  */
 ?>
 
-<section id="masthead">
+<section id="masthead" role="banner">
 </section>

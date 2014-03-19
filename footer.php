@@ -6,7 +6,7 @@
  */
 ?>
 
-<footer id="footer">
+<footer id="footer" itemscope itemtype="http://schema.org/WPFooter">
 </footer>
 
 </div> <!-- END #container -->

@@ -5,8 +5,6 @@
  * Controls front-end deliveries
  */
 
-// -----------------------------------------------
-
 class FrontEnd extends BaseTheme {
 	public function __construct() {}
 
@@ -89,7 +87,9 @@ S;
 	}
 
 	public static function getImg($id, $size) {
-		return wp_get_attachment_image($id, $size);
+		return wp_get_attachment_image($id, $size, false, array(
+			'itemprop' => 'image',
+		));
 	}
 
 	public static function getSrc($id, $size) {

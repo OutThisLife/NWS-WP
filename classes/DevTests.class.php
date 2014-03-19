@@ -54,7 +54,10 @@ class DevTests {
 	}
 
 	public static function isCrawler() {
-		return (isset($_SERVER['HTTP_USER_AGENT']) && preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT']));
+		return (
+			isset($_SERVER['HTTP_USER_AGENT'])
+			&& preg_match('/bot|crawl|slurp|spider/i', $_SERVER['HTTP_USER_AGENT'])
+		);
 	}
 
 	public static function showPage() {

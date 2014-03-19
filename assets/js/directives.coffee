@@ -21,15 +21,20 @@ app.directive 'ngSlideshow', ->
 	controller: ['$scope', ($scope) ->
 		$scope.next = -> $scope.current += 1
 		$scope.prev = -> $scope.current -= 1
+
+		# Keep it in line
+		$scope.$watch 'current', (nv) ->
+			return unless nv?
+			$scope.current = nv % $scope.max
 	]
 
 	# Set up the data for the controller to utilize.
 	link: (scope, el) ->
 		scope.el = $(el)
-		scope.current = 0
-		scope.max = $(el).find('figure').length
+		scope.max = $(el).find('.slide').length - 1
 
-		require ['hammer'], ->
-			hammer = scope.el.hammer()
-			hammer.on 'swipeleft', -> scope.next()
-			hammer.on 'swiperight', -> scope.prev()
+		# Autoplay?
+		if attrs.autoplay?
+			$interval ->
+				scope.next()
+			, attrs.autoplay

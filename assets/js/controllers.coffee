@@ -53,14 +53,8 @@ app.controller 'MainCtrl', ['$scope', '$timeout', '$compile', '$pages', ($scope,
 		$pages.fetch(uri).then (response) ->
 			$page.empty().append response.data
 			$compile($page.contents())($scope)
-	
-	# If we're viewing a 'page', we need to go to it.
-	$timeout ->
-		if hash = location.hash
-			hash = location.href.replace('#', '').replace '%2F', ''
 
-			$scope.goToPage hash
-			location.hash = ''
+	$scope.$on '$locationChangeSuccess', (e, newUrl) -> $scope.goToPage newUrl
 
 	# Bind all links to utilize goToPage
 	$body.on 'click tap', '[href][target!="_blank"][href!="javascript:;"]', (e) ->
@@ -82,4 +76,12 @@ app.controller 'MainCtrl', ['$scope', '$timeout', '$compile', '$pages', ($scope,
 		e.stopPropagation()
 
 		$scope.goToPage href
+
+	# Go ahead and start caching all pages
+	$timeout ->
+		$('#header [href]').each ->
+			href = $(@).attr 'href'
+			return unless href.match location.origin
+			
+			$pages.fetch href, false
 ]

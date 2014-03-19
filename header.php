@@ -29,7 +29,7 @@
 
 	<?php wp_head() ?>
 </head>
-<body <?php body_class() ?> ng-controller="MainCtrl">
+<body <?php body_class() ?> ng-controller="MainCtrl" itemscope itemtype="http://schema.org/WebPage">
 
 <!-- MOBILE DROPDOWN -->
 <nav id="mobile-dd" ng-init="mobile.status = 'closed'" class="{{ mobile.status }}">
@@ -44,7 +44,7 @@
 <div id="container" class="{{ mobile.status }}">
 
 <!-- HEADER -->
-<header id="header" role="banner">
+<header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 <div class="wrapper">
 	<!-- Logo -->
 	<a href="<?=home_url()?>" title="<?php bloginfo('name') ?>" id="logo" class="small-6 medium-4 columns">
@@ -54,7 +54,7 @@
 	<div class="right text-right small-6 medium-8 columns">
 		<!-- Main menu -->
 		<nav id="nav" class="hide-for-small" ng-hoverintent role="navigation">
-			<ul>
+			<ul itemscope itemtype="http://schema.org/SiteNavigationElement">
 				<li><a href="#">Menu Item</a></li>
 				<li><a href="#">Menu Item</a></li>
 				<li>

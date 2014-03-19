@@ -64,6 +64,21 @@ $tmpl->debug(0)->adminBar(0)
 	'phone' => function() {
 		return BackEnd::getOption('phone');
 	},
+
+	# [map]
+	'map' => function($args) {
+		ob_start();
+
+		if (!($address = $args['address'])) return;
+		$address = urlencode($address);
+
+		echo '
+		<div class="flex-video is-map">
+			<iframe src="https://www.google.com/maps/?&amp;q=', $address, '&amp;output=embed" width="100%" height="auto" frameborder="0" style="border: 0"></iframe>
+		</div>';
+
+		return ob_get_clean();
+	},
 )))
 
 ->addWidgets(array(
