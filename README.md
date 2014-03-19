@@ -5,6 +5,8 @@ The themes base is built with schema.org, AngularJS and RequireJS. RequireJS is 
 
 It also gives you a handy toolset to work with when actually coding the theme.
 
+Quick note on custom post types, taxonomies, custom fields: Use plugins!
+
 ## CSS/JS
 
 This base theme uses SASS along with my classes.sass that you can find here: https://gist.github.com/OutThisLife/4020719
