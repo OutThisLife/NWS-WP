@@ -1,7 +1,7 @@
 # NWS-WP
 This is a less-than-boilerplate WordPress theme. This theme does not focus so much on giving you basic styles, but rather a strict (yet flexible) foundation to work within. It simplifies adding: widgets, theme options, image sizes, sidebars, JS libraries, CSS, navigation menus, shortcodes. All classes in the classes/ folder are autoloaded via sys/autoloader.php
 
-The themes base is built with schema.org, AngularJS and RequireJS. RequireJS is used to simplify JS loading. AngularJS is to simplify any DOM manipulation via directives. I've also built a way to use WP as a single-page application without having to re-code much (at all). We'll get to that in a bit.
+The themes base is built with schema.org, AngularJS and RequireJS. RequireJS is used to simplify JS loading. AngularJS is to simplify any DOM manipulation via directives. I've also built a way to use WP as a single-page application without having to re-code much (at all).
 
 It also gives you a handy toolset to work with when actually coding the theme.
 
