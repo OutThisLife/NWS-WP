@@ -162,6 +162,12 @@ Does the same thing as getChildren, just for categories.
 
 This returns the WP nav menu that you create with addMenus(), the first paramater being the key that you used to create it. You can pass optional settings that will overwrite the default settings. Like adding a walker, after text, etc.
 
+```
+<nav>
+	<ul><?=BackEnd::getMenu('header')?></ul>
+</nav>
+```
+
 ### getPostType($type, $settings = array())
 
 This just returns a WP_Query for the post type that you set, with again defaults that you can override in the second paramater. You will use `Template::loop()` more often than not, however.
@@ -231,8 +237,6 @@ new GenSiteMap(array(
   array('title' => 'Simple Page'),
 ));
 ```
-
-Saves you a lot of hassle.
 
 ## Template.class.php
 
