@@ -116,7 +116,7 @@ This one is sort of messy, but I've found it very useful for quick widgets. No m
       array(
         'name' => 'Title',
         'id' => 'title', # This is the $variable name
-        'type' => 'text', # Available types are text, textarea and select with another options array
+        'type' => 'text', # Available types are text, textarea, checkbox and select with another options array
       ),
       
       array(
