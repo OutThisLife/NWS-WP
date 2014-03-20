@@ -27,7 +27,7 @@ There's already a decent example in functions.php, and the syntax is fairly simp
 
 This is just a basic format, and it will load in the order that you place them in.
 
-```
+```php
 ->addStyles(array(
 	'/path/to/stylesheet1.css',
 	'/path/to/stylesheet2.css',
@@ -45,7 +45,7 @@ This is just a basic format, and it will load in the order that you place them i
 
 Left is the 'key' that you call with `BackEnd::getMenu('key')` and the right is the friendly version of that.
 
-```
+```php
 ->addMenus(array(array(
 	'header' => 'Header Menu',
 ))),
@@ -55,7 +55,7 @@ Left is the 'key' that you call with `BackEnd::getMenu('key')` and the right is 
 
 Add as many like this as you want, and call them with `dynamic_sidebar('slug-version')`. The key "Default Sidebar" would translate to `dynamic_sidebar('default-sidebar')`.
 
-```
+```php
 ->addSidebars(array(
 	'Default Sidebar',
 )),
@@ -65,7 +65,7 @@ Add as many like this as you want, and call them with `dynamic_sidebar('slug-ver
 
 Again, as many as you want and with tabs. Each layer is a tab, as you can see in the default functions.php.
 
-```
+```php
 ->addSettings(array(array(
   # General settings tab
   'General' => array(
@@ -96,7 +96,7 @@ Same deal, the top key is what the client will type, ie `'map' => function()` is
 
 A good idea is to use `ob_start()` and `ob_get_clean()` so you can print/require/get template files without messing up the WP buffer.
 
-```
+```php
 ->addShortcodes(array(array(
   # [example]
   'example' => function() { return 'Hello World!'; },
@@ -107,7 +107,7 @@ A good idea is to use `ob_start()` and `ob_get_clean()` so you can print/require
 
 This one is sort of messy, but I've found it very useful for quick widgets. No more giant classes, at least. The 'output' field requires inline PHP, as Widgets can only be classes we have to use `eval()` in order to create them. Use at your own risk.
 
-```
+```php
 ->addWidgets(array(
   # Simple box
   array(
@@ -148,7 +148,7 @@ This file should be used for communicating with WP itself.
 
 This prints out an HTML list style of either categories (if viewing a blog) or sub-pages of the current page (or parent of the current page). Common use:
 
-```
+```php
 <?php if ($children = BackEnd::getChildren()): ?>
 <nav class="widget page-nav">
   <ul><?=$children?></ul>
@@ -164,7 +164,7 @@ Does the same thing as getChildren, just for categories.
 
 This returns the WP nav menu that you create with addMenus(), the first paramater being the key that you used to create it. You can pass optional settings that will overwrite the default settings. Like adding a walker, after text, etc.
 
-```
+```php
 <nav>
 	<ul><?=BackEnd::getMenu('header')?></ul>
 </nav>
@@ -174,7 +174,7 @@ This returns the WP nav menu that you create with addMenus(), the first paramate
 
 This will return the slug-version of a setting defined by your functions.php. IE:
 
-```
+```php
 ->addSettings(array(array(
 	# General settings tab
 	'General' => array(
@@ -197,7 +197,7 @@ It uses `sanitize_name` to generate the slugs. So `name => 'Footer Text'` would 
 
 This just returns a WP_Query for the post type that you set, with again defaults that you can override in the second paramater. You will use `Template::loop()` more often than not, however.
 
-```
+```php
 $result = BackEnd::getPostType('my_post_type');
 if ($result->have_posts())
 while ($result->have_posts()):
@@ -213,7 +213,7 @@ Returns the most top-level parent ID, title, and the 'menu_order' value for the 
 
 This will return an object of which post type and which taxonomy we're viewing for on an archive listing.
 
-```
+```php
 $archiveData = BackEnd::getArchiveData();
 $data = get_post_type_object($archiveData->type);
 
@@ -226,7 +226,7 @@ Good for getting the label details, post type or taxonomy/term description, et a
 
 This will return either the previous or next post of any post type. Example usage:
 
-```
+```php
 $next = BackEnd::getAdjacentPost('next', 'my_post_type');
 $prev = BackEnd::getAdjacentPost('prev', 'my_post_type');
 ```
@@ -265,7 +265,7 @@ Does as it says. Formats all phone types to a proper format.
 
 My favourite class. This just takes an array listing and creates those pages, and the child pages, with boilerplate content in the order that you place. Saves tons of time:
 
-```
+```php
 new GenSiteMap(array(
   # "Hello World" page
   array(
@@ -284,7 +284,7 @@ This takes care of your loops. You'll [almost] never need to utilize `BackEnd::g
 
 But the meat is:
 
-```
+```php
 Template::loop('post', array(
   'post_type' => 'post',
   'orderby' => 'post_date',
@@ -304,7 +304,7 @@ It either tries to find `build-{key}` (the first parameter) or tries to use the 
 
 Common usage would be something like the above or:
 
-```
+```php
 <!-- HTML EVERYWHERE -->
 <?php Template::loop(function() use ($cfs) { ?>
 
