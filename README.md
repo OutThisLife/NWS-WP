@@ -170,19 +170,57 @@ This returns the WP nav menu that you create with addMenus(), the first paramate
 </nav>
 ```
 
+### getOption($option)
+
+This will return the slug-version of a setting defined by your functions.php. IE:
+
+```
+->addSettings(array(array(
+	# General settings tab
+	'General' => array(
+		'phone' => array(
+			'name' => 'Phone #',
+			'type' => 'text',
+			'desc' => 'Use [phone] to retrieve this value.',
+		),
+	),
+)))
+
+# To call it within the theme...
+
+echo BackEnd::getOption('phone');
+```
+
+It uses `sanitize_name` to generate the slugs. So `name => 'Footer Text'` would become `getOption('footer-text')`.
+
 ### getPostType($type, $settings = array())
 
 This just returns a WP_Query for the post type that you set, with again defaults that you can override in the second paramater. You will use `Template::loop()` more often than not, however.
 
+```
+$result = BackEnd::getPostType('my_post_type');
+if ($result->have_posts())
+while ($result->have_posts()):
+	// Do stuff here.
+endwhile; wp_reset_query();
+```
+
 ### getRootParent(), getRootTitle(), getPageDepth()
 
-Returns the most top-level parent ID, title. 
-
-`getPageDepth()` returns the 'menu_order' value for the current page.
+Returns the most top-level parent ID, title, and the 'menu_order' value for the current page. 
 
 ### getArchiveData()
 
 This will return an object of which post type and which taxonomy we're viewing for on an archive listing.
+
+```
+$archiveData = BackEnd::getArchiveData();
+$data = get_post_type_object($archiveData->type);
+
+var_dump($data);
+```
+
+Good for getting the label details, post type or taxonomy/term description, et al.
 
 ### getAdjacentPost($dir, $type, $sameCategory = FALSE)
 
