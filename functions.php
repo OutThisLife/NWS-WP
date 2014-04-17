@@ -16,6 +16,7 @@ $tmpl->debug(0)->adminBar(0)
  * Set up our front-end systems
  */
 ->addStyles(array(
+	// '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
 	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.3/css/normalize.min.css',
 	'//cdnjs.cloudflare.com/ajax/libs/foundation/5.0.3/css/foundation.min.css',
 	assetDir . '/css/core.css',
@@ -63,6 +64,11 @@ $tmpl->debug(0)->adminBar(0)
 	# [phone]
 	'phone' => function() {
 		return BackEnd::getOption('phone');
+	},
+
+	# [flex_video]
+	'flex_video' => function($args, $content) {
+		return '<div class="flex-video">'. $content .'</div>';
 	},
 
 	# [map]

@@ -15,7 +15,7 @@ app.directive 'ngHoverintent', ->
 				out: -> set $(@), 'removeClass'
 
 # Reusable slideshow
-app.directive 'ngSlideshow', ->
+app.directive 'ngSlideshow', ['$interval', ($interval) ->
 	restrict: 'A'
 	scope: true
 	controller: ['$scope', ($scope) ->
@@ -29,12 +29,12 @@ app.directive 'ngSlideshow', ->
 	]
 
 	# Set up the data for the controller to utilize.
-	link: (scope, el) ->
-		scope.el = $(el)
-		scope.max = $(el).find('.slide').length - 1
+	link: (scope, el, attrs) ->
+		scope.max = el.find('.slide').length - 1
 
 		# Autoplay?
 		if attrs.autoplay?
 			$interval ->
 				scope.next()
 			, attrs.autoplay
+]

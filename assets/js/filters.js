@@ -1,1 +1,1 @@
-var app;app=angular.module("app.filters",[]);
+var app;app=angular.module("app.filters",[]),app.filter("nl2br",function(){return function(r){return null!=r?r.replace(/\n/g,"<br />"):void 0}});
