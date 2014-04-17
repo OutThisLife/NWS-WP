@@ -1,19 +1,10 @@
 # NWS-WP
 This is a less-than-boilerplate WordPress theme. This theme does not focus so much on giving you basic styles, but rather a strict (yet flexible) foundation to work within. It simplifies adding: widgets, theme options, image sizes, sidebars, JS libraries, CSS, navigation menus, shortcodes. All classes in the classes/ folder are autoloaded via sys/autoloader.php
 
-<<<<<<< HEAD
 The themes base is built with schema.org, AngularJS and RequireJS. RequireJS is used to simplify JS loading. AngularJS is to simplify any DOM manipulation via directives. I've also built a way to use WP as a single-page application without having to re-code much (at all). We'll get to that in a bit.
 
 It also gives you a handy toolset to work with when actually coding the theme.
 
-=======
-The themes base is built with schema.org, AngularJS and RequireJS. RequireJS is used to simplify JS loading. AngularJS is to simplify any DOM manipulation via directives. I've also built a way to use WP as a single-page application without having to re-code much (at all).
-
-It also gives you a handy toolset to work with when actually coding the theme.
-
-Quick note on custom post types, taxonomies, custom fields: Use plugins!
-
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 ## CSS/JS
 
 This base theme uses SASS along with my classes.sass that you can find here: https://gist.github.com/OutThisLife/4020719
@@ -34,11 +25,7 @@ There's already a decent example in functions.php, and the syntax is fairly simp
 
 This is just a basic format, and it will load in the order that you place them in.
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 ->addStyles(array(
 	'/path/to/stylesheet1.css',
 	'/path/to/stylesheet2.css',
@@ -56,11 +43,7 @@ This is just a basic format, and it will load in the order that you place them i
 
 Left is the 'key' that you call with `BackEnd::getMenu('key')` and the right is the friendly version of that.
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 ->addMenus(array(array(
 	'header' => 'Header Menu',
 ))),
@@ -70,11 +53,7 @@ Left is the 'key' that you call with `BackEnd::getMenu('key')` and the right is 
 
 Add as many like this as you want, and call them with `dynamic_sidebar('slug-version')`. The key "Default Sidebar" would translate to `dynamic_sidebar('default-sidebar')`.
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 ->addSidebars(array(
 	'Default Sidebar',
 )),
@@ -84,11 +63,7 @@ Add as many like this as you want, and call them with `dynamic_sidebar('slug-ver
 
 Again, as many as you want and with tabs. Each layer is a tab, as you can see in the default functions.php.
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 ->addSettings(array(array(
   # General settings tab
   'General' => array(
@@ -119,11 +94,7 @@ Same deal, the top key is what the client will type, ie `'map' => function()` is
 
 A good idea is to use `ob_start()` and `ob_get_clean()` so you can print/require/get template files without messing up the WP buffer.
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 ->addShortcodes(array(array(
   # [example]
   'example' => function() { return 'Hello World!'; },
@@ -134,11 +105,7 @@ A good idea is to use `ob_start()` and `ob_get_clean()` so you can print/require
 
 This one is sort of messy, but I've found it very useful for quick widgets. No more giant classes, at least. The 'output' field requires inline PHP, as Widgets can only be classes we have to use `eval()` in order to create them. Use at your own risk.
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 ->addWidgets(array(
   # Simple box
   array(
@@ -149,11 +116,7 @@ This one is sort of messy, but I've found it very useful for quick widgets. No m
       array(
         'name' => 'Title',
         'id' => 'title', # This is the $variable name
-<<<<<<< HEAD
         'type' => 'text', # Available types are text, textarea and select with another options array
-=======
-        'type' => 'text', # Available types are text, textarea, checkbox and select with another options array
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
       ),
       
       array(
@@ -183,11 +146,7 @@ This file should be used for communicating with WP itself.
 
 This prints out an HTML list style of either categories (if viewing a blog) or sub-pages of the current page (or parent of the current page). Common use:
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 <?php if ($children = BackEnd::getChildren()): ?>
 <nav class="widget page-nav">
   <ul><?=$children?></ul>
@@ -203,91 +162,31 @@ Does the same thing as getChildren, just for categories.
 
 This returns the WP nav menu that you create with addMenus(), the first paramater being the key that you used to create it. You can pass optional settings that will overwrite the default settings. Like adding a walker, after text, etc.
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 <nav>
 	<ul><?=BackEnd::getMenu('header')?></ul>
 </nav>
 ```
 
-<<<<<<< HEAD
-=======
-### getOption($option)
-
-This will return the slug-version of a setting defined by your functions.php. IE:
-
-```php
-->addSettings(array(array(
-	# General settings tab
-	'General' => array(
-		'phone' => array(
-			'name' => 'Phone #',
-			'type' => 'text',
-			'desc' => 'Use [phone] to retrieve this value.',
-		),
-	),
-)))
-
-# To call it within the theme...
-
-echo BackEnd::getOption('phone');
-```
-
-It uses `sanitize_name` to generate the slugs. So `name => 'Footer Text'` would become `getOption('footer-text')`.
-
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 ### getPostType($type, $settings = array())
 
 This just returns a WP_Query for the post type that you set, with again defaults that you can override in the second paramater. You will use `Template::loop()` more often than not, however.
 
-<<<<<<< HEAD
 ### getRootParent(), getRootTitle(), getPageDepth()
 
 Returns the most top-level parent ID, title. 
 
 `getPageDepth()` returns the 'menu_order' value for the current page.
-=======
-```php
-$result = BackEnd::getPostType('my_post_type');
-if ($result->have_posts())
-while ($result->have_posts()):
-	// Do stuff here.
-endwhile; wp_reset_query();
-```
-
-### getRootParent(), getRootTitle(), getPageDepth()
-
-Returns the most top-level parent ID, title, and the 'menu_order' value for the current page. 
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 
 ### getArchiveData()
 
 This will return an object of which post type and which taxonomy we're viewing for on an archive listing.
 
-<<<<<<< HEAD
-=======
-```php
-$archiveData = BackEnd::getArchiveData();
-$data = get_post_type_object($archiveData->type);
-
-var_dump($data);
-```
-
-Good for getting the label details, post type or taxonomy/term description, et al.
-
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 ### getAdjacentPost($dir, $type, $sameCategory = FALSE)
 
 This will return either the previous or next post of any post type. Example usage:
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 $next = BackEnd::getAdjacentPost('next', 'my_post_type');
 $prev = BackEnd::getAdjacentPost('prev', 'my_post_type');
 ```
@@ -326,11 +225,7 @@ Does as it says. Formats all phone types to a proper format.
 
 My favourite class. This just takes an array listing and creates those pages, and the child pages, with boilerplate content in the order that you place. Saves tons of time:
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 new GenSiteMap(array(
   # "Hello World" page
   array(
@@ -349,11 +244,7 @@ This takes care of your loops. You'll [almost] never need to utilize `BackEnd::g
 
 But the meat is:
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 Template::loop('post', array(
   'post_type' => 'post',
   'orderby' => 'post_date',
@@ -373,11 +264,7 @@ It either tries to find `build-{key}` (the first parameter) or tries to use the 
 
 Common usage would be something like the above or:
 
-<<<<<<< HEAD
 ```
-=======
-```php
->>>>>>> 76d22ff2049c7273302a29cf78cb2be53c7967db
 <!-- HTML EVERYWHERE -->
 <?php Template::loop(function() use ($cfs) { ?>
 
