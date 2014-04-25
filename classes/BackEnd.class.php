@@ -107,6 +107,15 @@ class BackEnd extends BaseTheme {
 		wp_nav_menu(array_merge($settings, $defaults));
 	}
 
+	public static function getMenuLabel($name) {
+		$locations = get_nav_menu_locations();
+
+		if (isset($locations[$name])) {
+			$obj = wp_get_nav_menu_object($locations[$name]);
+			return $obj->name;
+		}
+	}
+
 	public static function getOption($option) {
 		return do_shortcode(self::$options[$option]);
 	}

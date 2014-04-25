@@ -2,7 +2,7 @@
  * Core SASS
  */
 
-@import C:/WWW/Abases/classes.sass
+@import C:/www/Abases/classes.sass
 
 // -----------------------------------------------
 
@@ -37,12 +37,12 @@ $default: #222
  */
 body
 	color: $default
-	font: rem(13)/rem(24) $font
+	font: rem(13)/1.5 $font
 	margin: 0
 	padding: 0
 
 	p, ul, ol, dl
-		font: rem(13)/rem(24) $font
+		font: rem(13)/1.5 $font
 
 a
 	color: $default
@@ -87,10 +87,10 @@ li[class*="social-"]
 			//
 
 		// Dropdown
-		&.menu-item-has-children 
+		&.menu-item-has-children
 			> a
 
-			&.over 
+			&.over
 				> a
 
 				> ul
@@ -109,41 +109,14 @@ li[class*="social-"]
 
 				a
 					display: block
-	
+
 // Mobile dropdown link
 #mobile-dd-link
 	top: 1px
 	border: 1px solid $default
 	padding: 5px 8px
 
-	@include media(mobile)
-		top: 0
-
-	span
-		display: inline-block
-		position: relative
-		top: -4px
-		width: 20px
-		height: 1px
-		overflow: visible
-		background: #FFF
-
-		&:before, &:after
-			content: ''
-			display: block
-			position: absolute
-			left: 0
-			right: 0
-			height: 1px
-			background: inherit
-
-		&:before
-			top: -6px
-
-		&:after
-			bottom: -6px
-
-.pointerevents 
+.pointerevents
 	// Mobile dropdown itself
 	#mobile-dd
 		display: block
@@ -224,7 +197,7 @@ li[class*="social-"]
 		&.active
 			z-index: 1
 			@include opacity(1)
-	
+
 	// Pager icons
 	nav
 		position: absolute
@@ -243,7 +216,7 @@ li[class*="social-"]
 
 		&:first-child
 			margin-top: 0
-		
+
 	.alignleft
 		float: left
 		margin: 0 15px 5px 0

@@ -73,7 +73,7 @@
 		<!-- Mobile menu link -->
 		<div class="show-for-small">
 			<a href="javascript:;" id="mobile-dd-link" class="{{ mobile.status }}" ng-click="mobile.toggle()">
-				<span></span>
+				<i class="fa fa-bars"></i>
 			</a>
 		</div>
 	</div>
