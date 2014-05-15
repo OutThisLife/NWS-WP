@@ -19,8 +19,6 @@
 	<link rel="image_src" href="<?=assetDir?>/images/logo.png" />
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
-	<script src="<?=assetDir?>/js/library/modernizr.js"></script>
-
 	<!--[if lt IE 9]>
 	<link rel="stylesheet" href="<?=assetDir?>/css/f5ie8.css" />
 	<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
@@ -29,7 +27,7 @@
 
 	<?php wp_head() ?>
 </head>
-<body <?php body_class() ?> ng-controller="MainCtrl" itemscope itemtype="http://schema.org/WebPage">
+<body <?php body_class() ?> ng-controller="MainController" itemscope itemtype="http://schema.org/WebPage">
 
 <!-- MOBILE DROPDOWN -->
 <nav id="mobile-dd" ng-init="mobile.status = 'closed'" class="{{ mobile.status }}">

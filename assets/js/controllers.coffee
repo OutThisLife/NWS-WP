@@ -1,12 +1,11 @@
 app = angular.module 'app.controllers', []
 
-winObj = $(window)
-
-$body = $('html, body')
-$container = $('#container')
+winObj = angular.element window
+$body = angular.element 'html, body'
+$content = angular.element '#content'
 
 # Main site controller
-app.controller 'MainCtrl', ['$scope', '$timeout', ($scope, $timeout) ->
+app.controller 'MainController', ['$scope', '$timeout', ($scope, $timeout) ->
 	setDimensions = ->
 		$scope.$apply ->
 			$scope.winWidth = winObj.width()
@@ -19,8 +18,6 @@ app.controller 'MainCtrl', ['$scope', '$timeout', ($scope, $timeout) ->
 
 	# Set the very basic mobile menu variables
 	$scope.mobile = {}
-
-	# Toggle the mobile status
 	$scope.mobile.toggle = -> $scope.mobile.status = if $scope.mobile.status is 'closed' then 'open' else 'closed'
-	$('#content').on 'click touchend', -> $scope.$apply -> $scope.mobile.status = 'closed'
+	$content.on 'click touchend', -> $scope.$apply -> $scope.mobile.status = 'closed'
 ]

@@ -1,16 +1,14 @@
 app = angular.module 'app.services', []
 
-# Fetch a page by uri
 app.service '$pages', ['$http', '$q', '$location', ($http, $q, $location) ->
-	# Fetch a page by its URI
 	fetch: (uri) ->
 		deferred = $q.defer()
 
-		$http 
+		$http
 			method: 'POST'
 			url: uri
 			cache: true
-			headers: 
+			headers:
 				'REQUEST_WITH': 'xmlhttprequest'
 
 		.success (response, status, headers, config) ->
@@ -18,12 +16,6 @@ app.service '$pages', ['$http', '$q', '$location', ($http, $q, $location) ->
 			results.data = response
 			results.headers = headers()
 
-			# Set our new 'history' result
-			$location.path uri.replace /^(?:\/\/|[^\/]+)*\//, ''
-			$location.absUrl uri
-			window.document.title = results.headers['title']
-
-			# Resolve
 			deferred.resolve results
 
 		.error (data, status) -> deferred.reject data, status

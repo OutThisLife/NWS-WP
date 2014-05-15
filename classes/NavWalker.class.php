@@ -6,7 +6,6 @@
  */
 
 class NavWalker extends Walker_Nav_Menu {
-
 	function start_el(&$output, $item, $depth, $args) {
 		global $wp_query;
 

@@ -6,8 +6,8 @@
  */
 
 class Template {
-	public static function snippet($snippet) {
-		$file = TEMPLATEPATH .'/classes/snippets/'. $snippet .'.php';
+	public static function partial($partial) {
+		$file = TEMPLATEPATH .'/partials/'. $partial;
 
 		if (
 			file_exists($file)
@@ -30,7 +30,7 @@ class Template {
 				get_template_part('build', $callback);
 
 			else throw new Exception(__METHOD__ .' - '. $callback .' is not a valid callback.');
-		endwhile; 
+		endwhile;
 		wp_reset_query();
 	}
 }

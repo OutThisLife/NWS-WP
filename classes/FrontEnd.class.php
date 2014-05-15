@@ -29,7 +29,7 @@ class FrontEnd extends BaseTheme {
 
 	protected function _style($src) {
 		if (DevTests::isAdmin()) return;
-		
+
 		wp_enqueue_style(
 			sanitize_key($src),
 			$src,
@@ -41,7 +41,7 @@ class FrontEnd extends BaseTheme {
 	// -----------------------------------------------
 
 	public static function truncate(
-		$string, $limit, 
+		$string, $limit,
 		$break = ' ', $pad = '&hellip;'
 	) {
 		if (strlen($string) <= $limit) return $string;
@@ -76,8 +76,8 @@ S;
 
 		$goTo = $home;
 		$goTo .= '#'.str_replace(
-			$path['path'].'/', 
-			'/', 
+			$path['path'].'/',
+			'/',
 			$_SERVER['REQUEST_URI']
 		);
 
@@ -86,9 +86,10 @@ S;
 		return $goTo;
 	}
 
-	public static function getImg($id, $size) {
+	public static function getImg($id, $size, $class = '') {
 		return wp_get_attachment_image($id, $size, false, array(
 			'itemprop' => 'image',
+			'class' => $class,
 		));
 	}
 
@@ -125,5 +126,15 @@ S;
 		}
 
 		return $phone;
+	}
+
+	public static function extractYT($str) {
+		preg_match('/v\=(.*)$/', $str, $results);
+		return $results[1];
+	}
+
+	public static function extractVimeo($str) {
+		preg_match('/\.com\/(.*)$/', $str, $results);
+		return $results[1];
 	}
 }
