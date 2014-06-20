@@ -1,6 +1,6 @@
 app = angular.module 'app.services', []
 
-app.service '$pages', ['$http', '$q', '$location', ($http, $q, $location) ->
+app.service '$pages', ['$http', '$q', ($http, $q) ->
 	fetch: (uri) ->
 		deferred = $q.defer()
 

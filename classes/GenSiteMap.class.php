@@ -19,7 +19,7 @@ class GenSiteMap {
 		foreach ($this->sitemap AS $page):
 			$_id = $this->addPage($page['title']);
 
-			if ($children = $page['children']) 
+			if ($children = $page['children'])
 			foreach ($children AS $i => $child)
 				$this->addPage($child, ($i + 1), $_id);
 		endforeach;
@@ -31,7 +31,7 @@ class GenSiteMap {
 
 		else $res = wp_insert_post(array(
 			'post_title' => $title,
-			'post_content' => file_get_contents(TEMPLATEPATH .'/classes/snippets/page.html'),
+			'post_content' => file_get_contents(TEMPLATEPATH .'/partials/page.html'),
 			'post_status' => 'publish',
 			'post_type' => 'page',
 			'post_parent' => $parent,

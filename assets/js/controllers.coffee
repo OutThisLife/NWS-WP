@@ -1,9 +1,5 @@
 app = angular.module 'app.controllers', []
 
-winObj = angular.element window
-$body = angular.element 'html, body'
-$content = angular.element '#content'
-
 # Main site controller
 app.controller 'MainController', ['$scope', '$timeout', ($scope, $timeout) ->
 	setDimensions = ->

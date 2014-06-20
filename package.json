@@ -1,0 +1,26 @@
+{
+  "name": "NWS-WP",
+  "version": "0.1.0",
+  "description": "This is a less-than-boilerplate WordPress theme. This theme does not focus so much on giving you basic styles, but rather a strict (yet flexible) foundation to work within. It simplifies adding: widgets, theme options, image sizes, sidebars, JS libraries, CSS, navigation menus, shortcodes. All classes in the classes/ folder are autoloaded via sys/autoloader.php",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OutThisLife/NWS-WP.git"
+  },
+  "keywords": [
+    "wordpress",
+    "framework",
+    "theme",
+    "framework",
+    "skeleton",
+    "bootstrap"
+  ],
+  "author": "Talasan Nicholson",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/OutThisLife/NWS-WP/issues"
+  }
+}
