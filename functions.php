@@ -85,6 +85,29 @@ $tmpl->debug(0)->adminBar(0)
 
 		return ob_get_clean();
 	},
+
+	# [button]
+	'button' => function($args, $content = '') {
+		ob_start();
+
+		echo '<a href="', $args['url'], '" class="button-', $args['style'], '">', $content, '</a>';
+
+		return ob_get_clean();
+	},
+
+	# [grid]
+	'grid' => function($args, $content) {
+		$html = '<div class="grid grid-'. $args['cols'] .'">';
+		$html .= do_shortcode($content);
+		$html .= '</div>';
+
+		return $html;
+	},
+
+	# [grid_item]
+	'grid_item' => function($args, $content) {
+		return '<div class="item">'. do_shortcode($content) .'</div>';
+	},
 )))
 
 ->addWidgets(array(
