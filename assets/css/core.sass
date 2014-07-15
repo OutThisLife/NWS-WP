@@ -37,12 +37,20 @@ $default: #222
  */
 body
 	color: $default
-	font: rem(13)/1.5 $font
 	margin: 0
 	padding: 0
 
-	p, ul, ol, dl
-		font: rem(13)/1.5 $font
+p, ul, ol, dl
+	color: inherit
+	font: rem(13)/1.5 $font
+
+h1,h2,h3,h4,h5,h6
+	color: inherit
+	margin: 25px 0 10px
+	padding: 0
+
+	&:first-child
+		margin-top: 0
 
 a
 	color: $default
@@ -110,61 +118,6 @@ li[class*="social-"]
 				a
 					display: block
 
-// Mobile dropdown link
-#mobile-dd-link
-	top: 1px
-	border: 1px solid $default
-	padding: 5px 8px
-
-.pointerevents
-	// Mobile dropdown itself
-	#mobile-dd
-		display: block
-		z-index: 501
-		@include cover(fixed)
-		left: auto
-		width: 200px
-		padding: 10px
-		text-align: center
-		@include transform(translateX(200px))
-		background: #111
-
-		&.open
-			@include transform(translateX(0))
-
-		@include wpMenu
-			a
-				display: block
-				color: #FFF
-				color: rgba(#FFF, .85)
-				font: rem(15)/rem(21) $font
-				@include textShadow(0 1px rgba(#000, .2))
-				padding: 7px 10px
-
-	#mobile-dd, #container
-		@include transition(all .5s $easeOutSine)
-
-	// Site container
-	#container
-		&:after
-			@include opacity(0)
-			pointer-events: none
-			z-index: 501
-			content: ''
-			display: block
-			@include cover
-			@include transition(opacity .7s ease)
-			background: rgba(#000, .8)
-
-		&.open
-			@include transform(translateX(-200px))
-
-			&:after
-				@include opacity(1)
-
-.no-pointerevents #mobile-dd
-	display: none !important
-
 // -----------------------------------------------
 
 /**
@@ -210,19 +163,5 @@ li[class*="social-"]
  * Containers
  */
 #content
-	h1,h2,h3,h4,h5,h6
-		margin: 25px 0 10px
-		padding: 0
-
-		&:first-child
-			margin-top: 0
-
-	.alignleft
-		float: left
-		margin: 0 15px 5px 0
-
-	.alignright
-		float: right
-		margin: 0 0 5px 15px
 
 // -----------------------------------------------

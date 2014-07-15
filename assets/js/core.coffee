@@ -3,8 +3,13 @@ requirejs.config
 	urlArgs: "bust=#{(new Date()).getTime()}"
 
 	paths:
-		angular: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.8/angular']
+		jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min']
+		angular: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular']
 
+		ngSanitize: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize']
+		ngTouch: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-touch']
+
+		async: ['library/async']
 		controllers: ['controllers']
 		services: ['services']
 		directives: ['directives']
@@ -12,6 +17,11 @@ requirejs.config
 
 	shim:
 		angular: exports: 'angular'
+		jquery: exports: '$'
+
+		ngSanitize: ['angular']
+		ngTouch: ['angular']
+
 		controllers: ['angular']
 		services: ['angular']
 		directives: ['angular']

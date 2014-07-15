@@ -17,8 +17,8 @@ $tmpl->debug(0)->adminBar(0)
  */
 ->addStyles(array(
 	// '//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
-	'//cdn.jsdelivr.net/normalize/3.0.0/normalize.min.css',
-	'//cdn.jsdelivr.net/foundation/5.2.2/css/foundation.min.css',
+	'//cdn.jsdelivr.net/normalize/3.0.1/normalize.min.css',
+	'//cdn.jsdelivr.net/foundation/5.3.0/css/foundation.min.css',
 	assetDir . '/css/core.css',
 ))
 

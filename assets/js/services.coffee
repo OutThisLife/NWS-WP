@@ -1,11 +1,11 @@
 app = angular.module 'app.services', []
 
-app.service '$pages', ['$http', '$q', ($http, $q) ->
+app.service '$xhr', ['$http', '$q', ($http, $q) ->
 	fetch: (uri) ->
 		deferred = $q.defer()
 
 		$http
-			method: 'POST'
+			method: 'GET'
 			url: uri
 			cache: true
 			headers:
