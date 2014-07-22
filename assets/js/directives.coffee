@@ -1,6 +1,11 @@
 app = angular.module 'app.directives', []
 
-# Reusable slideshow
+# ------------------------------------------------------------------
+
+app.directive 'ngScope', scope: true
+
+# ------------------------------------------------------------------
+
 app.directive 'ngSlideshow', ['$interval', ($interval) ->
 	restrict: 'A'
 	scope: true

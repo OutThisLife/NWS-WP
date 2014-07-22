@@ -2,7 +2,7 @@
  * Core SASS
  */
 
-@import C:/www/Abases/classes.sass
+@import classes.sass
 
 // -----------------------------------------------
 
@@ -135,27 +135,17 @@ li[class*="social-"]
 // -----------------------------------------------
 
 /**
- * Slideshow
+ * Slideshows
  */
-[ng-slideshow]
-	$slideHeight: 300px
-	height: $slideHeight
+[ng-slideshow] .slide
+	z-index: 0
+	@include cover
+	@include opacity(0)
+	@include transition(opacity .75s ease)
 
-	.slide
-		z-index: 0
-		@include cover
-		@include opacity(0)
-		@include transition(opacity .75s ease)
-
-		&.active
-			z-index: 1
-			@include opacity(1)
-
-	// Pager icons
-	nav
-		position: absolute
-		left: 10px
-		bottom: 10px
+	&.active
+		z-index: 1
+		@include opacity(1)
 
 // -----------------------------------------------
 

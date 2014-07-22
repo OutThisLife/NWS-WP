@@ -4,10 +4,10 @@ requirejs.config
 
 	paths:
 		jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min']
-		angular: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular']
+		angular: ['//ajax.googleapis.com/ajax/libs/angularjs/1/angular']
 
-		ngSanitize: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-sanitize']
-		ngTouch: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-touch']
+		ngSanitize: ['//ajax.googleapis.com/ajax/libs/angularjs/1/angular-sanitize']
+		ngTouch: ['//ajax.googleapis.com/ajax/libs/angularjs/1/angular-touch']
 
 		async: ['library/async']
 		controllers: ['controllers']

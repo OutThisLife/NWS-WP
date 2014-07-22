@@ -1,1 +1,1 @@
-(function(){var o;o=angular.module("app.controllers",[]),o.controller("MainController",["$scope","$timeout",function(){}])}).call(this);
+(function(){var l;l=angular.module("app.controllers",[])}).call(this);
