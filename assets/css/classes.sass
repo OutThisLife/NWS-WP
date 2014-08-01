@@ -512,11 +512,16 @@ a img
 	outline: 0
 	border: 0
 
+a,
+input[type],
+button[type],
+select, textarea
+	&:focus,
+	&:active
+		outline: 5px auto #4d90fe
+
 figure
 	margin: 0
-
-a:focus, a:active
-	outline: none
 
 q:before
 	content: "\201C"
