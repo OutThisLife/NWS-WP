@@ -7,9 +7,9 @@ It also gives you a handy toolset to work with when actually coding the theme.
 
 ## CSS/JS
 
-This base theme uses SASS along with my classes.sass that you can find here: https://gist.github.com/OutThisLife/4020719
+This base theme uses SASS along with my custom & modular classes.sass.
 
-It also uses CoffeeScript instead of vanilla JS. Learn how to autocompile SASS & CoffeeScript w/ ST2 here if you want to get started: http://www.nicholsonws.com/autocompiling-sass-coffeescript-sublime-text-2/
+It uses CoffeeScript instead of vanilla JS. Learn how to autocompile SASS & CoffeeScript w/ ST2 here if you want to get started: http://www.nwsco.org/autocompiling-sass-coffeescript-sublime-text-2/
 
 JS is modular in this theme, meaning that you only load which JS files you need at the time with RequireJS. By default we load only controllers and directives, but as your application grows you should make changes to the core.coffee file on which to bootstrap first.
 
@@ -73,7 +73,7 @@ Again, as many as you want and with tabs. Each layer is a tab, as you can see in
     'desc' => 'Use [phone] to retrieve this value.',
     ),
   ),
-  
+
   # Footer settings tab
   'Footer' => array(
     'scripts' => array(
@@ -118,14 +118,14 @@ This one is sort of messy, but I've found it very useful for quick widgets. No m
         'id' => 'title', # This is the $variable name
         'type' => 'text', # Available types are text, textarea and select with another options array
       ),
-      
+
       array(
         'name' => 'Copy',
         'id' => 'copy',
         'type' => 'textarea',
       ),
     ),
-    
+
     'output' => '
 <div class="widget simple-box">
   <h2><?=$title?></h2>
@@ -174,7 +174,7 @@ This just returns a WP_Query for the post type that you set, with again defaults
 
 ### getRootParent(), getRootTitle(), getPageDepth()
 
-Returns the most top-level parent ID, title. 
+Returns the most top-level parent ID, title.
 
 `getPageDepth()` returns the 'menu_order' value for the current page.
 
@@ -232,7 +232,7 @@ new GenSiteMap(array(
     'title' => 'Hello World',
     'children' => array('World', 'Hello', 'Universe'),
   ),
-  
+
   # "Simple" page
   array('title' => 'Simple Page'),
 ));
@@ -254,7 +254,7 @@ Template::loop('post', array(
 // OR
 
 Template::loop(function() use ($cfs) {
-  // Do some crazy stuff here. 
+  // Do some crazy stuff here.
 }, array(
   'post_type' => 'my_post_type',
 )));

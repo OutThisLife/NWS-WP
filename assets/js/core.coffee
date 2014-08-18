@@ -1,36 +1,14 @@
 requirejs.config
 	baseUrl: '/wp/wp-content/themes/replaceMe/assets/js/'
 	urlArgs: "bust=#{(new Date()).getTime()}"
+	waitTimeout: 0
 
 	paths:
-		jquery: ['//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min']
-		angular: ['//ajax.googleapis.com/ajax/libs/angularjs/1/angular']
-
-		ngSanitize: ['//ajax.googleapis.com/ajax/libs/angularjs/1/angular-sanitize']
-		ngTouch: ['//ajax.googleapis.com/ajax/libs/angularjs/1/angular-touch']
-
+		ngSanitize: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-sanitize.min']
+		ngTouch: ['//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-touch.min']
 		async: ['library/async']
-		controllers: ['controllers']
-		services: ['services']
-		directives: ['directives']
-		filters: ['filters']
-
-	shim:
-		angular: exports: 'angular'
-		jquery: exports: '$'
-
-		ngSanitize: ['angular']
-		ngTouch: ['angular']
-
-		controllers: ['angular']
-		services: ['angular']
-		directives: ['angular']
-		filters: ['angular']
-
-	priority: ['angular']
 
 require [
-	'angular',
 	'controllers',
 	'directives',
 	'services',

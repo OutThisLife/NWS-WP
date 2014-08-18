@@ -28,19 +28,9 @@
 
 	<?php wp_head() ?>
 </head>
-<body <?php body_class() ?> ng-controller="MainController" itemscope itemtype="http://schema.org/WebPage">
+<body <?php body_class() ?> itemscope itemtype="http://schema.org/WebPage">
 
-<!-- MOBILE DROPDOWN -->
-<nav id="mobile-dd" ng-init="mobile.status = 'closed'" class="{{ mobile.status }}">
-	<ul>
-		<li><a href="#">Menu Item</a></li>
-		<li><a href="#">Menu Item</a></li>
-		<li><a href="#">Menu Item</a></li>
-		<li><a href="#">Menu Item</a></li>
-	</ul>
-</nav>
-
-<div id="container" class="{{ mobile.status }}">
+<div id="container">
 
 <!-- HEADER -->
 <header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
@@ -52,7 +42,7 @@
 
 	<div class="right text-right small-6 medium-8 columns">
 		<!-- Main menu -->
-		<nav id="nav" class="hide-for-small" ng-hoverintent role="navigation">
+		<nav id="nav" ng-hoverintent role="navigation">
 			<ul itemscope itemtype="http://schema.org/SiteNavigationElement">
 				<li><a href="#">Menu Item</a></li>
 				<li><a href="#">Menu Item</a></li>
@@ -68,13 +58,6 @@
 				<li><a href="#">Menu Item</a></li>
 			</ul>
 		</nav>
-
-		<!-- Mobile menu link -->
-		<div class="show-for-small">
-			<a href="javascript:;" id="mobile-dd-link" class="{{ mobile.status }}" ng-click="mobile.toggle()">
-				<i class="fa fa-bars"></i>
-			</a>
-		</div>
 	</div>
 </div>
 </header>

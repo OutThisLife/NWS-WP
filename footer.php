@@ -14,8 +14,9 @@
 <?=BackEnd::getOption('extra-scripts')?>
 <?php wp_footer() ?>
 
-<script src="//cdn.jsdelivr.net/lodash/2.4.1/lodash.min.js"></script>
 <script src="<?=assetDir?>/js/library/modernizr.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
 <script data-main="<?=assetDir?>/js/core" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.9/require.min.js"></script>
 
 </body>
