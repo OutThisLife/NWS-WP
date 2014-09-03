@@ -10,6 +10,10 @@ $small: 40.063em
 	$remSize: $size / 16
 	@return #{$remSize}rem
 
+@mixin font-size($size)
+	font-size: $size
+	font-size: rem($size)
+
 @function tracking($points: 100)
 	$tracking: $points / 1000
 	@return #{$tracking}em
@@ -338,15 +342,11 @@ $small: 40.063em
 	&:after
 		clear: both
 
-.cls
-	clear: both
-
 .clearfix
 	@include clearfix
 
-@mixin wrap($y: 0)
-	width: $maxWidth
-	margin: $y auto
+.cls
+	clear: both
 
 @mixin sq($dim)
 	width: $dim
@@ -373,6 +373,12 @@ $small: 40.063em
 .table.cover,
 .table.cover > .cell
 	@include sq(100%)
+
+.center
+	position: absolute
+	left: 50%
+	top: 50%
+	@include transform(translate(-50%, -50%))
 
 // -----------------------------------------------
 
@@ -427,17 +433,6 @@ $small: 40.063em
 
 	ul li
 		@content
-
-@mixin fixWPNav($correct, $remove)
-	#header li
-		&##{$correct} > a
-			@extend %selected
-
-		&##{$remove} > a
-			@extend %default
-
-			&:hover
-				@extend %selected
 
 // -----------------------------------------------
 
@@ -532,6 +527,12 @@ q:after
 .wf-loading
 	visibility: hidden !important
 
+.hide
+	display: none
+
+.invisible
+	visibility: hidden
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
 	display: none !important
 
@@ -584,12 +585,6 @@ q:after
 .row.collapse .columns
 	padding-left: 0
 	padding-right: 0
-
-.hide
-	display: none
-
-.invisible
-	visibility: hidden
 
 .collapse-2col .columns
 	@media (min-width: $small)

@@ -40,6 +40,16 @@ body
 	margin: 0
 	padding: 0
 
+.wrapper
+	@include clearfix
+	max-width: $maxWidth
+	margin: 0 auto
+	padding: 0 $pad
+
+@include colorSelection
+	color: #FFF
+	background: #E74C3C
+
 p, ul, ol, dl
 	color: inherit
 	font: rem(13)/1.5 $font
@@ -59,21 +69,14 @@ a
 	&:hover
 		color: lighten($default, 10)
 
-.wrapper
-	@include clearfix
-	max-width: $maxWidth
-	margin: 0 auto
-	padding: 0 $pad
-
-@include colorSelection
-	color: #FFF
-	background: #E74C3C
-
 // -----------------------------------------------
 
 /**
  * Global styles
  */
+
+// Icons
+[class*="icon-"]
 
 // Buttons
 [class*="button-"]
