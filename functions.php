@@ -96,11 +96,11 @@ $tmpl->debug(0)->adminBar(0)
 
 	# [grid]
 	'grid' => function($args, $content) {
-		$html = '<div class="grid grid-'. $args['cols'] .'">';
-		$html .= do_shortcode($content);
-		$html .= '</div>';
+		ob_start();
 
-		return $html;
+		echo '<div class="grid grid-', $args['cols'], '">', do_shortcode($content), '</div>';
+
+		return ob_get_clean();
 	},
 
 	# [grid_item]

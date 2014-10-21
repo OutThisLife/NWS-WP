@@ -34,6 +34,13 @@ class BaseTheme {
 	}
 
 	public function render() {
+		ob_start(function($buffer) {
+			$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
+			$replace = array('>', '<', '\\1');
+
+			return preg_replace($search, $replace, $buffer);
+		});
+
 		return array_walk($this->vars, array($this, 'sortDynamicMethod'));
 	}
 

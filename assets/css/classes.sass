@@ -11,7 +11,7 @@ $small: 40.063em
 	@return #{$remSize}rem
 
 @mixin font-size($size)
-	font-size: $size
+	font-size: #{$size}px
 	font-size: rem($size)
 
 @function tracking($points: 100)
@@ -342,11 +342,15 @@ $small: 40.063em
 	&:after
 		clear: both
 
+.cls
+	clear: both
+
 .clearfix
 	@include clearfix
 
-.cls
-	clear: both
+@mixin wrap($y: 0)
+	width: $maxWidth
+	margin: $y auto
 
 @mixin sq($dim)
 	width: $dim
@@ -379,6 +383,16 @@ $small: 40.063em
 	left: 50%
 	top: 50%
 	@include transform(translate(-50%, -50%))
+
+.centerY
+	position: absolute
+	top: 50%
+	@include transform(translate(0, -50%))
+
+.centerX
+	position: absolute
+	left: 50%
+	@include transform(translate(-50%, 0))
 
 // -----------------------------------------------
 
@@ -422,7 +436,8 @@ $small: 40.063em
 	&.current_page_parent > a,
 	&.current_page_item > a,
 	&.current_page_ancestor > a,
-	&.current-cat > a
+	&.current-cat > a,
+	&.current-cat-parent > a
 		@content
 
 @mixin wpMenu
@@ -433,6 +448,17 @@ $small: 40.063em
 
 	ul li
 		@content
+
+@mixin fixWPNav($correct, $remove)
+	#header li
+		&##{$correct} > a
+			@extend %selected
+
+		&##{$remove} > a
+			@extend %default
+
+			&:hover
+				@extend %selected
 
 // -----------------------------------------------
 
@@ -507,13 +533,13 @@ a img
 	outline: 0
 	border: 0
 
-a,
-input[type],
-button[type],
-select, textarea
-	&:focus,
-	&:active
-		outline: 5px auto #4d90fe
+// a,
+// input[type],
+// button[type],
+// select, textarea
+// 	&:focus,
+// 	&:active
+// 		outline: 5px auto #4d90fe
 
 figure
 	margin: 0
@@ -526,12 +552,6 @@ q:after
 
 .wf-loading
 	visibility: hidden !important
-
-.hide
-	display: none
-
-.invisible
-	visibility: hidden
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
 	display: none !important
@@ -585,6 +605,12 @@ q:after
 .row.collapse .columns
 	padding-left: 0
 	padding-right: 0
+
+.hide
+	display: none
+
+.invisible
+	visibility: hidden
 
 .collapse-2col .columns
 	@media (min-width: $small)

@@ -3,7 +3,7 @@
  * Theme Name: replaceMe
  * Version: 1.0
  * Author: Talasan Nicholson
- * Author URI: http://www.nicholsonws.com/
+ * Author URI: http://www.nwsco.org
  */
 
 get_header();
