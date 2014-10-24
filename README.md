@@ -211,12 +211,6 @@ Quick inclusion of a typekit script, add like so: `<?=FrontEnd::typekit('youridh
 
 Just returns the title string, structured for YOAST. While technically a 'backend' function, it doesn't do anything interesting and so it's stuck here.
 
-### frontUriHash()
-
-If you're building a complicated app with ajax, this is used to redirect a real url (ie: domain.com/services/) to domain.com#/services, that way your JS can parse it and go to the proper page.
-
-Try not to need this.
-
 ### formatPhone()
 
 Does as it says. Formats all phone types to a proper format.

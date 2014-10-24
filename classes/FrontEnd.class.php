@@ -70,22 +70,6 @@ S;
 		echo '<title>', wp_title('|', true, 'right'), '</title>';
 	}
 
-	public static function frontUriHash() {
-		$home = get_settings('home');
-		$path = parse_url($home);
-
-		$goTo = $home;
-		$goTo .= '#'.str_replace(
-			$path['path'].'/',
-			'/',
-			$_SERVER['REQUEST_URI']
-		);
-
-		$goTo = str_replace('#/', '/#', $goTo);
-
-		return $goTo;
-	}
-
 	public static function getImg($id, $size, $class = '') {
 		return wp_get_attachment_image($id, $size, false, array(
 			'itemprop' => 'image',
