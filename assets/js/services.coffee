@@ -10,8 +10,7 @@ app.service '$xhr', ['$http', '$q', ($http, $q) ->
 			method: 'GET'
 			url: uri
 			cache: true
-			headers:
-				'REQUEST_WITH': 'xmlhttprequest'
+			headers: 'REQUEST_WITH': 'xmlhttprequest'
 
 		.success (response, status, headers, config) ->
 			results = []
