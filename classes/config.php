@@ -8,6 +8,11 @@
 # Set JPEG quality to 100%
 add_filter('jpeg_quality', function() { return 100; });
 
+# Fix YOAST + w3tc bug
+add_filter('wpseo_robots', function($robots) {
+	return 'index,follow';
+});
+
 # Assets directory
 DEFINE('assetDir', get_template_directory_uri() . '/assets');
 

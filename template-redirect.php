@@ -12,4 +12,4 @@ $children = get_pages(array(
 	'sort_column' => 'menu_order',
 ));
 
-wp_redirect(get_permalink($children[0]));
+wp_redirect(get_permalink($children[0]), 301);
