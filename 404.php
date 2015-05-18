@@ -13,12 +13,11 @@ get_header();
 
 <!-- CONTENT -->
 <section id="content" role="main">
-
-<div class="wrapper">
+<div class="row wrapper">
 	<!-- Page -->
-	<div id="page" class="small-12 columns">
+	<div id="page">
 		<h2>Sorry, that page could not be found.</h2>
-		
+
 		<p>
 			The page you were looking for couldn't be found. Please try again by using the navigation above.
 		</p>
@@ -29,7 +28,6 @@ get_header();
 		</ul>
 	</div>
 </div>
-
 </section>
 
 <?php get_footer() ?>

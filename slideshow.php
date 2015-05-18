@@ -6,26 +6,12 @@
  */
 ?>
 
-<div ng-slideshow>
-	<!-- The slides -->
-	<div>
-		<figure class="slide">
-			<h2>Hello 0</h2>
-		</figure>
+<slideshow ng-init="current = 0; autoplay(6000)">
+	<figure class="active slide">
+		<h2>Hello 0</h2>
+	</figure>
 
-		<figure class="slide">
-			<h2>Hello 1</h2>
-		</figure>
-
-		<figure class="slide">
-			<h2>Hello 3</h2>
-		</figure>
-
-		<figure class="slide">
-			<h2>Hello 4</h2>
-		</figure>
-	</div>
-
-	<!-- Slide pager -->
-	<nav></nav>
-</div>
+	<figure class="slide">
+		<h2>Hello 1</h2>
+	</figure>
+</slideshow>

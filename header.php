@@ -19,6 +19,10 @@
 	<link rel="image_src" href="<?=assetDir?>/images/logo.png" />
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
+
+	<link rel="stylesheet" href="<?=bowerDir?>/materialize/dist/css/materialize.min.css" />
+	<link rel="stylesheet" href="<?=assetDir?>/css/core.css" />
+
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
 	<script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
@@ -30,34 +34,8 @@
 </head>
 <body <?php body_class() ?> itemscope itemtype="http://schema.org/WebPage">
 
-<div id="container">
-
 <!-- HEADER -->
 <header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-<div class="wrapper">
-	<!-- Logo -->
-	<a href="<?=home_url()?>" title="<?php bloginfo('name') ?>" id="logo" class="small-6 medium-4 columns">
-		<img src="<?=assetDir?>/images/logo.png" alt="<?php bloginfo('name') ?>" />
-	</a>
-
-	<div class="right text-right small-6 medium-8 columns">
-		<!-- Main menu -->
-		<nav id="nav" ng-hoverintent role="navigation">
-			<ul itemscope itemtype="http://schema.org/SiteNavigationElement">
-				<li><a href="#">Menu Item</a></li>
-				<li><a href="#">Menu Item</a></li>
-				<li>
-					<a href="#">Menu Item</a>
-
-					<ul>
-						<li><a href="#">Menu 1</a></li>
-						<li><a href="#">Menu 2</a></li>
-						<li><a href="#">Menu 3</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Menu Item</a></li>
-			</ul>
-		</nav>
-	</div>
+<div class="row wrapper">
 </div>
 </header>

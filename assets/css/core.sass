@@ -10,25 +10,13 @@
  * Variables
  */
 $pad: 15px
-$maxWidth: 960px + ($pad * 2)
+$maxWidth: 1440px
 
 // Fonts
 $font: Arial, sans-serif
 
 // Colours
 $default: #222
-
-// -----------------------------------------------
-
-/**
- * Keyframes
- */
-
-// -----------------------------------------------
-
-/**
- * Site-specific mixins
- */
 
 // -----------------------------------------------
 
@@ -48,41 +36,13 @@ body
 
 @include colorSelection
 	color: #FFF
-	background: #E74C3C
-
-p, ul, ol, dl
-	color: inherit
-	font: rem(13)/1.5 $font
-
-h1,h2,h3,h4,h5,h6
-	color: inherit
-	margin: 25px 0 10px
-	padding: 0
-
-	&:first-child
-		margin-top: 0
-
-a
-	color: $default
-	text-decoration: none
-
-	&:hover
-		color: lighten($default, 10)
+	background: blue
 
 // -----------------------------------------------
 
 /**
- * Global styles
+ * Global modules
  */
-
-// Buttons
-.button
-
-// Icons
-[class*="icon-"]
-
-// Social
-li[class*="social-"]
 
 // -----------------------------------------------
 
@@ -90,36 +50,6 @@ li[class*="social-"]
  * Header
  */
 #header
-	// Main nav styles
-	@include wpMenu
-		//
-
-		@include wpActives
-			//
-
-		// Dropdown
-		&.menu-item-has-children
-			> a
-
-			&.over
-				> a
-
-				> ul
-					display: block
-
-		> ul
-			display: none
-			position: absolute
-			top: 100%
-			left: 0
-			padding: 7px
-			background: #FFF
-
-			li
-				display: block
-
-				a
-					display: block
 
 // -----------------------------------------------
 
@@ -140,15 +70,18 @@ li[class*="social-"]
 /**
  * Slideshows
  */
-[ng-slideshow] .slide
-	z-index: 0
-	@include cover
-	@include opacity(0)
-	@include transition(opacity .75s ease)
+slideshow
+	display: block
 
-	&.active
-		z-index: 1
-		@include opacity(1)
+	.slide
+		z-index: 0
+		@include cover
+		@include opacity(0)
+		@include transition(opacity .75s ease)
+
+		&.active
+			z-index: 1
+			@include opacity(1)
 
 // -----------------------------------------------
 

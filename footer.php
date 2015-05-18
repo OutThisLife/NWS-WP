@@ -9,15 +9,16 @@
 <footer id="footer" itemscope itemtype="http://schema.org/WPFooter">
 </footer>
 
-</div> <!-- END #container -->
-
 <?=BackEnd::getOption('extra-scripts')?>
 <?php wp_footer() ?>
 
 <script src="<?=assetDir?>/js/library/modernizr.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
-<script data-main="<?=assetDir?>/js/core" src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.9/require.min.js"></script>
+<script src="<?=bowerDir?>/jquery/dist/jquery.min.js"></script>
+<script src="<?=bowerDir?>/materialize/dist/js/materialize.min.js"></script>
+<script src="<?=bowerDir?>/lodash/lodash.min.js"></script>
+
+<!-- Angularjs framework -->
+<script data-main="<?=assetDir?>/js/core" src="<?=bowerDir?>/requirejs/require.js"></script>
 
 </body>
 </html>

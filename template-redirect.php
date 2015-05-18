@@ -8,7 +8,7 @@
 the_post();
 
 $children = get_pages(array(
-	'child_of' => $post->ID,
+	'child_of' => get_the_ID(),
 	'sort_column' => 'menu_order',
 ));
 

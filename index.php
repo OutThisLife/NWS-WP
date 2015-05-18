@@ -14,13 +14,12 @@ get_header();
 
 <!-- CONTENT -->
 <section id="content" role="main">
-
-<div class="wrapper">
+<div class="row wrapper">
 	<!-- Sidebar -->
 	<?php get_sidebar() ?>
 
 	<!-- Page -->
-	<div id="page" class="left small-12 medium-8 columns">
+	<div id="page" class="col s12 m8">
 	<?php
 	if (have_posts()):
 	while (have_posts()):
@@ -34,7 +33,6 @@ get_header();
 	?>
 	</div>
 </div>
-
 </section>
 
 <?php get_footer() ?>

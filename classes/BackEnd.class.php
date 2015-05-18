@@ -173,7 +173,7 @@ class BackEnd extends BaseTheme {
 		else:
 			$tax = get_object_taxonomies($type);
 			$tax = $tax[0];
-		
+
 		endif;
 
 		return (object) array(
@@ -181,7 +181,7 @@ class BackEnd extends BaseTheme {
 			'taxonomy' => $tax,
 		);
 	}
-	
+
 	public static function getAdjacentPost($dir = 'prev', $type = 'post', $sameCategory = false) {
 		global $post, $wpdb;
 
