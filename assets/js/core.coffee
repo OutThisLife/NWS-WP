@@ -4,7 +4,7 @@ requirejs.config
 	waitTimeout: 0
 
 	paths:
-		angular: 'bower_components/angularjs/angular.min',
+		angular: 'bower_components/angular/angular.min',
 		ngTouch: 'bower_components/angular-touch/angular-touch.min'
 		ngSanitize: 'bower_components/angular-sanitize/angular-sanitize.min'
 
