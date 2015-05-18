@@ -13,21 +13,14 @@ $pad: 15px
 $maxWidth: 1440px
 
 // Fonts
-$font: Arial, sans-serif
 
 // Colours
-$default: #222
 
 // -----------------------------------------------
 
 /**
  * General
  */
-body
-	color: $default
-	margin: 0
-	padding: 0
-
 .wrapper
 	@include clearfix
 	max-width: $maxWidth
@@ -36,7 +29,7 @@ body
 
 @include colorSelection
 	color: #FFF
-	background: blue
+	background: #EE6E73
 
 // -----------------------------------------------
 
@@ -89,16 +82,5 @@ slideshow
  * Containers
  */
 #content
-	.alignleft
-		float: left
-		margin: 0 15px 0 0
-
-	.alignright
-		float: right
-		margin: 0 15px 0 0
-
-	.aligncenter
-		float: none
-		margin: 15px auto
 
 // -----------------------------------------------
