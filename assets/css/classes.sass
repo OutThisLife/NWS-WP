@@ -105,38 +105,6 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin transitionDuration($time)
-	transition-duration: $time
-	-khtml-transition-duration: $time
-	-webkit-transition-duration: $time
-	-moz-transition-duration: $time
-	-ms-transition-duration: $time
-	-o-transition-duration: $time
-
-@mixin transitionProperty($property)
-	transition-property: $property
-	-khtml-transition-property: $property
-	-webkit-transition-property: $property
-	-moz-transition-property: $property
-	-ms-transition-property: $property
-	-o-transition-property: $property
-
-@mixin transitionStyle($style)
-	transition-style: $style
-	-khtml-transition-style: $style
-	-webkit-transition-style: $style
-	-moz-transition-style: $style
-	-ms-transition-style: $style
-	-o-transition-style: $style
-
-@mixin transitionTiming($easing: ease)
-	transition-timing-function: $easing
-	-khtml-transition-timing-function: $easing
-	-webkit-transition-timing-function: $easing
-	-moz-transition-timing-function: $easing
-	-ms-transition-timing-function: $easing
-	-o-transition-timing-function: $easing
-
 @mixin transition($string)
 	transition: $string
 	-khtml-transition: $string
@@ -144,12 +112,6 @@ $small: 40.063em
 	-moz-transition: $string
 	-ms-transition: $string
 	-o-transition: $string
-
-@mixin hideBackface
-	-webkit-backface-visibility: hidden
-	-moz-backface-visibility: hidden
-	-ms-backface-visibility: hidden
-	backface-visibility: hidden
 
 // -----------------------------------------------
 
@@ -168,21 +130,6 @@ $small: 40.063em
 	-o-transform-origin: $origin
 	transform-origin: $origin
 
-@mixin transformStyle($style)
-	-webkit-transform-style: $style
-	-moz-transform-style: $style
-	-ms-transform-style: $style
-	-o-transform-style: $style
-	transform-style: $style
-
-@mixin animation($string)
-	animation: $string
-	-webkit-animation: $string
-	-khtml-animation: $string
-	-moz-animation: $string
-	-ms-animation: $string
-	-o-animation: $string
-
 @mixin perspective($perspective)
 	-webkit-perspective: $perspective
 	-moz-perspective: $perspective
@@ -190,12 +137,13 @@ $small: 40.063em
 	-o-perspective: $perspective
 	perspective: $perspective
 
-@mixin perspectiveOrigin($string)
-	-webkit-perspective-origin: $string
-	-moz-perspective-origin: $string
-	-ms-perspective-origin: $string
-	-o-perspective-origin: $string
-	perspective-origin: $string
+@mixin hideBackface
+	-webkit-backface-visibility: hidden
+	-moz-backface-visibility: hidden
+	-ms-backface-visibility: hidden
+	backface-visibility: hidden
+
+// -----------------------------------------------
 
 @mixin keyframes($name)
 	@-webkit-keyframes #{$name}
@@ -207,7 +155,15 @@ $small: 40.063em
 	@keyframes #{$name}
 		@content
 
-.noanim
+@mixin animation($string)
+	animation: $string
+	-webkit-animation: $string
+	-khtml-animation: $string
+	-moz-animation: $string
+	-ms-animation: $string
+	-o-animation: $string
+
+.no-anim
 	-webkit-transition: none !important
 	-moz-transition: none !important
 	-ms-transition: none !important
@@ -237,14 +193,6 @@ $small: 40.063em
 	-moz-box-sizing: $type
 	-ms-box-sizing: $type
 	-o-box-sizing: $type
-
-@mixin imageBlock($width, $height, $source, $display: block)
-	display: $display
-	width: $width
-	height: $height
-	text-indent: -999em
-	text-align: left !important
-	background: url(../images/#{$source}) no-repeat
 
 // -----------------------------------------------
 
@@ -297,6 +245,16 @@ $small: 40.063em
 	-moz-column-gap: $gap
 	-ms-column-gap: $gap
 	-o-column-gap: $gap
+
+// -----------------------------------------------
+
+@mixin imageBlock($width, $height, $source, $display: block)
+	display: $display
+	width: $width
+	height: $height
+	text-indent: -999em
+	text-align: left !important
+	background: url(../images/#{$source}) no-repeat
 
 // -----------------------------------------------
 
@@ -355,9 +313,7 @@ $small: 40.063em
 .clearfix
 	@include clearfix
 
-@mixin wrap($y: 0)
-	width: $maxWidth
-	margin: $y auto
+// -----------------------------------------------
 
 @mixin sq($dim)
 	width: $dim
@@ -387,6 +343,8 @@ $small: 40.063em
 .table.cover,
 .table.cover > .cell
 	@include sq(100%)
+
+// -----------------------------------------------
 
 .center
 	position: absolute
@@ -539,24 +497,21 @@ body
 	position: relative
 	@include boxSizing(border-box)
 
-a img
-	outline: 0
-	border: 0
-
-figure
-	margin: 0
-
 q:before
 	content: "\201C"
 
 q:after
 	content: "\201D"
 
+// -----------------------------------------------
+
 .wf-loading
 	visibility: hidden !important
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
 	display: none !important
+
+// -----------------------------------------------
 
 .table
 	display: table
@@ -565,6 +520,8 @@ q:after
 .cell
 	display: table-cell
 	vertical-align: middle
+
+// -----------------------------------------------
 
 .gm-style *
 	max-width: none

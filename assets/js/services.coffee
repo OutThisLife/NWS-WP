@@ -1,25 +1,36 @@
 app = angular.module 'app.services', []
 
+app.config ['$httpProvider', ($httpProvider) ->
+	$httpProvider.defaults.transformRequest = (data) ->
+		return data if data is undefined
+		return jQuery.param data
+
+	$httpProvider.defaults.headers.common["X-Request-With"] = 'XMLHttpRequest'
+	$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
+]
+
 # ------------------------------------------------------------------
 
 app.service '$xhr', ['$http', '$q', ($http, $q) ->
-	fetch: (uri) ->
+	fetch: (uri, method = 'GET', params = {}) ->
 		deferred = $q.defer()
 
-		$http
-			method: 'GET'
+		config =
+			method: method
 			url: uri
-			cache: true
-			headers: 'REQUEST_WITH': 'xmlhttprequest'
+			cache: false
 
-		.success (response, status, headers, config) ->
+		if method is 'POST'
+			config.dataType = 'json'
+			config.data = params
+
+		x = $http config
+		x.error (data, status) -> deferred.reject data, status
+
+		x.success (response, status, headers, config) ->
 			results = []
 			results.data = response
-			results.headers = headers()
-
 			deferred.resolve results
-
-		.error (data, status) -> deferred.reject data, status
 
 		deferred.promise
 ]

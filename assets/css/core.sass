@@ -13,8 +13,10 @@ $pad: 15px
 $maxWidth: 1440px
 
 // Fonts
+$font: sans-serif
 
 // Colours
+$default: #000
 
 // -----------------------------------------------
 
@@ -25,11 +27,13 @@ $maxWidth: 1440px
 	@include clearfix
 	max-width: $maxWidth
 	margin: 0 auto
-	padding: 0 $pad
+
+	@media (max-width: $small)
+		padding: 0 $pad
 
 @include colorSelection
 	color: #FFF
-	background: #EE6E73
+	background: blue
 
 // -----------------------------------------------
 
@@ -61,26 +65,6 @@ $maxWidth: 1440px
 // -----------------------------------------------
 
 /**
- * Slideshows
- */
-slideshow
-	display: block
-
-	.slide
-		z-index: 0
-		@include cover
-		@include opacity(0)
-		@include transition(opacity .75s ease)
-
-		&.active
-			z-index: 1
-			@include opacity(1)
-
-// -----------------------------------------------
-
-/**
  * Containers
  */
 #content
-
-// -----------------------------------------------
