@@ -543,14 +543,6 @@ a img
 	outline: 0
 	border: 0
 
-// a,
-// input[type],
-// button[type],
-// select, textarea
-// 	&:focus,
-// 	&:active
-// 		outline: 5px auto #4d90fe
-
 figure
 	margin: 0
 
@@ -565,31 +557,6 @@ q:after
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
 	display: none !important
-
-.notification
-	padding: 10px
-	margin: 15px 0
-	border: 1px solid transparent
-
-	&.error
-		color: #981010
-		border-color: #8F0000
-		background: #FFCCCC
-
-	&.success
-		color: #258815
-		border-color: #9ADF8F
-		background: #D4FFCD
-
-	&.info
-		color: #2850C1
-		border-color: #9FC7F5
-		background: #DBECFF
-
-	&.warning
-		color: #878314
-		border-color: #E5DB55
-		background: #FEFCCB
 
 .table
 	display: table
@@ -609,52 +576,8 @@ q:after
 
 // -----------------------------------------------
 
-.row.full-width
-	max-width: none
-
-.row.collapse .columns
-	padding-left: 0
-	padding-right: 0
-
 .hide
 	display: none
 
 .invisible
 	visibility: hidden
-
-.collapse-2col .columns
-	@media (min-width: $small)
-		&:first-child
-			padding-left: 0 !important
-
-		&:last-child
-			padding-right: 0 !important
-
-		&:only-child
-			width: 100% !important
-			padding: 0 !important
-			padding: 0 !important
-
-	@media (max-width: $small)
-		&.small-12
-			padding-left: 0 !important
-			padding-right: 0 !important
-
-.collapse-3col .columns
-	@media (min-width: $small)
-		&:first-child,
-		&:nth-child(3n + 1)
-			padding-left: 0 !important
-
-		&:nth-child(2),
-		&:nth-child(3n + 2)
-			padding: 0 .47rem
-
-		&:last-child,
-		&:nth-child(3n)
-			padding-right: 0 !important
-
-	@media (max-width: $small)
-		&.small-12
-			padding-left: 0 !important
-			padding-right: 0 !important
