@@ -19,7 +19,6 @@
 	<link rel="image_src" href="<?=assetDir?>/images/logo.png" />
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
-
 	<link rel="stylesheet" href="<?=bowerDir?>/materialize/dist/css/materialize.min.css" />
 	<link rel="stylesheet" href="<?=assetDir?>/css/core.css" />
 
