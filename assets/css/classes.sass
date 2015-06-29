@@ -10,7 +10,7 @@ $small: 40.063em
 	$remSize: $size / 16
 	@return #{$remSize}rem
 
-@mixin font-size($size)
+=font-size($size)
 	font-size: #{$size}px
 	font-size: rem($size)
 
@@ -20,7 +20,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin backgroundSize($type)
+=backgroundSize($type)
 	background-size: $type
 	-khtml-background-size: $type
 	-webkit-background-size: $type
@@ -30,14 +30,14 @@ $small: 40.063em
 
 .full-bg
 	background: center no-repeat
-	@include backgroundSize(cover)
+	+backgroundSize(cover)
 
-@mixin backgroundClip($type)
+=backgroundClip($type)
 	-webkit-background-clip: $type
 	-moz-background-clip: $type
 	background-clip: $type
 
-@mixin linearGradient($from, $to, $img: 0, $dist: 50)
+=linearGradient($from, $to, $img: 0, $dist: 50)
 	background: $from
 
 	@if $img != 0
@@ -48,7 +48,7 @@ $small: 40.063em
 		background-image: -webkit-gradient(linear, 0 0, 0 $dist, from($from), to($to))
 		background-image: -moz-linear-gradient($from, $to)
 
-@mixin smartGradient($base, $flipped: false)
+=smartGradient($base, $flipped: false)
 	$from: lighten($base, 2)
 	$to: darken($base, 2)
 
@@ -62,7 +62,7 @@ $small: 40.063em
 		background-image: -webkit-gradient(linear, 0 0, 0 50, from($to), to($from))
 		background-image: -moz-linear-gradient($to, $from)
 
-@mixin transparentBG($color, $alpha)
+=transparentBG($color, $alpha)
 	$rgba: rgba($color, $alpha)
 	$ie: ie-hex-str($rgba)
 
@@ -71,13 +71,13 @@ $small: 40.063em
 	background-color: $rgba
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie},endColorstr=#{$ie})
 
-@mixin transparentColour($color, $alpha)
+=transparentColour($color, $alpha)
 	color: $color
 	color: rgba($color, $alpha)
 
 // -----------------------------------------------
 
-@mixin textShadow($string)
+=textShadow($string)
 	text-shadow: $string
 	-khtml-text-shadow: $string
 	-webkit-text-shadow: $string
@@ -85,7 +85,7 @@ $small: 40.063em
 	-ms-text-shadow: $string
 	-o-text-shadow: $string
 
-@mixin stroke($colour)
+=stroke($colour)
 	text-shadow: -1px -1px 0 $colour, 1px -1px 0 $colour, -1px 1px 0 $colour, 1px 1px 0 $colour
 	-khtml-text-shadow: -1px -1px 0 $colour, 1px -1px 0 $colour, -1px 1px 0 $colour, 1px 1px 0 $colour
 	-webkit-text-shadow: -1px -1px 0 $colour, 1px -1px 0 $colour, -1px 1px 0 $colour, 1px 1px 0 $colour
@@ -95,7 +95,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin boxShadow($string)
+=boxShadow($string)
 	box-shadow: $string
 	-khtml-box-shadow: $string
 	-webkit-box-shadow: $string
@@ -105,7 +105,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin transition($string)
+=transition($string)
 	transition: $string
 	-khtml-transition: $string
 	-webkit-transition: $string
@@ -115,7 +115,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin transform($type)
+=transform($type)
 	transform: $type
 	-khtml-transform: $type
 	-webkit-transform: $type
@@ -123,21 +123,21 @@ $small: 40.063em
 	-ms-transform: $type
 	-o-transform: $type
 
-@mixin transformOrigin($origin)
+=transformOrigin($origin)
 	-webkit-transform-origin: $origin
 	-moz-transform-origin: $origin
 	-ms-transform-origin: $origin
 	-o-transform-origin: $origin
 	transform-origin: $origin
 
-@mixin perspective($perspective)
+=perspective($perspective)
 	-webkit-perspective: $perspective
 	-moz-perspective: $perspective
 	-ms-perspective: $perspective
 	-o-perspective: $perspective
 	perspective: $perspective
 
-@mixin hideBackface
+=hideBackface
 	-webkit-backface-visibility: hidden
 	-moz-backface-visibility: hidden
 	-ms-backface-visibility: hidden
@@ -145,7 +145,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin keyframes($name)
+=keyframes($name)
 	@-webkit-keyframes #{$name}
 		@content
 
@@ -155,7 +155,7 @@ $small: 40.063em
 	@keyframes #{$name}
 		@content
 
-@mixin animation($string)
+=animation($string)
 	animation: $string
 	-webkit-animation: $string
 	-khtml-animation: $string
@@ -172,12 +172,12 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin opacity($alpha)
+=opacity($alpha)
 	$ie: $alpha * 100
 	opacity: $alpha
 	filter: alpha(opacity=$ie)
 
-@mixin filter($filter)
+=filter($filter)
 	-webkit-filter: $filter
 	-moz-filter: $filter
 	-ms-filter: $filter
@@ -186,7 +186,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin boxSizing($type)
+=boxSizing($type)
 	box-sizing: $type
 	-khtml-box-sizing: $type
 	-webkit-box-sizing: $type
@@ -196,7 +196,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin borderRadius($radius)
+=borderRadius($radius)
 	border-radius: $radius
 	-khtml-border-radius: $radius
 	-webkit-border-radius: $radius
@@ -204,7 +204,7 @@ $small: 40.063em
 	-ms-border-radius: $radius
 	-o-border-radius: $radius
 
-@mixin borderImage($string)
+=borderImage($string)
 	-webkit-border-image: $string
 	-moz-border-image: $string
 	-o-border-image: $string
@@ -212,7 +212,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin mask($source)
+=mask($source)
 	mask-image: url("@{source")
 	-khtml-mask-image: url("@{source")
 	-webkit-mask-image: url("@{source")
@@ -222,7 +222,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin columns($len)
+=columns($len)
 	columns: $len
 	-khtml-columns: $len
 	-webkit-columns: $len
@@ -230,7 +230,7 @@ $small: 40.063em
 	-ms-columns: $len
 	-o-columns: $len
 
-@mixin columnCount($len)
+=columnCount($len)
 	column-count: $len
 	-khtml-column-count: $len
 	-webkit-column-count: $len
@@ -238,7 +238,7 @@ $small: 40.063em
 	-ms-column-count: $len
 	-o-column-count: $len
 
-@mixin columnGap($gap)
+=columnGap($gap)
 	column-gap: $gap
 	-khtml-column-gap: $gap
 	-webkit-column-gap: $gap
@@ -248,7 +248,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin imageBlock($width, $height, $source, $display: block)
+=imageBlock($width, $height, $source, $display: block)
 	display: $display
 	width: $width
 	height: $height
@@ -258,7 +258,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin userSelect($type)
+=userSelect($type)
 	user-select: $type
 	-khtml-user-select: $type
 	-webkit-user-select: $type
@@ -267,14 +267,14 @@ $small: 40.063em
 	-ms-user-select: $type
 	-o-user-select: $type
 
-@mixin hyphen($type)
+=hyphen($type)
 	hyphen: $type
 	-webkit-hyphen: $type
 	-moz-hyphen: $type
 	-ms-hyphen: $type
 	-o-hyphen: $type
 
-@mixin colorSelection($el: "*")
+=colorSelection($el: "*")
 	#{$el}::selection
 		@content
 
@@ -295,7 +295,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin clearfix
+=clearfix
 	zoom: 1
 
 	&:after, &:before
@@ -311,11 +311,11 @@ $small: 40.063em
 	clear: both
 
 .clearfix
-	@include clearfix
+	+clearfix
 
 // -----------------------------------------------
 
-@mixin sq($dim)
+=sq($dim)
 	width: $dim
 	height: $dim
 
@@ -327,7 +327,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin cover($pos: absolute, $dist: 0)
+=cover($pos: absolute, $dist: 0)
 	position: $pos
 	left: $dist
 	right: $dist
@@ -335,14 +335,14 @@ $small: 40.063em
 	top: $dist
 
 .cover
-	@include cover
+	+cover
 
 .is-fixed
 	position: fixed
 
 .table.cover,
 .table.cover > .cell
-	@include sq(100%)
+	+sq(100%)
 
 // -----------------------------------------------
 
@@ -350,21 +350,21 @@ $small: 40.063em
 	position: absolute
 	left: 50%
 	top: 50%
-	@include transform(translate(-50%, -50%))
+	+transform(translate(-50%, -50%))
 
 .centerY
 	position: absolute
 	top: 50%
-	@include transform(translate(0, -50%))
+	+transform(translate(0, -50%))
 
 .centerX
 	position: absolute
 	left: 50%
-	@include transform(translate(-50%, 0))
+	+transform(translate(-50%, 0))
 
 // -----------------------------------------------
 
-@mixin media($type)
+=media($type)
 	@if $type == tablet
 		@media only screen and (min-device-width: 767px) and (max-device-width: 1024px)
 			@content
@@ -395,7 +395,7 @@ $small: 40.063em
 
 // -----------------------------------------------
 
-@mixin wpActives
+=wpActives
 	&.active > a,
 	&.current-menu-item > a,
 	&.current-menu-parent > a,
@@ -408,7 +408,7 @@ $small: 40.063em
 	&.current-cat-parent > a
 		@content
 
-@mixin wpMenu
+=wpMenu
 	ul, li
 		display: inline
 		margin: 0
@@ -417,7 +417,7 @@ $small: 40.063em
 	ul li
 		@content
 
-@mixin fixWPNav($correct, $remove)
+=fixWPNav($correct, $remove)
 	#header li
 		&##{$correct} > a
 			@extend %selected
@@ -465,7 +465,7 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550)
 // -----------------------------------------------
 
 [class*="grid-"]
-	@include clearfix
+	+clearfix
 
 	.item
 		float: left
@@ -495,13 +495,28 @@ body
 
 *
 	position: relative
-	@include boxSizing(border-box)
+	+boxSizing(border-box)
 
 q:before
 	content: "\201C"
 
 q:after
 	content: "\201D"
+
+nav
+	+sq(auto)
+	padding: 0
+	+boxShadow(none)
+	background: none
+
+	+wpMenu
+		float: none
+
+		&:hover
+			background: none
+
+		a
+			padding: 0
 
 // -----------------------------------------------
 
@@ -525,7 +540,7 @@ q:after
 
 .gm-style *
 	max-width: none
-	@include boxSizing(content-box)
+	+boxSizing(content-box)
 
 .unreverse
 	direction: rtl
@@ -535,6 +550,16 @@ q:after
 
 .hide
 	display: none
+
+.hide-for-small
+	@media (max-width: $small)
+		display: none !important
+
+.show-for-small
+	display: none !important
+
+	@media (max-width: $small)
+		display: block !important
 
 .invisible
 	visibility: hidden

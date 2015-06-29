@@ -23,15 +23,19 @@ $default: #000
 /**
  * General
  */
+html
+	color: $default
+	font-family: $font
+
 .wrapper
-	@include clearfix
+	+clearfix
 	max-width: $maxWidth
 	margin: 0 auto
 
 	@media (max-width: $small)
 		padding: 0 $pad
 
-@include colorSelection
++colorSelection
 	color: #FFF
 	background: blue
 
@@ -40,6 +44,69 @@ $default: #000
 /**
  * Global modules
  */
+h1,h2,h3,h4,h5,h6
+	font-weight: 500
+	line-height: 20px
+	margin: 0
+
+	&:not(:first-child)
+		margin: 60px 0 30px
+
+p, ul, strong, em
+	font-size: 13px
+	line-height: 20px
+
+p
+	margin: 10px 0
+
+	.lead &
+		font-weight: 700
+
+strong
+	font-weight: 600
+
+img
+	max-width: 100%
+
+a
+	color: inherit
+	font-weight: 500
+	text-decoration: none
+
+	&:hover
+		text-decoration: underline
+
+// Form styles
+#content form
+	.col
+		padding: 0
+
+	label
+		cursor: pointer
+		color: $default
+
+	input[type=text],
+	input[type=password],
+	input[type=email],
+	input[type=url],
+	input[type=time],
+	input[type=date],
+	input[type=datetime-local],
+	input[type=tel],
+	input[type=search],
+	textarea
+		display: block
+		width: 100%
+		height: auto
+		color: $default
+		font: 12px $font
+		padding: 5px
+		margin: 0
+		+transition(none)
+
+// Buttons
+.btn
+	+sq(auto)
 
 // -----------------------------------------------
 
