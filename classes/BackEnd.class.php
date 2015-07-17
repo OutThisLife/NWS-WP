@@ -1,6 +1,6 @@
 <?php
 /**
- * replaceMe
+ * LC
  *
  * Controls back-end deliveries
  */
@@ -37,23 +37,22 @@ class BackEnd extends BaseTheme {
 
 	// -----------------------------------------------
 
-
 	public static function getChildren() {
+		$children = null;
+
 		# Blog
-		if (
-			is_home()
-			|| is_archive()
-			|| is_singular('post')
-			|| is_search()
-		) return self::getCategories();
+		if (DevTests::isBlog())
+			$children = self::getCategories();
 
 		# General pages
-		else return wp_list_pages(array(
+		else $children = wp_list_pages(array(
 			'title_li' => null,
 			'child_of' => self::getRootParent(),
 			'depth' => 1,
 			'echo' => false,
 		));
+
+		return $children;
 	}
 
 	public static function getCategories() {
@@ -145,7 +144,16 @@ class BackEnd extends BaseTheme {
 	}
 
 	public static function getRootTitle() {
-		return get_the_title(self::getRootParent());
+		$title = null;
+
+		# Blog
+		if (DevTests::isBlog())
+			$title = get_the_title(BLOG);
+
+		# General pages
+		else $title = get_the_title(self::getRootParent());
+
+		return $title;
 	}
 
 	public static function getPageDepth() {

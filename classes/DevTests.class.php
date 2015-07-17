@@ -1,6 +1,6 @@
 <?php
 /**
- * replaceMe
+ * LC
  *
  * Single to test for certain, specific, conditions
  */
@@ -16,7 +16,7 @@ class DevTests {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 
 		return preg_match(
-			'/(Android|iPhone|BlackBerry|Opera Mini)/i', 
+			'/(Android|iPhone|BlackBerry|Opera Mini)/i',
 			$ua
 		);
 	}
@@ -25,7 +25,7 @@ class DevTests {
 		$ua = $_SERVER['HTTP_USER_AGENT'];
 
 		return preg_match(
-			'/(iPad|Kindle|Tablet)/i', 
+			'/(iPad|Kindle|Tablet)/i',
 			$ua
 		);
 	}
@@ -50,6 +50,15 @@ class DevTests {
 					'wp-register.php',
 				))
 			)
+		);
+	}
+
+	public static function isBlog() {
+		return (
+			is_home()
+			|| is_archive()
+			|| is_singular('post')
+			|| is_search()
 		);
 	}
 
