@@ -7,3 +7,46 @@ raf = (-> (
 # ------------------------------------------------------------------
 
 app.directive 'qScope', -> scope: true
+
+# ------------------------------------------------------------------
+
+app.directive 'slideshow', ['$interval', ($interval) ->
+	restrict: 'E'
+	scope: true
+	controller: ['$scope', ($scope) ->
+		$scope.next = -> $scope.current += 1
+		$scope.prev = -> $scope.current -= 1
+
+		$scope.$watch 'current', (nv, ov) ->
+			return unless nv?
+			return if ov is nv
+
+			nv = 0 if nv > $scope.max - 1
+			nv = $scope.max - 1 if nv < 0
+			$scope.current = nv
+
+		autoplayInt = null
+		$scope.autoplay = (ms) ->
+			autoplayInt = $interval ->
+				$scope.next()
+			, ms
+
+		$scope.stop = -> $interval.cancel autoplayInt
+	]
+
+	link: (scope, el, attrs) ->
+		scope.$slides = el.find '.slide'
+		scope.max = scope.$slides.length || 1
+]
+
+# ------------------------------------------------------------------
+
+app.directive 'scrollFire', ->
+	restrict: 'A'
+	scope: false
+	link: (scope, el, attrs) ->
+		el.on 'inview', (e, visible, x, y) ->
+			if visible
+				el.removeClass('invisible').addClass 'animated fadeInDown'
+
+		scope.$on '$destroy', -> el.unbind 'inview'

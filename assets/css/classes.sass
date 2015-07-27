@@ -340,6 +340,9 @@ $small: 40.063em
 .is-fixed
 	position: fixed
 
+.is-static
+	position: static
+
 .table.cover,
 .table.cover > .cell
 	+sq(100%)
@@ -482,6 +485,9 @@ $easeInOutBack: cubic-bezier(0.680, -0.550, 0.265, 1.550)
 		&.grid-#{$i} .item
 			width: 100% / $i
 
+	@media (max-width: $small)
+		width: 100%
+
 // -----------------------------------------------
 
 body
@@ -535,6 +541,14 @@ nav
 .cell
 	display: table-cell
 	vertical-align: middle
+
+.alignleft
+	float: left
+	margin: 0 15px 15px 0
+
+.alignright
+	float: right
+	margin: 0 0 15px 15px
 
 // -----------------------------------------------
 
