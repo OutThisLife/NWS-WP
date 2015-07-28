@@ -19,6 +19,7 @@
 	<link rel="image_src" href="<?=assetDir?>/images/logo.png" />
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
 	<link rel="stylesheet" href="<?=bowerDir?>/materialize/dist/css/materialize.min.css" />
 	<link rel="stylesheet" href="<?=assetDir?>/css/core.css" />
 
@@ -34,7 +35,28 @@
 <body <?php body_class() ?> itemscope itemtype="http://schema.org/WebPage">
 
 <!-- HEADER -->
-<header id="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-<div class="row wrapper">
-</div>
+<header id="header" class="clearfix" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+	<!-- Logo -->
+	<a href="<?=home_url()?>" class="left logo">
+		<img src="<?=assetDir?>/images/logo.png" alt="<?php bloginfo('name') ?>" />
+	</a>
+
+	<!-- Nav -->
+	<nav class="right">
+		<div class="hide-for-small">
+			<ul>
+				<li><a href="#">Item 1</a></li>
+				<li><a href="#">Item 2</a></li>
+				<li><a href="#">Item 3</a></li>
+				<li><a href="#">Item 4</a></li>
+				<li><a href="#">Item 5</a></li>
+			</ul>
+		</div>
+
+		<div class="show-for-small">
+			<a href="javascript:;" class="open-mobile-menu">
+				<i class="material-icons">reorder</i>
+			</a>
+		</div>
+	</nav>
 </header>
