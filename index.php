@@ -19,7 +19,7 @@ get_header();
 	<?php get_sidebar() ?>
 
 	<!-- Page -->
-	<div id="page" class="col s12 m8">
+	<div id="page" class="col s12 m8" itemscope itemtype="http://schema.org/Blog">
 	<?php
 	if (have_posts()):
 	while (have_posts()):

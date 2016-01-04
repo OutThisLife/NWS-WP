@@ -1,0 +1,22 @@
+/**
+ * Generic slideshow
+ */
+@media (min-width: $medium)
+	html, body, slideshow
+		height: 100%
+
+slideshow
+	display: block
+
+	@media (max-width: $medium)
+		height: 550px
+		padding: 0 $pad * 2
+
+	.slide
+		+cover
+		margin: 0
+		padding: 0
+		+transition(opacity 1s ease)
+
+		&:not(.active)
+			+opacity(0)

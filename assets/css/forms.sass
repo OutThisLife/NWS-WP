@@ -1,0 +1,42 @@
+/**
+ * Form styles
+ */
+form
+	.col
+		padding: 0
+
+	label
+		cursor: pointer
+		color: $default
+
+	input[type=text],
+	input[type=password],
+	input[type=email],
+	input[type=url],
+	input[type=time],
+	input[type=date],
+	input[type=datetime-local],
+	input[type=tel],
+	input[type=search],
+	textarea
+		display: block
+		width: 100%
+		height: auto
+		color: $default
+		font: 12px $font
+		padding: 5px
+		margin: 0
+		+transition(none)
+
+// -----------------------------------------------
+
+/**
+ * Buttons
+ */
+.btn
+	display: inline-block
+	+sq(auto)
+
+	img
+		vertical-align: top
+		margin: 0 $pad/2 0 0

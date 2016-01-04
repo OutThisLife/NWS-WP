@@ -19,9 +19,7 @@
 	<link rel="image_src" href="<?=assetDir?>/images/logo.png" />
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
-	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
-	<link rel="stylesheet" href="<?=bowerDir?>/materialize/dist/css/materialize.min.css" />
-	<link rel="stylesheet" href="<?=assetDir?>/css/core.css" />
+	<link rel="stylesheet" href="<?=assetDir?>/css/core.min.css" />
 
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
@@ -30,9 +28,11 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
 	<![endif]-->
 
+	<script src="<?=bowerDir?>/jquery/dist/jquery.min.js"></script>
+	<script src="//<?=$_SERVER['SERVER_NAME']?>:35729/livereload.js"></script>
 	<?php wp_head() ?>
 </head>
-<body <?php body_class() ?> itemscope itemtype="http://schema.org/WebPage">
+<body <?php body_class() ?> ng-controller="Main">
 
 <!-- HEADER -->
 <header id="header" class="clearfix" role="banner" itemscope itemtype="http://schema.org/WPHeader">
