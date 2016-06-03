@@ -28,7 +28,7 @@ Disallow: /wp-includes/';
 
 # Assets directory
 DEFINE('assetDir', get_template_directory_uri() . '/assets');
-DEFINE('bowerDir', get_template_directory_uri() . '/bower_components/');
+DEFINE('bowerDir', get_template_directory_uri() . '/bower_components');
 DEFINE('relPath', '');
 
 # Time format for the_time()

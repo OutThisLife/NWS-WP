@@ -6,9 +6,7 @@
  */
 
 require_once 'classes/sys/autoloader.php';
-
-$tmpl = new BaseTheme();
-$tmpl->debug(0)->adminBar(0)
+(new BaseTheme())->debug(0)->adminBar(0)
 
 // -----------------------------------------------
 
@@ -74,24 +72,6 @@ $tmpl->debug(0)->adminBar(0)
 		return '<div class="item">'. do_shortcode($content) .'</div>';
 	},
 )))
-
-->addWidgets(array(
-	# Just a test box
-	array(
-		'id' => 'testbox',
-		'title' => 'testbox',
-		'desc' => 'Keep a secret!',
-		'fields' => array(
-			array(
-				'name' => 'title',
-				'id' => 'title',
-				'type' => 'text',
-			),
-		),
-
-		'output' => '',
-	),
-))
 
 // -----------------------------------------------
 
