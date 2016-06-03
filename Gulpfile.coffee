@@ -14,6 +14,8 @@ browserify = require 'browserify'
 babelify = require 'babelify'
 watchify = require 'watchify'
 
+livereload = require 'gulp-livereload'
+
 # -----------------------------------------------
 
 buildScript = (watch) ->
@@ -38,6 +40,7 @@ buildScript = (watch) ->
 			.pipe uglify()
 			.pipe rename('bundle.js')
 			.pipe gulp.dest('assets/js')
+			.pipe livereload()
 
 	bundler.on 'update', ->
 		rebundle()
@@ -53,6 +56,7 @@ gulp.task 'sass', ->
 		.pipe rename('bundle.css')
 		.pipe cssmin()
 		.pipe gulp.dest('assets/css')
+		.pipe livereload()
 
 gulp.task 'js', -> buildScript false
 
@@ -62,9 +66,16 @@ gulp.task 'images', ->
 			progressive: true
 		})
 		.pipe gulp.dest('assets/img')
+		.pipe livereload()
+
+gulp.task 'htmlphp', -> gulp.src(['*.php', '*.html']).pipe livereload()
+
+# -----------------------------------------------
 
 gulp.task 'default', ->
+	livereload.listen()
 	buildScript true
 
 	gulp.watch ['assets/css/**/*.sass'], ['sass']
 	gulp.watch ['assets/img/*'], ['images']
+	gulp.watch ['*.php', '*.html'], ['htmlphp']
