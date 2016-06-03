@@ -1,0 +1,84 @@
+=inputs
+	input:not([type]), 
+	input[type=date], 
+	input[type=datetime-local], 
+	input[type=email], 
+	input[type=number], 
+	input[type=password], 
+	input[type=search], 
+	input[type=tel], 
+	input[type=text], 
+	input[type=time], 
+	input[type=url], 
+	input[type=phone], 
+	textarea, select
+		@content
+
+		+colorPlaceholder
+			color: #999
+
+form
+	margin: 50px auto
+
+	&.is-loading
+		cursor: progress
+
+		*
+			pointer-events: none
+			+opacity(.6)
+
+		[type=submit]
+			background: #CCC !important
+
+	.row:not(.no-margin)
+		margin-bottom: 10px
+	
+	.row
+		position: relative
+	
+	.row .col
+		position: relative
+
+		@media (min-width: $small)
+			&:only-child
+				margin: 0
+				padding-right: 10px
+
+			&.m6:first-child:not(:only-child)
+				padding-right: 10px
+
+			&.m6:last-child:not(:only-child)
+				padding-left: 10px
+
+	label
+
+	+inputs
+		display: block
+		width: 100%
+		height: auto
+		padding: 29px 20px 15px
+		border: 1px solid #CCC
+		+boxSizing(border-box)
+		+transition(.3s ease-in-out)
+		+boxShadow(none)
+		background: #FFF
+
+		&:hover, &:focus, &:active
+			+boxShadow(none)
+			outline: none
+
+		&:focus, &:active
+
+	select
+		cursor: pointer
+		appearance: none
+		-ms-appearance: none
+		-moz-appearance: none
+		-webkit-appearance: none
+		background: #FFF url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAAPElEQVQIW2Pcun13w///DPUMeAAjI0MjI0gen2KQIm9P1wawQlyKYYpA8nCF6IqRFWEohCkG0SDrkJ0NAE6eHq0CFjT+AAAAAElFTkSuQmCC) 95% center no-repeat
+
+		&::-ms-expand
+			display: none
+
+	p
+		text-align: inherit

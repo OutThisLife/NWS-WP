@@ -1,85 +1,70 @@
+source = require 'vinyl-source-stream'
+buffer = require 'vinyl-buffer'
+
 gulp = require 'gulp'
-
-watch = require 'gulp-watch'
-concat = require 'gulp-concat'
-
+gulpif = require 'gulp-if'
 sass = require 'gulp-sass'
-coffee = require 'gulp-coffee'
-
+gutil = require 'gulp-util'
 uglify = require 'gulp-uglify'
 cssmin = require 'gulp-cssmin'
 imagemin = require 'gulp-imagemin'
+rename = require 'gulp-rename'
 
-livereload = require 'gulp-livereload'
-runSequence = require 'run-sequence'
+browserify = require 'browserify'
+babelify = require 'babelify'
+watchify = require 'watchify'
 
 # -----------------------------------------------
-# SASS/CSS
+
+buildScript = (watch) ->
+	props = {
+		entries: ['assets/js/main.js']
+		debug: false
+		transform: [babelify.configure({
+			presets: ['es2015', 'react']
+		})]
+	}
+
+	bundler = browserify props
+	bundler = watchify bundler if watch
+
+	rebundle = ->
+		stream = bundler.bundle()
+
+		stream
+			.on 'error', (e) -> console.log e.message
+			.pipe source('main.js')
+			.pipe buffer()
+			.pipe uglify()
+			.pipe rename('bundle.js')
+			.pipe gulp.dest('assets/js')
+
+	bundler.on 'update', ->
+		rebundle()
+		gutil.log 'Rebundle...'
+
+	rebundle()
+
+# -----------------------------------------------
 
 gulp.task 'sass', ->
-	gulp.src 'assets/css/core.sass'
-		.pipe sass()
-		.pipe gulp.dest('assets/css')
-
-gulp.task 'compile-css', ->
-	gulp.src [
-		'bower_components/materialize/dist/css/materialize.min.css',
-		'assets/css/core.css'
-	]
-		.pipe concat('core.min.css')
+	gulp.src 'assets/css/main.sass'
+		.pipe sass().on('error', (e) -> console.log(e.message))
+		.pipe rename('bundle.css')
 		.pipe cssmin()
 		.pipe gulp.dest('assets/css')
-		.pipe livereload()
 
-gulp.task 'do-css', -> runSequence 'sass', 'compile-css'
+gulp.task 'js', -> buildScript false
 
-# -----------------------------------------------
-# COFFEE/JS
+gulp.task 'images', ->
+	gulp.src('assets/img/*.{jpg,png}')
+		.pipe imagemin({
+			progressive: true
+		})
+		.pipe gulp.dest('assets/img')
 
-gulp.task 'coffee', ->
-	gulp.src ['assets/js/*.coffee']
-		.pipe coffee()
-		.pipe concat('all.js')
-		.pipe gulp.dest('assets/js')
+gulp.task 'default', ->
+	buildScript true
 
-gulp.task 'compile-js', ->
-	gulp.src [
-		'bower_components/angular/angular.js',
-		'bower_components/angular-touch/angular-touch.js',
-		'bower_components/angular-sanitize/angular-sanitize.js',
-
-		'assets/js/library/modernizr.js',
-		'bower_components/lodash/lodash.js',
-		'bower_components/materialize/js/waves.js',
-		'bower_components/velocity/velocity.js',
-
-		'assets/js/all.js',
-	]
-		.pipe concat('core.min.js')
-		.pipe uglify()
-		.pipe gulp.dest('assets/js')
-		.pipe livereload()
-
-gulp.task 'do-js', -> runSequence 'coffee', 'compile-js'
-
-# -----------------------------------------------
-# IMAGES
-
-gulp.task 'imagemin', ->
-	opts =
-		progressive: true
-		svgoPlugins: removeViewBox: false
-
-	gulp.src 'assets/images/*'
-		.pipe imagemin(opts)
-		.pipe gulp.dest('assets/images')
-
-# -----------------------------------------------
-# EYE
-
-gulp.task 'watch', ->
-	livereload.listen()
-
-	gulp.watch 'assets/js/*.coffee', ['do-js']
-	gulp.watch 'assets/css/*.sass', ['do-css']
-	gulp.watch ['*.php', '*/*.php'], livereload.reload
+	gulp.watch ['assets/css/**/*.sass'], ['sass']
+	gulp.watch ['assets/img/*'], ['images']

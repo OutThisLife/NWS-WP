@@ -1,50 +1,114 @@
-/**
- * Generic modules
- */
 html
 	color: $default
-	font-family: $font
+	font: 19px/28px $font
+
+body
+	background: #FFF
+
+.nohover
+	pointer-events: none !important
 
 .wrapper
 	+clearfix
 	max-width: $maxWidth
-	margin: 0 auto
+	margin: auto
+	padding: 0 25px
 
-	@media (max-width: $small)
-		padding: 0 $pad
+	&.skinny
+		max-width: 1010px
+
+.row .col
+	padding: 0
 
 +colorSelection
 	color: #FFF
-	background: blue
+	background: invert($green)
 
 h1,h2,h3,h4,h5,h6
-	font-weight: 500
-	line-height: 20px
+	color: $dark
+	font-weight: 700
+	line-height: 1
 	margin: 0
+	text-transform: uppercase
 
 	&:not(:first-child)
-		margin: 60px 0 30px
+		margin: 40px 0 0
 
-p, ul, strong, em
-	font-size: 13px
-	line-height: 20px
+	+ p
+		margin-top: 15px
 
-p
-	margin: 10px 0
+p, ol, ul, li
+	margin: 25px 0
 
-	.lead &
-		font-weight: 700
+	&:first-child
+		margin-top: 0
+
+	&:last-child
+		margin-bottom: 0
 
 strong
-	font-weight: 600
+	font-weight: 700
+
+ol, ul
+	li
+		margin: 5px 0
+
+ol
+	padding-left: 23px
+
+ul
+	padding-left: 25px
+
+	li
+		list-style-type: disc
+
+a
+	font-size: inherit
+	line-height: inherit
+	+transition(.3s ease-in-out)
+
+	&:hover
+		text-decoration: none !important
+
+figure
+	margin: 0
+	padding: 0
 
 img
 	max-width: 100%
+	height: auto
 
-a
-	color: inherit
-	font-weight: 500
-	text-decoration: none
+blockquote
+	margin: 25px auto
+	padding: 0 0 0 30px
+	border-left: 3px solid $green
 
-	&:hover
-		text-decoration: underline
+	p
+		color: #5c5d5f
+		margin: 0
+
+hr
+	clear: both
+	display: block
+	margin: 20px auto
+	background: #EBEDF1
+
+table
+	table-layout: fixed
+	margin: auto
+	
+	tr
+		border-top: 1px solid #CCC
+
+		td
+			font-size: 16px
+			padding: 18px
+
+			&.sticky
+				border-left: 1px solid #CCC
+
+		&:first-child
+			background: $green
+
+			td
+				color: #FFF
