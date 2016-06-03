@@ -16,10 +16,12 @@
 
 	<link rel="profile" href="//gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url') ?>" />
-	<link rel="image_src" href="<?=assetDir?>/images/logo.png" />
+	<link rel="image_src" href="<?=assetDir?>/img/logo.png" />
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
-	<link rel="stylesheet" href="<?=assetDir?>/css/core.min.css" />
+	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+	<link rel="stylesheet" href="<?=bowerDir?>/Materialize/dist/css/materialize.min.css" />
+	<link rel="stylesheet" href="<?=assetDir?>/css/bundle.css" />
 
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
@@ -38,7 +40,7 @@
 <header id="header" class="clearfix" role="banner" itemscope itemtype="http://schema.org/WPHeader">
 	<!-- Logo -->
 	<a href="<?=home_url()?>" class="left logo">
-		<img src="<?=assetDir?>/images/logo.png" alt="<?php bloginfo('name') ?>" />
+		<img src="<?=assetDir?>/img/logo.png" alt="<?php bloginfo('name') ?>" />
 	</a>
 
 	<!-- Nav -->

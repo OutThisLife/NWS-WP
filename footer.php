@@ -12,7 +12,7 @@
 <?=BackEnd::getOption('extra-scripts')?>
 <?php wp_footer() ?>
 
-<script src="<?=assetDir?>/js/app.min.js"></script>
+<script src="<?=assetDir?>/js/bundle.js"></script>
 
 </body>
 </html>
