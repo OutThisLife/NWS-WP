@@ -1,4 +1,4 @@
-export class Accordion {
+export default class Accordion {
 	constructor($item) {
 		this.$item = $item
 		this._onResize = this.handleResize.bind(this)
@@ -28,7 +28,4 @@ export class Accordion {
 	}
 }
 
-let $accordions
-if ($accordions = document.getElementsByClassName('accordion-item'))
-	for (let i = 0; i < $accordions.length; i++)
-		new Accordion($accordions[i])
+Array.from(document.getElementsByClassName('accordion-item')).forEach(e => new Accordion(e))

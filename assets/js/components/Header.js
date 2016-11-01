@@ -22,7 +22,8 @@ export class Header {
 		this._onScroll()
 		window.addEventListener('scroll', this._onScroll, false)
 
-		this.$header.querySelector('.mobile-link').addEventListener('click', this.handleClick.bind(this))
+		if (this.$header.querySelector('.mobile-link'))
+			this.$header.querySelector('.mobile-link').addEventListener('click', this.handleClick.bind(this))
 	}
 
 	toggleIf(c, cond) {
@@ -47,23 +48,7 @@ export class Header {
 			'mobile-menu-open',
 			!this.$header.classList.contains('mobile-menu-open')
 		)
-
-		document.body.style.overflow = this.$header.classList.contains('mobile-menu-open')
-			? 'hidden'
-			: false
 	}
 }
 
 new Header(document.getElementById('header'))
-
-// ---------------------------------------------
-
-if (location.hash) {
-	let el = document.getElementById(location.hash.replace('#', ''))
-	if (el) {
-		Velocity(el, 'scroll', {
-			duration: 650,
-			offset: -105
-		})
-	}
-}

@@ -71,6 +71,11 @@ require_once 'classes/sys/autoloader.php';
 	'grid_item' => function($args, $content) {
 		return '<div class="item">'. do_shortcode($content) .'</div>';
 	},
+
+	# [lead]
+	'lead' => function($args, $content) {
+		return '<div class="lead">'. $content .'</div>';
+	},
 )))
 
 // -----------------------------------------------
@@ -78,3 +83,24 @@ require_once 'classes/sys/autoloader.php';
 ->render();
 
 // -----------------------------------------------
+
+remove_action('wp_head', 'print_emoji_detection_script', 7);
+remove_action('wp_print_styles', 'print_emoji_styles');
+
+add_action('wp_enqueue_scripts', function() {
+	if (is_admin()) return;
+
+	wp_deregister_script('wp-embed.min.js');
+	wp_deregister_script('wp-embed');
+	wp_deregister_script('jquery-migrate');
+	wp_deregister_script('embed');
+	wp_deregister_script('jquery');
+	wp_deregister_script('jquery-easing');
+
+	wp_dequeue_style('page-list-style');
+	wp_dequeue_style('yoast-seo-adminbar');
+}, 999);
+
+add_filter('excerpt_length', function($length) {
+	return 30;
+}, 999);

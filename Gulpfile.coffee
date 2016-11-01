@@ -52,7 +52,7 @@ buildScript = (watch) ->
 
 gulp.task 'sass', ->
 	gulp.src 'assets/css/main.sass'
-		.pipe sass().on('error', (e) -> console.log(e.message))
+		.pipe sass().on('error', sass.logError)
 		.pipe rename('bundle.css')
 		.pipe cssmin()
 		.pipe gulp.dest('assets/css')
@@ -77,5 +77,4 @@ gulp.task 'default', ->
 	buildScript true
 
 	gulp.watch ['assets/css/**/*.sass'], ['sass']
-	gulp.watch ['assets/img/*'], ['images']
 	gulp.watch ['*.php', '*.html'], ['htmlphp']

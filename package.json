@@ -25,6 +25,7 @@
     "url": "https://github.com/OutThisLife/NWS-WP/issues"
   },
   "devDependencies": {
+    "array.from": "^1.0.3",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "babelify": "*",
@@ -39,6 +40,7 @@
     "gulp-imagemin": "*",
     "gulp-livereload": "^3.8.1",
     "gulp-notify": "*",
+    "gulp-rename": "*",
     "gulp-sass": "*",
     "gulp-uglify": "*",
     "gulp-useref": "*",

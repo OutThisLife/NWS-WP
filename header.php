@@ -19,8 +19,7 @@
 	<link rel="image_src" href="<?=assetDir?>/img/logo.png" />
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
-	<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
-	<link rel="stylesheet" href="<?=bowerDir?>/Materialize/dist/css/materialize.min.css" />
+	<link rel="stylesheet" href="<?=bowerDir?>/materialize/dist/css/materialize.min.css" />
 	<link rel="stylesheet" href="<?=assetDir?>/css/bundle.css" />
 
 	<!--[if lt IE 9]>
@@ -55,9 +54,9 @@
 			</ul>
 		</div>
 
-		<div class="show-for-small">
-			<a href="javascript:;" class="open-mobile-menu">
-				<i class="material-icons">reorder</i>
+		<div class="show-for-small mobile-link">
+			<a href="javascript:;">
+				<span></span>
 			</a>
 		</div>
 	</nav>

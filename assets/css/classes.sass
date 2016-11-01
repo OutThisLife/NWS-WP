@@ -18,6 +18,31 @@ $small: 40.063em
 	$tracking: $points / 1000
 	@return #{$tracking}em
 
+@function str-replace($string, $search, $replace: '')
+	$index: str-index($string, $search)
+
+	@if $index
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace)
+
+	@return $string
+
+=fontFace($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg)
+	$src: null
+
+	$extmods: ( eot: '?', svg: '#' + str-replace($name, ' ', '_') )
+	$formats: ( otf: 'opentype', ttf: 'truetype' )
+
+	@each $ext in $exts
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext)
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext)
+		$src: append($src, url(quote($path + '.' + $extmod)) format(quote($format)), comma)
+
+	@font-face
+		font-family: quote($name)
+		font-style: $style
+		font-weight: $weight
+		src: $src
+
 // -----------------------------------------------
 
 =backgroundSize($type)
@@ -263,6 +288,28 @@ $small: 40.063em
 	text-indent: -999em
 	text-align: left !important
 	background: url(../images/#{$source}) no-repeat
+
+// -----------------------------------------------
+
+=inputs
+	input:not([type]):not([readonly]), 
+	input[type=date]:not([readonly]), 
+	input[type=datetime-local]:not([readonly]), 
+	input[type=email]:not([readonly]), 
+	input[type=number]:not([readonly]), 
+	input[type=password]:not([readonly]), 
+	input[type=search]:not([readonly]), 
+	input[type=tel]:not([readonly]), 
+	input[type=text]:not([readonly]), 
+	input[type=time]:not([readonly]), 
+	input[type=url]:not([readonly]), 
+	input[type=phone]:not([readonly]), 
+	textarea:not([readonly]), select:not([readonly])
+		@content
+
+		+colorPlaceholder
+			color: #999
+
 
 // -----------------------------------------------
 
