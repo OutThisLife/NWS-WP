@@ -1,6 +1,6 @@
 <?php
 /**
- * replaceMe
+ * CRM
  *
  * Main Functions
  */
@@ -45,7 +45,7 @@ require_once 'classes/sys/autoloader.php';
 			'desc' => 'If used, these scripts will be loaded in the footer. Put things like Google Analytics in here.',
 		],
 	],
-)))
+]])
 
 ->addShortcodes([[
 	# [phone]
@@ -72,7 +72,7 @@ require_once 'classes/sys/autoloader.php';
 	'lead' => function($args, $content) {
 		return '<div class="lead">'. $content .'</div>';
 	},
-)))
+]])
 
 // -----------------------------------------------
 
