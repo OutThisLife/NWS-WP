@@ -31,6 +31,11 @@ DEFINE('assetDir', get_template_directory_uri() . '/assets');
 DEFINE('bowerDir', get_template_directory_uri() . '/bower_components');
 DEFINE('relPath', '');
 
+DEFINE('ASSET_VERSION',
+	filemtime(get_template_directory() . '/assets/css/bundle.css')
+	+ filemtime(get_template_directory() . '/assets/js/bundle.js')
+);
+
 # Time format for the_time()
 DEFINE('tFormat', 'M d, Y');
 

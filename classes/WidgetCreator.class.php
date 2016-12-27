@@ -32,7 +32,7 @@ class WidgetCreator {
 	}
 
 	// -----------------------------------------------
-	
+
 	private function createForms() {
 		$tmp = NULL;
 
@@ -43,11 +43,11 @@ class WidgetCreator {
 
 			$meta = <<<S
 			class="widefat"
-			id="<?=\$this->get_field_id("$id")?>" 
-			name="<?=\$this->get_field_name("$id")?>" 
+			id="<?=\$this->get_field_id("$id")?>"
+			name="<?=\$this->get_field_name("$id")?>"
 S;
 			$value = <<<S
-			value="<?=htmlentities(\$instance["$id"])?>" 
+			value="<?=htmlentities(\$instance["$id"])?>"
 S;
 
 			switch ($type) {
@@ -104,7 +104,7 @@ class $this->widgetName extends WP_Widget {
 		parent::WP_Widget(
 			'$this->widgetName',
 			'$this->title',
-			array('description' => '$this->desc')
+			['description' => '$this->desc']
 		);
 	}
 
@@ -124,9 +124,7 @@ class $this->widgetName extends WP_Widget {
 	}
 
 	function form(\$instance) {
-		\$defaults = array(
-			'title' => 'My Title'
-		);
+		\$defaults = ['title' => 'My Title'];
 
 		\$instance = wp_parse_args(\$instance, \$defaults);
 

@@ -40,17 +40,15 @@ class BackEnd extends BaseTheme {
 	public static function getChildren() {
 		$children = null;
 
-		# Blog
 		if (DevTests::isBlog())
 			$children = self::getCategories();
 
-		# General pages
-		else $children = wp_list_pages(array(
+		else $children = wp_list_pages([
 			'title_li' => null,
 			'child_of' => self::getRootParent(),
 			'depth' => 1,
 			'echo' => false,
-		));
+		]);
 
 		return $children;
 	}
@@ -61,11 +59,11 @@ class BackEnd extends BaseTheme {
 		$classes = (is_home() || is_page(BLOG)) ? 'current-cat' : null;
 
 		$categories .= '<li class="'. $classes .'"><a href="'. get_permalink(BLOG) .'">View All</a></li>';
-		$categories .= wp_list_categories(array(
+		$categories .= wp_list_categories([
 			'title_li' => null,
 			'depth' => 1,
 			'echo' => false,
-		));
+		]);
 
 		return $categories;
 	}
@@ -76,10 +74,10 @@ class BackEnd extends BaseTheme {
 		$curTerm = is_tax() ? get_queried_object()->term_id : 0;
 		$parent = is_tax() ? get_queried_object()->parent : 0;
 
-		$terms = get_terms($tax, array(
+		$terms = get_terms($tax, [
 			'parent' => $parent,
 			'hide_empty' => false,
-		));
+		]);
 
 		foreach ($terms AS &$t):
 			$class = $curTerm === $t->term_id ? 'current-cat' : '';
@@ -96,12 +94,12 @@ class BackEnd extends BaseTheme {
 		return $categories;
 	}
 
-	public static function getMenu($name, $settings = array()) {
-		$defaults = array(
+	public static function getMenu($name, $settings = []) {
+		$defaults = [
 			'theme_location' => $name,
 			'container' => null,
 			'items_wrap' => '%3$s',
-		);
+		];
 
 		wp_nav_menu(array_merge($settings, $defaults));
 	}
@@ -119,13 +117,13 @@ class BackEnd extends BaseTheme {
 		return do_shortcode(self::$options[$option]);
 	}
 
-	public static function getPostType($type, $settings = array()) {
-		$default = array(
+	public static function getPostType($type, $settings = []) {
+		$default = [
 			'post_type' => $type,
 			'posts_per_page' => -1,
 			'orderby' => 'menu_order',
 			'order' => 'ASC',
-		);
+		];
 
 		return new WP_Query(array_merge($default, $settings));
 	}
@@ -146,11 +144,9 @@ class BackEnd extends BaseTheme {
 	public static function getRootTitle() {
 		$title = null;
 
-		# Blog
 		if (DevTests::isBlog())
 			$title = get_the_title(BLOG);
 
-		# General pages
 		else $title = get_the_title(self::getRootParent());
 
 		return $title;
@@ -184,10 +180,10 @@ class BackEnd extends BaseTheme {
 
 		endif;
 
-		return (object) array(
+		return (object) [
 			'type' => $type,
 			'taxonomy' => $tax,
-		);
+		];
 	}
 
 	public static function getAdjacentPost($dir = 'prev', $type = 'post', $sameCategory = false) {

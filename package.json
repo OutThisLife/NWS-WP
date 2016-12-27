@@ -24,7 +24,13 @@
   "bugs": {
     "url": "https://github.com/OutThisLife/NWS-WP/issues"
   },
+  "aliasify": {
+    "aliases": {
+      "vue$": "vue/dist/vue"
+    }
+  },
   "devDependencies": {
+    "aliasify": "^2.1.0",
     "array.from": "^1.0.3",
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
@@ -46,9 +52,12 @@
     "gulp-useref": "*",
     "gulp-util": "*",
     "hoverintent": "^1.0.1",
+    "imagesloaded": "^4.1.1",
+    "isotope": "0.0.1-security",
     "lodash": "^4.6.1",
     "lory.js": "^2.0.1",
     "object-assign": "*",
+    "raf": "^3.3.0",
     "react": "*",
     "react-dom": "*",
     "react-router": "*",
@@ -59,5 +68,9 @@
     "vinyl-ftp": "^0.4.5",
     "vinyl-source-stream": "*",
     "watchify": "*"
+  },
+  "dependencies": {
+    "isotope-layout": "^3.0.1",
+    "vue": "^2.0.7"
   }
 }

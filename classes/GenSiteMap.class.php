@@ -3,8 +3,8 @@
  * replaceMe
  *
  * Build a sitemap like so:
- * array('title' => 'Parent Page Title', 'children' => array('page1', 'page2', 'page3')),
- * array('title' => 'Single Page Title'),
+ * ['title' => 'Parent Page Title', 'children' => ['page1', 'page2', 'page3']],
+ * ['title' => 'Single Page Title'],
  */
 
 class GenSiteMap {
@@ -29,14 +29,14 @@ class GenSiteMap {
 		if ($page = get_page_by_title($title))
 			$res = $page->ID;
 
-		else $res = wp_insert_post(array(
+		else $res = wp_insert_post([
 			'post_title' => $title,
 			'post_content' => file_get_contents(TEMPLATEPATH .'/partials/page.html'),
 			'post_status' => 'publish',
 			'post_type' => 'page',
 			'post_parent' => $parent,
 			'menu_order' => $order,
-		));
+		]);
 
 		return $res;
 	}

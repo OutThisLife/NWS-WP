@@ -6,13 +6,13 @@
  */
 
 class Settings {
-	private $tabs = array();
+	private $tabs = [];
 
 	public function __construct(BackEnd $b, array $tabs) {
 		$this->tabs = $tabs;
 
-		add_action('admin_init', array($this, 'initSettings'));
-		add_action('admin_menu', array($this, 'settingsMenu'));
+		add_action('admin_init', [$this, 'initSettings']);
+		add_action('admin_menu', [$this, 'settingsMenu']);
 	}
 
 	public function initSettings() {
@@ -25,7 +25,7 @@ class Settings {
 			'Theme Options',
 			'edit_theme_options',
 			'theme_options',
-			array($this, 'settingsHtml')
+			[$this, 'settingsHtml']
 		);
 	}
 
@@ -60,10 +60,10 @@ class Settings {
 				switch ($type):
 					case 'text':
 						$field = <<<S
-<input 
-	id="r[{$slug}]" 
-	class="regular-text" 
-	type="text" 
+<input
+	id="r[{$slug}]"
+	class="regular-text"
+	type="text"
 	name="r[{$slug}]"
 	placeholder="Enter value&hellip;"
 	value="{$value}" />
@@ -72,8 +72,8 @@ S;
 
 					case 'textarea':
 						$field = <<<S
-<textarea 
-	id="r[{$slug}]" 
+<textarea
+	id="r[{$slug}]"
 	cols="90"
 	rows="5"
 	name="r[{$slug}]"
@@ -121,7 +121,7 @@ S;
 
 		function setTab(\$tab) {
 			if (
-				\$tab === curHash 
+				\$tab === curHash
 				|| \$tab === undefined
 			) return;
 
@@ -134,7 +134,7 @@ S;
 			\$table.find('tbody').hide();
 			\$table.find('tbody[data-tab="'+\$tab+'"]').show();
 		};
-		
+
 		if (!location.hash) setTab(\$navA.eq(0).attr('href'));
 
 		setInterval(function() {

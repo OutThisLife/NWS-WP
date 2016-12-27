@@ -9,10 +9,10 @@ class FrontEnd extends BaseTheme {
 	public function __construct() {}
 
 	protected function _sidebar($name) {
-		register_sidebar(array(
+		register_sidebar([
 			'name' => $name,
 			'id' => sanitize_key($name),
-		));
+		]);
 	}
 
 	protected function _script($src) {
@@ -71,10 +71,10 @@ S;
 	}
 
 	public static function getImg($id, $size, $class = '') {
-		return wp_get_attachment_image($id, $size, false, array(
+		return wp_get_attachment_image($id, $size, false, [
 			'itemprop' => 'image',
 			'class' => $class,
-		));
+		]);
 	}
 
 	public static function getSrc($id, $size) {

@@ -1,0 +1,60 @@
+.overflow
+	overflow: hidden
+	line-height: 1
+
++keyframes(slideFromTop)
+	0%
+		visibility: hidden
+		+opacity(0)
+		+transform(translateY(-5px))
+
+	100%
+		visibility: visible
+		+opacity(1)
+		+transform(none)
+
++keyframes(slideFromBottom)
+	0%
+		visibility: hidden
+		+opacity(0)
+		+transform(translateY(15px))
+
+	100%
+		visibility: visible
+		+opacity(1)
+		+transform(none)
+
++keyframes(slideToTop)
+	100%
+		visibility: hidden
+		+opacity(0)
+		+transform(translateY(-5px))
+
+	0%
+		visibility: visible
+		+opacity(1)
+		+transform(none)
+
++keyframes(fadeIn)
+	0%
+		visibility: hidden
+		+opacity(0)
+
+	100%
+		visibility: visible
+		+opacity(1)
+
++keyframes(fadeOut)
+	0%
+		+opacity(1)
+
+	100%
+		+opacity(0)
+
++keyframes(loadingSprite)
+	100%
+		background-position: center 100%
+
++keyframes(justShow)
+	100%
+		visibility: visible

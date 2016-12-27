@@ -20,7 +20,7 @@
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
 	<link rel="stylesheet" href="<?=bowerDir?>/materialize/dist/css/materialize.min.css" />
-	<link rel="stylesheet" href="<?=assetDir?>/css/bundle.css" />
+	<link rel="stylesheet" href="<?=assetDir?>/css/bundle.css?v=<?=ASSET_VERSION?>" />
 
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
@@ -33,31 +33,34 @@
 	<script src="//<?=$_SERVER['SERVER_NAME']?>:35729/livereload.js"></script>
 	<?php wp_head() ?>
 </head>
-<body <?php body_class() ?> ng-controller="Main">
+<body <?php body_class() ?>>
 
 <!-- HEADER -->
 <header id="header" class="clearfix" role="banner" itemscope itemtype="http://schema.org/WPHeader">
-	<!-- Logo -->
-	<a href="<?=home_url()?>" class="left logo">
+<div class="row wrapper">
+	<a href="<?=home_url()?>" class="logo">
 		<img src="<?=assetDir?>/img/logo.png" alt="<?php bloginfo('name') ?>" />
 	</a>
 
-	<!-- Nav -->
-	<nav class="right">
-		<div class="hide-for-small">
-			<ul>
-				<li><a href="#">Item 1</a></li>
-				<li><a href="#">Item 2</a></li>
-				<li><a href="#">Item 3</a></li>
-				<li><a href="#">Item 4</a></li>
-				<li><a href="#">Item 5</a></li>
-			</ul>
-		</div>
+	<div class="main-nav hide-for-small">
+		<ul>
+			<li><a href="#">Item 1</a></li>
+			<li><a href="#">Item 2</a></li>
+			<li><a href="#">Item 3</a></li>
+			<li><a href="#">Item 4</a></li>
+			<li><a href="#">Item 5</a></li>
+		</ul>
+	</div>
 
-		<div class="show-for-small mobile-link">
-			<a href="javascript:;">
-				<span></span>
-			</a>
+	<!-- Mobile nav -->
+	<div class="hide-on-med-and-up mobile-link">
+		<a href="javascript:;"><span></span></a>
+
+		<div id="mobile-menu">
+		<ul class="main-mobile-nav">
+			<?=BackEnd::getMenu('header1')?>
+		</ul>
 		</div>
-	</nav>
+	</div>
+</div>
 </header>

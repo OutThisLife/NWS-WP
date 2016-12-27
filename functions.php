@@ -13,45 +13,41 @@ require_once 'classes/sys/autoloader.php';
 /**
  * Set up the front-end
  */
-->addImageSizes(array(array(
+->addImageSizes([[
 	//
-)))
-
-->addSidebars(array(
-	//
-))
+]])
 
 // -----------------------------------------------
 
 /**
  * Set up the back-end
  */
-->addMenus(array(array(
+->addMenus([[
 	'header' => 'Header Menu',
 	'footer' => 'Footer Menu',
-)))
+]])
 
-->addSettings(array(array(
+->addSettings([[
 	# General settings tab
-	'General' => array(
-		'phone' => array(
+	'General' => [
+		'phone' => [
 			'name' => 'Phone #',
 			'type' => 'text',
 			'desc' => 'Use [phone] to retrieve this value.',
-		),
-	),
+		],
+	],
 
 	# Footer settings tab
-	'Footer' => array(
-		'scripts' => array(
+	'Footer' => [
+		'scripts' => [
 			'name' => 'Extra Scripts',
 			'type' => 'textarea',
 			'desc' => 'If used, these scripts will be loaded in the footer. Put things like Google Analytics in here.',
-		),
-	),
+		],
+	],
 )))
 
-->addShortcodes(array(array(
+->addShortcodes([[
 	# [phone]
 	'phone' => function() {
 		return BackEnd::getOption('phone');
@@ -59,7 +55,7 @@ require_once 'classes/sys/autoloader.php';
 
 	# [button]
 	'button' => function($args, $content = '') {
-		return '<a href="'. $args['url'] .'" class="button '. $args['style'] .'">'. $content .'</a>';
+		return '<a href="'. $args['url'] .'" class="btn '. $args['style'] .'">'. $content .'</a>';
 	},
 
 	# [grid]
@@ -104,3 +100,9 @@ add_action('wp_enqueue_scripts', function() {
 add_filter('excerpt_length', function($length) {
 	return 30;
 }, 999);
+
+add_filter('upload_mimes', function($mimes) {
+	$mimes['svg'] = 'img/svg+xml';
+
+	return $mimes;
+});

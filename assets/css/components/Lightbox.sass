@@ -1,0 +1,23 @@
+.lightbox
+	z-index: 1000
+	+cover(fixed)
+	+transition(#{"opacity .3s ease-out, transform .7s ease-out"})
+	background: #000
+
+	&:not(.open)
+		pointer-events: none
+		+opacity(0)
+		+transform(translateY(-250px))
+
+		@media (max-width: $small)
+			+transform(translateY(100%))
+
+		.no-csspointerevents &
+			display: none
+
+	.close
+		z-index: 10
+		position: absolute
+		top: $pad
+		right: $pad
+		color: #FFF

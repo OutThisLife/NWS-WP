@@ -9,57 +9,139 @@ form
 			+opacity(.6)
 
 		[type=submit]
-			background: #CCC !important
+			background: #CCC
 
-	.row:not(.no-margin)
-		margin-bottom: 10px
-	
-	.row
+	.gfield
 		position: relative
-	
-	.row .col
-		position: relative
+
+		> .gfield_label
+			pointer-events: none
+			position: absolute
+			top: 14px
+			left: 0
+			color: #B6B6B6
+			font-weight: 300
+			font-size: 24px
+			+transition(.3s ease-in-out)
+
+			&.out
+				+transparentColour(#000, .5)
+				font-size: 16px
+				top: -15px
 
 		@media (min-width: $small)
-			&:only-child
-				margin: 0
-				padding-right: 10px
-
-			&.m6:first-child:not(:only-child)
-				padding-right: 10px
-
-			&.m6:last-child:not(:only-child)
-				padding-left: 10px
-
-	label
+			&:nth-child(2n) > .gfield_label
+				left: 20px
 
 	+inputs
 		display: block
 		width: 100%
 		height: auto
-		padding: 29px 20px 15px
-		border: 1px solid #CCC
+		color: $default
+		line-height: 1
+		margin: 0
+		padding: 10px 0
+		border: 0
+		border-bottom: 1px solid #CCC
 		+boxSizing(border-box)
 		+transition(.3s ease-in-out)
 		+boxShadow(none)
 		background: #FFF
 
 		&:hover, &:focus, &:active
-			+boxShadow(none)
 			outline: none
+			border-bottom-color: #000
+			+boxShadow(none)
 
-		&:focus, &:active
+		+colorPlaceholder
+			color: rgba($default, .35)
 
-	select
+		&.is-blank:not(:focus)
+			color: transparent
+
+	.gfield_error
+		+inputs
+			border-bottom-color: red
+
+	select:not([readonly])
 		cursor: pointer
 		appearance: none
-		-ms-appearance: none
-		-moz-appearance: none
 		-webkit-appearance: none
-		background: #FFF url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAAPElEQVQIW2Pcun13w///DPUMeAAjI0MjI0gen2KQIm9P1wawQlyKYYpA8nCF6IqRFWEohCkG0SDrkJ0NAE6eHq0CFjT+AAAAAElFTkSuQmCC) 95% center no-repeat
+		background: #FFF url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAICAgICAgICAgIDAgICAwQDAgIDBAUEBAQEBAUGBQUFBQUFBgYHBwgHBwYJCQoKCQkMDAwMDAwMDAwMDAwMDAz/2wBDAQMDAwUEBQkGBgkNCwkLDQ8ODg4ODw8MDAwMDA8PDAwMDAwMDwwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wgARCAAFAAoDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAABwj/xAAVAQEBAAAAAAAAAAAAAAAAAAAFB//aAAwDAQACEAMQAAABSlarRp08/8QAGBAAAgMAAAAAAAAAAAAAAAAAAAUBFiX/2gAIAQEAAQUCdQisGSf/xAAjEQABAQYHAQAAAAAAAAAAAAABEQAFEiJhYgMVISQxMqPS/9oACAEDAQE/AXMXjlvGHEkkRmSoRDapFdG3l3f0+m//xAAaEQACAgMAAAAAAAAAAAAAAAAAEwOhIkFh/9oACAECAQE/AYWL1wzuz//EACEQAAEBBwUAAAAAAAAAAAAAAAECAAMEERI0YSVDYnHS/9oACAEBAAY/AkmuNDivUEQ6JuivCqgRykOm2LXFt5b/xAAZEAACAwEAAAAAAAAAAAAAAAARIQEQYYH/2gAIAQEAAT8hkgW0FGoNXVEf/9oADAMBAAIAAwAAABBv/8QAGhEBAQACAwAAAAAAAAAAAAAAAREAITHh8P/aAAgBAwEBPxATK80gzrZTrovvcv/EAB4RAAEDBAMAAAAAAAAAAAAAABEAAZEhMUFxgaHw/9oACAECAQE/EH4yFz1EQX2uXjtf/8QAGRAAAgMBAAAAAAAAAAAAAAAAAREAITFR/9oACAEBAAE/EDmz5FaDg+GdSox//9k=) 95% center no-repeat
 
 		&::-ms-expand
 			display: none
 
+		option
+			color: $default
+
+	textarea
+		max-height: 125px
+		resize: none
+		margin: 20px auto 0
+
 	p
 		text-align: inherit
+
+.gform_wrapper
+	+clearfix
+
+	.validation_error
+		margin: 0 0 50px
+
+	.validation_message
+		color: red
+		padding-top: 10px
+
+	.gform_description,
+	.gform_confirmation_message
+		display: block
+		margin: 0 0 50px
+
+	#extensions_message
+		display: block
+
+	&[style="display:none"]
+		display: block
+
+	ul, li
+		list-style: none
+		margin: 0
+		padding: 0
+
+	.gform_body
+		+clearfix
+
+	ul li
+		text-align: left
+		margin: 0 0 35px
+		padding: 0
+
+		@media (min-width: 767px)
+			float: left
+			width: 50%
+
+			&:nth-child(2n)
+				padding-left: 20px
+
+			&:nth-child(2n + 1)
+				clear: left
+				padding-right: 20px
+
+				&:last-child
+					width: 100%
+					padding: 0
+
+		&:before
+			display: none
+
+		&[style="display: none;"]
+			+opacity(.25)
+			pointer-events: none
+			cursor: not-allowed
+
+	.gform_footer
+		clear: both
+		text-align: left
+		margin: 0
+		padding: 0

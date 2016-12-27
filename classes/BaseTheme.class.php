@@ -7,7 +7,7 @@
 
 class BaseTheme {
 	public $front, $back;
-	private $vars = array();
+	private $vars = [];
 
 	public function __construct() {
 		$this->front = new FrontEnd();
@@ -36,13 +36,13 @@ class BaseTheme {
 	public function render() {
 		if (!is_admin())
 			ob_start(function($buffer) {
-				$search = array('/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s');
-				$replace = array('>', '<', '\\1');
+				$search = ['/\>[^\S ]+/s', '/[^\S ]+\</s', '/(\s)+/s'];
+				$replace = ['>', '<', '\\1'];
 
 				return preg_replace($search, $replace, $buffer);
 			});
-		
-		return array_walk($this->vars, array($this, 'sortDynamicMethod'));
+
+		return array_walk($this->vars, [$this, 'sortDynamicMethod']);
 	}
 
 	private function sortDynamicMethod($values, $key) {
@@ -63,6 +63,6 @@ class BaseTheme {
 
 		else throw new Exception(__METHOD__ .' - '. $method .' does not exist.');
 
-		array_map(array($class, $method), $values);
+		array_map([$class, $method], $values);
 	}
 }

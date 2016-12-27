@@ -1,12 +1,22 @@
 html
 	color: $default
-	font: 19px/28px $font
+	font: 19px/1.55 $font
 
 body
 	background: #FFF
 
-.nohover
-	pointer-events: none !important
+	&.nohover
+		pointer-events: none !important
+
+	&.locked
+		@media (max-width: $small)
+			position: fixed
+			+sq(100%)
+			overflow: hidden
+
++colorSelection
+	color: #FFF
+	background: #000
 
 .wrapper
 	+clearfix
@@ -19,10 +29,6 @@ body
 
 .row .col
 	padding: 0
-
-+colorSelection
-	color: #FFF
-	background: #000
 
 h1,h2,h3,h4,h5,h6
 	font-weight: 700
@@ -64,10 +70,9 @@ ul
 a
 	font-size: inherit
 	line-height: inherit
-	+transition(.3s ease-in-out)
 
 	&:hover
-		text-decoration: none !important
+		text-decoration: underline
 
 figure
 	margin: 0
@@ -80,6 +85,7 @@ img
 blockquote
 	margin: 25px auto
 	padding: 0
+	border: 0
 
 hr
 	clear: both

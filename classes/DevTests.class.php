@@ -7,9 +7,9 @@
 
 class DevTests {
 	public static function isDeveloper() {
-		return in_array($_SERVER['REMOTE_ADDR'], array(
+		return in_array($_SERVER['REMOTE_ADDR'], [
 			'208.64.74.173', # Talasan
-		));
+		]);
 	}
 
 	public static function isMobile() {
@@ -44,12 +44,7 @@ class DevTests {
 	public static function isAdmin() {
 		return (
 			is_admin()
-			|| (
-				in_array($GLOBALS['pagenow'], array(
-					'wp-login.php',
-					'wp-register.php',
-				))
-			)
+			|| in_array($GLOBALS['pagenow'], ['wp-login.php','wp-register.php'])
 		);
 	}
 

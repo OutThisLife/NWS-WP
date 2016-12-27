@@ -1,0 +1,61 @@
+.accordion
+	margin: auto
+
+.accordion-item
+	padding: 25px 0
+
+	&:not(:last-child)
+		border-bottom: 1px solid #CCC
+
+	.ac-title
+		display: block
+		position: relative
+		font-weight: 700
+		font-size: 22px
+		color: $default
+
+		@media (max-width: $small)
+			padding-left: 40px
+
+		&:hover
+			text-decoration: none
+
+		&:before
+			content: ''
+			display: block
+			position: absolute
+			top: 2px
+			left: -40px
+			+sq(22px)
+			+transition(opacity .3s ease-out)
+			background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAWCAMAAAC13D+jAAABDlBMVEUAAAD/A5L///8AAAAAAAAAAAD/A5IAAAD/A5IAAAAAAAAAAAAAAAAAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAAAAAAAAAD/A5IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAAAAAAAAAAAAAAAAAD/A5IAAAD/A5IAAAD/A5IAAAAAAAD/A5IAAAAAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAD/A5IAAAAAAAD/A5L////89comAAAAV3RSTlMAAAAFBggICQkLDQ4PERESEhwcICAhISIjJCQoOTo7QGVmampra3h4eXl6erKys7O7vcDBysrS0tPT1tfX2NnZ4eHi4uPj5OTl5e/v8PDy8vPz+fn6+v4I2f8UAAABY0lEQVR42p2UaVOCUBSGr4VC5q4taCYqlEsBmhZGi2uLS4vbof//R4o5oIKXacbnC3NmzjNz4b4vBAkX5Pb0S5cLYZz3THxIpKh0Zt8PSjGCMzHxl4ZgMaywTiVQHhkWoypnK0kNoJbnGYbP1wC05KaSahkbtFKoxPug54hFTod+fK0kBoaDQcJU/A24OSQrgnVosLYSaBoumtyfcgGPIbJBSIeSrVwaW5R9JDpenuMuAD6zy3EUldhkW5nEiAgqcSpEBREVyaAgkSsQ3IoAMirXNEUhXeDdyil0UenRlB6ZAmOu25gaA1NUZrj0Y4HTjHxA0FP5pCtPkPE82DP1YDu8/g4f2bzKrFM5++8qSQnuPQNTpgaGsLdQDzpiqa1iyd25jZYZS8K/OcP/wq/Dn353Gq9prNiRBqAKJ/sHGUF1V+yYUjETtuJdZK66VWQkLMrt+bwti7TfhaR0FouOIkVw/gU/IrfiUOK1UwAAAABJRU5ErkJggg==) no-repeat
+
+			@media (max-width: $small)
+				top: 6px
+				left: 0
+
+	&:not(.active) .ac-title:not(:hover):before
+		+opacity(.2)
+
+	&.active .ac-title
+		color: $default
+
+		&:before
+			background-position: right top
+
+	.ac-content
+		overflow: hidden
+		+transition(.3s ease-out)
+
+		p
+			margin: 0
+			+transition(inherit)
+
+	&:not(.active) .ac-content
+		max-height: 0px !important
+
+		p
+			+opacity(0)
+
+	&.active .ac-content
+		padding: $smPad 0

@@ -1,10 +1,12 @@
+import ArrayFrom from 'array.from'
+
 export default class Accordion {
 	constructor($item) {
 		this.$item = $item
 		this._onResize = this.handleResize.bind(this)
 
 		this.$content = this.$item.getElementsByClassName('ac-content')[0]
-		
+
 		window.addEventListener('resize', this._onResize)
 		this._onResize()
 
@@ -28,4 +30,4 @@ export default class Accordion {
 	}
 }
 
-Array.from(document.getElementsByClassName('accordion-item')).forEach(e => new Accordion(e))
+ArrayFrom(document.getElementsByClassName('accordion-item')).forEach(e => new Accordion(e))

@@ -2,13 +2,11 @@ import HoverIntent from '../modules/HoverIntent'
 
 // ---------------------------------------------
 
-if (window.innerWidth > 770) {
-	HoverIntent.bind(document.body.querySelectorAll('li[class*="children"]'))
-}
-
-else {
-	HoverIntent.bind(document.body.querySelectorAll('li[class*="children"] > a'))
-}
+HoverIntent.bind(
+	window.innerWidth > 770
+		? document.querySelectorAll('li[class*="children"]')
+		: document.querySelectorAll('.main-mobile-nav > li[class*="children"] > a')
+)
 
 // ---------------------------------------------
 
@@ -22,8 +20,13 @@ export class Header {
 		this._onScroll()
 		window.addEventListener('scroll', this._onScroll, false)
 
-		if (this.$header.querySelector('.mobile-link'))
-			this.$header.querySelector('.mobile-link').addEventListener('click', this.handleClick.bind(this))
+		//
+
+		let $mobileLink
+
+		if ($mobileLink = this.$header.querySelector('.mobile-link > a')) {
+			$mobileLink.addEventListener('click', this.handleMobileClick.bind(this), true)
+		}
 	}
 
 	toggleIf(c, cond) {
@@ -34,8 +37,11 @@ export class Header {
 	}
 
 	handleScroll(e) {
-		let scrollTop = window.pageYOffset
-		let threshold = 30
+		let scrollTop = window.pageYOffset,
+			threshold = 30
+
+		if (document.querySelector('.masthead'))
+			threshold = 300
 
 		this.toggleIf('out', this.lastScrollTop < scrollTop && scrollTop >= threshold)
 		this.toggleIf('min', scrollTop >= threshold)
@@ -43,11 +49,13 @@ export class Header {
 		this.lastScrollTop = scrollTop
 	}
 
-	handleClick(e) {
-		this.toggleIf(
-			'mobile-menu-open',
-			!this.$header.classList.contains('mobile-menu-open')
-		)
+	handleMobileClick(e) {
+		this.toggleIf('mobile-menu-open', !this.$header.classList.contains('mobile-menu-open'))
+
+		if (this.$header.classList.contains('mobile-menu-open'))
+			document.body.classList.add('lock')
+
+		else document.body.classList.remove('lock')
 	}
 }
 

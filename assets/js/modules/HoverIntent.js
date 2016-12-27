@@ -6,7 +6,7 @@ import _ from 'lodash'
 module.exports = {
 	bind: function($links) {
 		if (_.isEmpty($links))
-			return 
+			return
 
 		if (window.innerWidth > 770) {
 			for (let i = 0; i < $links.length; i++) {

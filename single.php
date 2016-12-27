@@ -15,39 +15,48 @@ the_post();
 <!-- CONTENT -->
 <section id="content" role="main">
 <div class="row wrapper">
-	<!-- Sidebar -->
-	<?php get_sidebar() ?>
+	<h2>Heading H2</h2>
+	<p>
+		Curabitur lobortis id lorem id bibendum. Strong text style Ut id consectetur magna. Quisque volutpat augue enim, pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempus link style vel odio vitae aliquam. In imperdiet eros id lacus vestibulum hover link vestibulum. Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper. Italics style suscipit nunc, sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat...
+	</p>
+	<p>New paragraph pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempu.</p>
 
-	<!-- Page -->
-	<div id="page" class="col s12 m8" itemprop="MainContentOfPage">
-		<h1>HTML Ipsum Presents</h1>
+	<h3>Bullet List / h3</h3>
+	<ul>
+		<li>Item 1</li>
+		<li>Item 2</li>
+		<li>Item 3</li>
+	</ul>
 
-		<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
+	<p>
+		Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper. <em>Italics style</em> suscipit nunc, sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempu.
+	</p>
 
-		<h2>Header Level 2</h2>
+	<h3>Numbered List</h3>
+	<ol>
+		<li>Item</li>
+		<li>Item</li>
+		<li>Item</li>
+	</ol>
 
-		<ol>
-		   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-		   <li>Aliquam tincidunt mauris eu risus.</li>
-		</ol>
+	<p>
+		Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper. <em>Italics style</em> suscipit nunc, sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempu.
+	</p>
 
-		<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>
+	<p>
+		Suspendisse fermentum sem sagittis ante venenatis egestas quis vel justo. Maecenas semper. <em>Italics style</em> suscipit nunc, sed aliquam sapien convallis eu. Nulla ut turpis in diam dapibus consequat pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempu.
+	</p>
 
-		<h3>Header Level 3</h3>
+	<blockquote>
+		<p><q>Nulla ut turpis in diam dapibus consequat pulvinar lobortis nibh lacinia at. Vestibulum nec erat ut mi sollicitudin porttitor id sit amet risus. Nam tempu.</q></p>
+		<cite>Blake Ingram</cite>
+	</blockquote>
 
-		<ul>
-		   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>
-		   <li>Aliquam tincidunt mauris eu risus.</li>
-		</ul>
+	<p>
+		Mauris non tempor quam, et lacinia sapien. Mauris accumsan eros eget libero posuere vulputate. Etiam elit elit, elementum sed varius at, adipiscing vitae est. Sed nec felis pellentesque, lacinia dui sed, ultricies sapien. Pellentesque orci lectus, consectetur vel posuere posuere, rutrum eu ipsum. Aliquam eget odio sed ligula iaculis consequat at eget orci. Mauris molestie sit amet metus mattis varius.
+	</p>
 
-		<pre><code>
-		#header h1 a {
-			display: block;
-			width: 300px;
-			height: 80px;
-		}
-		</code></pre>
-	</div>
+	<p>Donec sit amet ligula eget nisi sodales egestas. Aliquam interdum dolor aliquet dolor sollicitudin fermentum. Donec congue lorem a molestie bibendum. Etiam nisi ante, consectetur eget placerat a, tempus a neque.</p>
 </div>
 </section>
 
