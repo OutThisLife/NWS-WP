@@ -121,4 +121,27 @@ S;
 		preg_match('/\.com\/(.*)$/', $str, $results);
 		return $results[1];
 	}
+
+	public static function svg($icon) {
+		ob_start();
+
+		echo '<span class="', $icon, '">';
+		include locate_template('assets/img/' . $icon . '.svg');
+		echo '</span>';
+
+		return ob_get_clean();
+	}
+
+	public static function inlineSVG($url) {
+		ob_start();
+
+		$path = pathinfo($url);
+		$icon = $path['filename'];
+
+		echo '<span class="', $icon, '">';
+		echo file_get_contents($url);
+		echo '</span>';
+
+		return ob_get_clean();
+	}
 }

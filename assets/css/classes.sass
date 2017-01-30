@@ -2,13 +2,16 @@
 // ♫
 
 $medium: 64em
-$small: 767px
+$small: 40.063em
 
 // -----------------------------------------------
 
 @function rem($size)
 	$remSize: $size / 16
 	@return #{$remSize}rem
+
+@function make-random($min, $max)
+	@return random($max) + $min
 
 =font-size($size)
 	font-size: #{$size}px
@@ -87,8 +90,8 @@ $small: 767px
 		background-image: -webkit-gradient(linear, 0 0, 0 50, from($to), to($from))
 		background-image: -moz-linear-gradient($to, $from)
 
-=transparentBG($color, $alpha)
-	$rgba: rgba($color, $alpha)
+=transparentBG($colour, $alpha)
+	$rgba: rgba($colour, $alpha)
 	$ie: ie-hex-str($rgba)
 
 	zoom: 1
@@ -96,9 +99,9 @@ $small: 767px
 	background-color: $rgba
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ie},endColorstr=#{$ie})
 
-=transparentColour($color, $alpha)
-	color: $color
-	color: rgba($color, $alpha)
+=transparentColour($colour, $alpha)
+	color: $colour
+	color: rgba($colour, $alpha)
 
 // -----------------------------------------------
 
@@ -117,6 +120,14 @@ $small: 767px
 	-moz-text-shadow: -1px -1px 0 $colour, 1px -1px 0 $colour, -1px 1px 0 $colour, 1px 1px 0 $colour
 	-ms-text-shadow: -1px -1px 0 $colour, 1px -1px 0 $colour, -1px 1px 0 $colour, 1px 1px 0 $colour
 	-o-text-shadow: -1px -1px 0 $colour, 1px -1px 0 $colour, -1px 1px 0 $colour, 1px 1px 0 $colour
+
+=longShadow($colour, $size: 200)
+	$shadows: 0px 0px $colour
+
+	@for $i from 1 through $size
+		$shadows: #{$shadows}, #{$i}px #{$i}px #{$colour}
+
+	+textShadow($shadows)
 
 // -----------------------------------------------
 
@@ -291,28 +302,6 @@ $small: 767px
 
 // -----------------------------------------------
 
-=inputs
-	input:not([type]):not([readonly]),
-	input[type=date]:not([readonly]),
-	input[type=datetime-local]:not([readonly]),
-	input[type=email]:not([readonly]),
-	input[type=number]:not([readonly]),
-	input[type=password]:not([readonly]),
-	input[type=search]:not([readonly]),
-	input[type=tel]:not([readonly]),
-	input[type=text]:not([readonly]),
-	input[type=time]:not([readonly]),
-	input[type=url]:not([readonly]),
-	input[type=phone]:not([readonly]),
-	textarea:not([readonly]), select:not([readonly])
-		@content
-
-		+colorPlaceholder
-			color: #999
-
-
-// -----------------------------------------------
-
 =userSelect($type)
 	user-select: $type
 	-khtml-user-select: $type
@@ -329,7 +318,7 @@ $small: 767px
 	-ms-hyphen: $type
 	-o-hyphen: $type
 
-=colorSelection($el: "*")
+=colourSelection($el: "*")
 	#{$el}::selection
 		@content
 
@@ -348,7 +337,7 @@ $small: 767px
 	#{$el}::-o-selection
 		@content
 
-=colorPlaceholder()
+=colourPlaceholder()
 	&::-webkit-input-placeholder
 		@content
 
@@ -561,7 +550,7 @@ nav
 .wf-loading
 	visibility: hidden !important
 
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, [v-cloak]
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
 	display: none !important
 
 // -----------------------------------------------
