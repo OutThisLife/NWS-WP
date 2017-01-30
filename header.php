@@ -20,7 +20,7 @@
 	<link rel="shortcut icon" href="<?=home_url()?>/favicon.ico" />
 
 	<link rel="stylesheet" href="<?=bowerDir?>/materialize/dist/css/materialize.min.css" />
-	<link rel="stylesheet" href="<?=assetDir?>/css/bundle.css?v=<?=ASSET_VERSION?>" />
+	<link rel="stylesheet" href="<?=assetDir?>/css/dist/main.css?v=<?=ASSET_VERSION?>" />
 
 	<!--[if lt IE 9]>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>

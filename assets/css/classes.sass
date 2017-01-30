@@ -302,6 +302,27 @@ $small: 40.063em
 
 // -----------------------------------------------
 
+=inputs
+	input:not([type]):not([readonly]),
+	input[type=date]:not([readonly]),
+	input[type=datetime-local]:not([readonly]),
+	input[type=email]:not([readonly]),
+	input[type=number]:not([readonly]),
+	input[type=password]:not([readonly]),
+	input[type=search]:not([readonly]),
+	input[type=tel]:not([readonly]),
+	input[type=text]:not([readonly]),
+	input[type=time]:not([readonly]),
+	input[type=url]:not([readonly]),
+	input[type=phone]:not([readonly]),
+	textarea:not([readonly]), select:not([readonly])
+		@content
+
+		+colourPlaceholder
+			color: #999
+
+// -----------------------------------------------
+
 =userSelect($type)
 	user-select: $type
 	-khtml-user-select: $type
