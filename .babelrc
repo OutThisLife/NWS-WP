@@ -1,4 +1,4 @@
 {
-	"presets": ["es2015"],
-	"plugins": ["syntax-async-functions", "transform-regenerator"],
+	"presets": ["env", "react"],
+	"plugins": ["inline-react-svg", "transform-decorators-legacy"]
 }

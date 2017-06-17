@@ -1,0 +1,50 @@
+{
+	"parser": "babel-eslint",
+	"extends": "airbnb",
+
+	"globals": {
+		"document": true,
+		"window": true,
+		"location": true,
+		"hbspt": true,
+		"YT": true,
+		"history": true,
+		"Typekit": true
+	},
+
+	"plugins": [
+		"react",
+		"jsx-a11y",
+		"import",
+		"eslint-plugin-import"
+	],
+
+	"rules": {
+		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+		"no-tabs": "off",
+		"semi": "off",
+		"one-var": "off",
+		"indent": [2, "tab"],
+		"react/no-danger": "off",
+		"react/jsx-no-bind": "off",
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
+		"no-script-url": "off",
+		"no-bitwise": "off",
+		"arrow-body-style": "off",
+		"curly": "off",
+		"eol-last": "off",
+		"arrow-parens": "off",
+		"no-restricted-syntax": "off",
+		"react/react-in-jsx-scope": "off",
+		"no-cond-assign": "off",
+        "linebreak-style": "off",
+        "react/prefer-stateless-function": [0, { "ignorePureComponents": true }]
+	},
+
+	"settings": {
+		"import/core-modules": [
+			"dotenv"
+		]
+	}
+}
