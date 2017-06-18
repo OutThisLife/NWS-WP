@@ -1,10 +1,10 @@
 # [Bedrock](https://roots.io/bedrock/) + PHP Server
 
 ```
-git clone git@github.com:OutThisLife/Matties.git
-cd Matties
+mkdir projectname/ && cd projectname/
+git clone git@github.com:OutThisLife/NWS-WP.git .
 composer install
 touch .env
 ```
 
-Request database credentials for `.env` and then run `composer dev`
+Setup database credentials for `.env` and then run `composer dev` to start a PHP server, livereload server, and to listen to all css/js changes.
