@@ -1,4 +1,4 @@
-# [Bedrock](https://roots.io/bedrock/) + PHP Server
+# [Bedrock](https://roots.io/bedrock/) + PHP Server + Livereload & ES7/SASS compilation
 
 ```
 mkdir projectname/ && cd projectname/
