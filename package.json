@@ -1,31 +1,31 @@
 {
-  "name": "roots-local",
-  "version": "1.0.0",
-  "description": "Run WP locally with remote .env vars",
-  "main": "index.js",
-  "scripts": {
-	"test": "test"
-  },
-  "repository": {
-	"type": "git",
-	"url": "git+https://github.com/OutThisLife/NWS-WP.git"
-  },
-  "keywords": [
-	"roots",
-	"bedrock",
-	"local",
-	"dev"
-  ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-	"url": "https://github.com/OutThisLife/NWS-WP/issues"
-  },
-  "homepage": "https://github.com/OutThisLife/NWS-WP#readme",
-  "dependencies": {
-	"concurrently": "^3.4.0"
-   },
-   "scripts": {
-	"dev": "concurrently \"composer dev\" \"cd web/app/themes/NWS-WP/ && yarn && yarn dev\""
-   }
+ "name": "roots-local",
+ "version": "1.0.0",
+ "description": "Run WP locally with remote .env vars",
+ "main": "index.js",
+ "scripts": {
+  "dev": "parallelshell \"composer dev\" \"cd web/app/themes/NWS-WP/ && yarn && yarn dev\""
+ },
+ "repository": {
+  "type": "git",
+  "url": "git+https://github.com/OutThisLife/NWS-WP.git"
+ },
+ "keywords": [
+  "roots",
+  "bedrock",
+  "local",
+  "dev"
+ ],
+ "author": "",
+ "license": "ISC",
+ "bugs": {
+  "url": "https://github.com/OutThisLife/NWS-WP/issues"
+ },
+ "homepage": "https://github.com/OutThisLife/NWS-WP#readme",
+ "dependencies": {
+  "concurrently": "^3.4.0"
+ },
+ "devDependencies": {
+  "parallelshell": "^3.0.1"
+ }
 }
