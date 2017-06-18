@@ -55,7 +55,7 @@
   },
   "scripts": {
     "test": "eslint .",
-    "dev": "parallelshell \"yarn watch:js\" \"yarn watch:css\"",
+    "dev": "parallelshell \"yarn watch:js\" \"yarn watch:css\" \"yarn livereload\"",
     "js": "browserify -t babelify -t uglifyify assets/js/main.js -o assets/js/dist/main.js",
     "watch:js": "watchify assets/js/main.js -t babelify -o assets/js/dist/main.js -v",
     "css": "node-sass --include-path css --output-style compressed assets/css/main.sass assets/css/dist/main.css",

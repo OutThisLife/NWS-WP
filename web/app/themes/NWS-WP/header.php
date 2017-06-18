@@ -29,7 +29,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
 	<![endif]-->
 
-	<script src="//<?=$_SERVER['SERVER_NAME']?>:35729/livereload.js"></script>
+	<script src="//<?=$_SERVER['SERVER_NAME']?>:9091/livereload.js"></script>
 	<?php wp_head() ?>
 </head>
 <body <?php body_class() ?>>
