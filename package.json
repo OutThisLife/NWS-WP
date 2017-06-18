@@ -8,7 +8,7 @@
   },
   "repository": {
 	"type": "git",
-	"url": "git+https://github.com/OutThisLife/Matties.git"
+	"url": "git+https://github.com/OutThisLife/NWS-WP.git"
   },
   "keywords": [
 	"roots",
@@ -19,13 +19,13 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-	"url": "https://github.com/OutThisLife/Matties/issues"
+	"url": "https://github.com/OutThisLife/NWS-WP/issues"
   },
-  "homepage": "https://github.com/OutThisLife/Matties#readme",
+  "homepage": "https://github.com/OutThisLife/NWS-WP#readme",
   "dependencies": {
 	"concurrently": "^3.4.0"
    },
    "scripts": {
-	"dev": "concurrently \"composer dev\" \"cd web/app/themes/matties/ && yarn && yarn dev\""
+	"dev": "concurrently \"composer dev\" \"cd web/app/themes/NWS-WP/ && yarn && yarn dev\""
    }
 }
