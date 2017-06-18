@@ -7,4 +7,4 @@ composer install
 touch .env
 ```
 
-Setup database credentials for `.env` and then run `composer dev` to start a PHP server, livereload server, and to listen to all css/js changes.
+Setup database credentials for `.env` and then run `yarn dev` to start a PHP server, livereload server, and to listen to all css/js changes.
