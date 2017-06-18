@@ -55,11 +55,11 @@
   },
   "scripts": {
     "test": "eslint .",
-    "dev": "parallelshell \"yarn watch:js\" \"yarn watch:css\" \"yarn livereload\"",
+    "dev": "parallelshell \"yarn livereload\" \"yarn watch:css\" \"yarn watch:js\"",
     "js": "browserify -t babelify -t uglifyify assets/js/main.js -o assets/js/dist/main.js",
     "watch:js": "watchify assets/js/main.js -t babelify -o assets/js/dist/main.js -v",
     "css": "node-sass --include-path css --output-style compressed assets/css/main.sass assets/css/dist/main.css",
-    "watch:css": "yarn css && yarn css -- --w",
+    "watch:css": "node-sass --include-path css --output-style compressed assets/css/main.sass assets/css/dist/main.css --w",
     "livereload": "livereload . -p 9091 -d"
   }
 }
