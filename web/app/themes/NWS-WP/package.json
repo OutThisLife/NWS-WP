@@ -1,0 +1,65 @@
+{
+  "name": "nwswp",
+  "version": "0.1.0",
+  "description": "This is a less-than-boilerplate WordPress theme. This theme does not focus so much on giving you basic styles, but rather a strict (yet flexible) foundation to work within. It simplifies adding: widgets, theme options, image sizes, sidebars, JS libraries, CSS, navigation menus, shortcodes. All classes in the classes/ folder are autoloaded via sys/autoloader.php",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OutThisLife/NWS-WP.git"
+  },
+  "keywords": [
+    "wordpress",
+    "framework",
+    "theme",
+    "framework",
+    "skeleton",
+    "bootstrap"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OutThisLife/NWS-WP/issues"
+  },
+  "dependencies": {
+    "acorn": "^5.0.3",
+    "babel-plugin-inline-react-svg": "^0",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-env": "^1",
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^7",
+    "dotenv": "^4.0.0",
+    "es6-promise": "^4",
+    "lodash": "^4",
+    "node-pre-gyp": "^0.6.36",
+    "node-sass": "^4",
+    "outpipe": "^1.1.1",
+    "prop-types": "^15",
+    "raf": "^3.3.2",
+    "react": "^15",
+    "react-dom": "^15.5.4",
+    "rx": "^4.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6",
+    "babel-eslint": "^7.2.3",
+    "browserify": "^14",
+    "eslint": "^3",
+    "eslint-config-airbnb": "^14",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-jsx-a11y": "^4",
+    "eslint-plugin-react": "^6",
+    "livereload": "^0.6.2",
+    "parallelshell": "^3.0.1",
+    "uglifyify": "^4.0.1",
+    "watch": "^1",
+    "watchify": "^3"
+  },
+  "scripts": {
+    "test": "eslint .",
+    "dev": "parallelshell \"yarn watch:js\" \"yarn watch:css\"",
+    "js": "browserify -t babelify -t uglifyify assets/js/main.js -o assets/js/dist/main.js",
+    "watch:js": "watchify assets/js/main.js -t babelify -o assets/js/dist/main.js -v",
+    "css": "node-sass --include-path css --output-style compressed assets/css/main.sass assets/css/dist/main.css",
+    "watch:css": "yarn css && yarn css -- --w",
+    "livereload": "livereload . -p 9091 -d"
+  }
+}
