@@ -4,7 +4,8 @@
  "description": "Run WP locally with remote .env vars",
  "main": "index.js",
  "scripts": {
-  "dev": "parallelshell \"composer dev\" \"cd web/app/themes/NWS-WP/ && yarn && yarn dev\""
+  "dev": "parallelshell \"composer dev\" \"cd web/app/themes/NWS-WP/ && yarn && yarn dev\"",
+  "deploy": "wpengine.sh $env"
  },
  "repository": {
   "type": "git",

@@ -9,6 +9,7 @@ web/app/uploads/*
 # WordPress
 web/wp
 web/.htaccess
+wp-engine.php
 
 # Dotenv
 .env
