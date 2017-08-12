@@ -1,4 +1,3 @@
-
 #!/bin/bash
 # Version: 2.2
 # Last Update: December 29, 2016
@@ -76,7 +75,7 @@ function deploy () {
   # Setup directory structure
   mkdir wp-content && mkdir wp-content/themes && mkdir wp-content/plugins && mkdir wp-content/mu-plugins
   # Copy meaningful contents of web/app into wp-content
-  cp -rp web/app/plugins wp-content && cp -rp web/app/themes wp-content && cp -rp web/app/mu-plugins wp-content
+  cp -rp web/app/plugins wp-content && cp -rp web/app/themes wp-content
 
   ########################################
   # Push to WP Engine
@@ -103,13 +102,14 @@ function deploy () {
   rm -rf wp-content/ &> /dev/null
   git branch -D "$tempDeployGitBranch" &> /dev/null
   echo -e "[\033[32mDone\e[0m] Deployed \"$tempDeployGitBranch\" to \"$wpengineRemoteName\""
+  exit
 }
 
 ########################################
 # Execute
 ########################################
 # Checks
-check_uncommited_files
+#check_uncommited_files
 check_remote_exists
 
 # Uncomment the following line for debugging
@@ -117,4 +117,3 @@ check_remote_exists
 
 # Deploy process
 deploy
->>>>>>> develop

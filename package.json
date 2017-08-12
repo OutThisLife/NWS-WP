@@ -5,8 +5,8 @@
  "main": "index.js",
  "scripts": {
   "dev": "parallelshell \"composer dev\" \"cd web/app/themes/churchill/ && yarn && yarn dev\"",
-  "deploy": "sh wpengine.sh staging",
-  "deploy-prod": "sh wpengine.sh production"
+  "deploy": "sh deploy.sh staging",
+  "deploy-prod": "sh deploy.sh production"
  },
  "keywords": [
   "roots",
