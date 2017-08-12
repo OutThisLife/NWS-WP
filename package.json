@@ -4,12 +4,9 @@
  "description": "Run WP locally with remote .env vars",
  "main": "index.js",
  "scripts": {
-  "dev": "parallelshell \"composer dev\" \"cd web/app/themes/NWS-WP/ && yarn && yarn dev\"",
-  "deploy": "wpengine.sh $env"
- },
- "repository": {
-  "type": "git",
-  "url": "git+https://github.com/OutThisLife/NWS-WP.git"
+  "dev": "parallelshell \"composer dev\" \"cd web/app/themes/churchill/ && yarn && yarn dev\"",
+  "deploy": "sh wpengine.sh staging",
+  "deploy-prod": "sh wpengine.sh production"
  },
  "keywords": [
   "roots",
@@ -19,10 +16,6 @@
  ],
  "author": "",
  "license": "ISC",
- "bugs": {
-  "url": "https://github.com/OutThisLife/NWS-WP/issues"
- },
- "homepage": "https://github.com/OutThisLife/NWS-WP#readme",
  "dependencies": {
   "concurrently": "^3.4.0"
  },

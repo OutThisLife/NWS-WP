@@ -1,115 +1,120 @@
-#!/usr/bin/env bash
 
-environment=$1
-theme="NWS-WP"
+#!/bin/bash
+# Version: 2.2
+# Last Update: December 29, 2016
+#
+# Description: Bash script to deploy a Bedrock WordPress project to WP Engine's hosting platform
+# Repository: https://github.com/hello-jason/bedrock-deploy-to-wpengine.git
+# README: https://github.com/hello-jason/bedrock-deploy-to-wpengine/blob/master/README.md
+#
+# Tested Bedrock Version: 1.7.2
+# Tested bash version: 4.3.42
+# Author: Jason Cross
+# Author URL: https://hellojason.net/
+########################################
+# Usage
+########################################
+# bash wpedeploy.sh nameOfRemote
 
-###
-# Check that we have the correct working directory.
-###
-if [ ! -d "web" ]
-then
-	echo "Please run this script from the main htdocs directory."
-	exit
-fi
+########################################
+# Thanks
+########################################
+# Thanks to [schrapel](https://github.com/schrapel/wpengine-bedrock-build) for
+# providing some of the foundation for this script.
+# Also thanks to [cmckni3](https://github.com/cmckni3) for guidance and troubleshooting
 
-###
-# Stop if there are uncommitted changes
-###
-if [[ -n $(git status -s) ]]
-then
-	echo "Please review and commit your changes before continuing."
-	exit
-fi
+########################################
+# Set variables
+########################################
+# WP Engine remote to deploy to
+wpengineRemoteName=$1
+# Get current branch user is on
+currentLocalGitBranch=`git rev-parse --abbrev-ref HEAD`
+# Temporary git branch for building and deploying
+tempDeployGitBranch="deploy/${currentLocalGitBranch}"
 
-###
-# Create "deploy" directory
-# If necessary, remove existing directory
-###
-cd ".."
-if [ -d "deploy" ]
-then
-	echo "Removing old deployment directory."
-	rm -Rf "deploy"
-fi
+########################################
+# Perform checks before running script
+########################################
 
-echo "Preparing files for deployment."
-cp -a "htdocs" "deploy"
-cd "deploy"
+# Halt if there are uncommitted files
+function check_uncommited_files () {
+  if [[ -n $(git status -s) ]]; then
+    echo -e "[\033[31mERROR\e[0m] Found uncommitted files on current branch \"$currentLocalGitBranch\".\n        Review and commit changes to continue."
+    git status
+    exit 1
+  fi
+}
 
-###
-# Build theme assets with gulp
-###
-echo "Building theme assets."
-cd "web/app/themes/${theme}"
-npm install
-bower install
+# Check if specified remote exists
+function check_remote_exists () {
+  echo "Checking if specified remote exists..."
+  git ls-remote "$wpengineRemoteName" &> /dev/null
+  if [ "$?" -ne 0 ]; then
+    echo -e "[\033[31mERROR\e[0m] Unknown git remote \"$wpengineRemoteName\"\n        Visit \033[32mhttps://wpengine.com/git/\e[0m to set this up."
+    echo "Available remotes:"
+    git remote -v
+    exit 1
+  fi
+}
 
-if [ "$environment" == "staging" ]
-then
-	git checkout develop
-	yarn build
-elif [ "$environment" == "production" ]
-then
-	git checkout master
-	yarn build --production
-else
-	echo "Invalid environment."
-	exit
-fi
-cd "../../../.."
+# Gets current timestamp when called
+function timestamp () {
+  date
+}
 
-###
-# Create a temporary wpengine branch
-###
-exists=`git show-ref refs/heads/wpengine`
-if [ -n "$exists" ]
-then
-	git branch -D wpengine
-fi
-git checkout -b wpengine
+########################################
+# Begin deploy process
+########################################
+function deploy () {
+  # Checkout new temporary branch
+  echo -e "Preparing theme on branch ${tempDeployGitBranch}..."
+  git checkout -b "$tempDeployGitBranch" &> /dev/null
 
-###
-# Move files into the expected locations.
-# Remove unwanted files.
-###
-mv web/app wp-content
-rm -R web
-rm "wp-content/themes/${theme}/.gitignore"
-rm "wp-content/mu-plugins/bedrock-autoloader.php"
-rm "wp-content/mu-plugins/disallow-indexing.php"
-rm "wp-content/mu-plugins/register-theme-directory.php"
-rm .gitignore
-echo "/*\n!wp-content/\nwp-content/uploads" >> .gitignore
-git ls-files | xargs git rm --cached
+  # Run composer
+  composer install
+  # Setup directory structure
+  mkdir wp-content && mkdir wp-content/themes && mkdir wp-content/plugins && mkdir wp-content/mu-plugins
+  # Copy meaningful contents of web/app into wp-content
+  cp -rp web/app/plugins wp-content && cp -rp web/app/themes wp-content && cp -rp web/app/mu-plugins wp-content
 
-cd wp-content/
-find . | grep .git | xargs rm -rf
-cd ../
+  ########################################
+  # Push to WP Engine
+  ########################################
+  # WPE-friendly gitignore
+  echo -e "# Ignore everything\n/*\n\n# Except this...\n!wp-content/\n!wp-content/**/*" > .gitignore
+  git rm -r --cached . &> /dev/null
+  # Find and remove nested git repositories
+  rm -rf $(find wp-content -name ".git")
+  rm -rf $(find wp-content -name ".github")
 
-###
-# Commit new structure into git, and push to remote.
-###
-git add .
-git commit -am "WP Engine build from: $(git log -1 HEAD --pretty=format:%s)$(git rev-parse --short HEAD 2> /dev/null | sed "s/\(.*\)/@\1/")"
+  git add --all
+  git commit -m "Automated deploy of \"$tempDeployGitBranch\" branch on $(timestamp)"
+  echo "Pushing to WP Engine..."
 
-echo "Pushing to WP Engine..."
-if [ "$environment" == "staging" ]
-then
-	git push staging wpengine:master --force
-	git checkout develop
-elif [ "$environment" == "production" ]
-then
-	git push production wpengine:master --force
-	git checkout master
-fi
-git branch -D wpengine
-echo "Successfully deployed."
+  # Push to a remote branch with a different name
+  # git push remoteName localBranch:remoteBranch
+  git push "$wpengineRemoteName" "$tempDeployGitBranch":master --force
 
-###
-# Remove deploy directory and move back to htdocs
-###
-echo "Cleaning up..."
-cd "../htdocs"
-rm -Rf "../deploy"
-git fetch
-echo "Done."
+  ########################################
+  # Back to a clean slate
+  ########################################
+  git checkout "$currentLocalGitBranch" &> /dev/null
+  rm -rf wp-content/ &> /dev/null
+  git branch -D "$tempDeployGitBranch" &> /dev/null
+  echo -e "[\033[32mDone\e[0m] Deployed \"$tempDeployGitBranch\" to \"$wpengineRemoteName\""
+}
+
+########################################
+# Execute
+########################################
+# Checks
+check_uncommited_files
+check_remote_exists
+
+# Uncomment the following line for debugging
+# set -x
+
+# Deploy process
+deploy
+>>>>>>> develop
